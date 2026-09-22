@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "puesto-de-palta",
+  "compatibility_date": "2026-03-14",
+  "pages_build_output_dir": "./dist",
+  "compatibility_flags": ["nodejs_compat"],
+  "kv_namespaces": [
+    {
+      "binding": "NOTIFIED_ARTICLES",
+      "id": "c3392b7e9a07445eac9bb73d9ea24ac7"
+    }
+  ]
+}
