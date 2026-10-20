@@ -1300,7 +1300,7 @@ export function homeHTML(): string {
     <div class="hero-content">
       <span class="hero-eyebrow">Buenos Aires · Distribuidora Artesanal</span>
       <h1><em>La calidad no se explica,</em>se nota.</h1>
-      <p class="hero-subtitle">Maduración personalizada, trato humano, logística rápida.</p>
+      <p class="hero-subtitle">Maduración personalizada, trato humano, entrega rápida.</p>
       <div class="hero-ctas">
         <a href="/blog" class="hero-btn-primary">Leer el blog</a>
         <a href="#testimonios" class="hero-btn-secondary">Testimonios</a>
