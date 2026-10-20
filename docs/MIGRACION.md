@@ -273,8 +273,9 @@ Notión: https://www.notion.so
 
 ## 4. Arquitectura nueva
 
-- **Web:** sigue en Cloudflare Pages, pero conectada a GitHub. Cada push a `main`
-  despliega solo. Sin cambio de DNS.
+- **Web:** Cloudflare Pages, proyecto `puesto-de-palta-web`, conectado a GitHub.
+  Cada push a `main` despliega el sitio real; cada push a otra rama genera una URL de
+  vista previa `<rama>.puesto-de-palta-web.pages.dev`. (Hecho el 20/10/2026.)
 - **Contenido:** un comando dentro del repo que Claude Code ejecuta y que reproduce los
   pasos 2 a 6. Se puede correr a mano ("generá la nota de la semana") o programado como
   Rutina de Claude Code en la web (lunes 9:00). Corre con la suscripción Max, sin API de
@@ -555,16 +556,31 @@ nadie.
 - Decisión de hora: **9:00 ahora; en diciembre de 2026 pasar a 19:00** (cambiar
   `PUBLISH_HOUR_ARG` en `src/lib/notion.ts`).
 
+- [x] Tomás probó en la URL de prueba: bienvenida de Brevo y mail de contacto llegaron.
+  El botón de push quedó en "Activando" en pages.dev, esperable: OneSignal solo acepta
+  el dominio registrado (puestodepalta.com).
+- [x] **ETAPA FINAL HECHA el 20/10/2026. puestodepalta.com ya corre en el proyecto
+  nuevo `puesto-de-palta-web`, desplegado desde GitHub.**
+  - `NOTIFY_ENABLED=true` cargado en Production **como Secret** (importante: las
+    variables de texto plano del panel se borran en cada deploy porque
+    `wrangler.jsonc` manda; las Secret se conservan).
+  - Dominios `puestodepalta.com` y `www` movidos al proyecto nuevo (Active). Cloudflare
+    actualizó solo los CNAME a `puesto-de-palta-web.pages.dev`. El proyecto viejo
+    `puesto-de-palta` quedó sin dominios; se puede borrar después de unos días.
+  - Cron en el dominio real: secreto viejo → 401; secreto nuevo → modo real, 15 notas
+    ya notificadas, 0 enviadas, 0 fallidas.
+  - Tomás cambió la URL del job en cron-job.org al secreto nuevo.
+- Permiso de Tomás (20/10/2026): Claude puede subir cambios directo a `main`. Los
+  cambios grandes se consultan antes. Cada push a `main` despliega el sitio real.
+
 ### Pendiente, en orden
 
-1. **Tomás:** probar desde el navegador en https://puesto-de-palta-web.pages.dev la
-   suscripción con su propio mail (tiene que llegar la bienvenida de Brevo) y el
-   formulario de contacto (tiene que llegar el mail a su Gmail). Opcional: el botón de
-   push.
-2. **Etapa final** (sección 8, "Etapa final"): `NOTIFY_ENABLED=true` en Production del
-   proyecto nuevo, mover el dominio, cambiar la URL en cron-job.org, verificar, cancelar
-   Genspark.
-3. **Etapa 4:** comando de contenido (reemplazo del workflow de Genspark).
+1. **Tomás:** probar el botón de notificaciones push en https://puestodepalta.com y
+   confirmar en cron-job.org que la primera corrida con la URL nueva responde 200.
+2. **Tomás:** cancelar Genspark cuando quiera. Hay 11 borradores en Notion de reserva.
+   Desconectar la conexión "Genspark" de Notion (Settings → Connections).
+3. **Etapa 4:** comando de contenido (reemplazo del workflow de Genspark, sección 3).
+4. Borrar el proyecto viejo `puesto-de-palta` en Cloudflare (opcional, después de unos días).
 4. **Claude, etapa 4 (contenido):** comando de generación de notas que reproduce los
    pasos 2 a 6 de la sección 3. Primera corrida a mano con Publicar en falso.
 5. **Claude, etapa 5:** Rutina semanal (lunes 9:00 Argentina) y actualización de
