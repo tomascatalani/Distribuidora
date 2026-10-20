@@ -83,20 +83,30 @@ Relevamiento: 23 de septiembre de 2026. Última actualización: 20 de octubre de
 4. Si se destilda Publicar, la nota desaparece. Si se vuelve a tildar, no se notifica
    otra vez (el KV ya la tiene).
 
-### Problemas detectados en el código actual
+### Problemas detectados en el código original (estado al 20/10/2026)
 
-1. **Secreto del cron escrito en el código** (`src/index.tsx`, línea 39). El código
-   ignora la variable `CRON_SECRET`. Para rotar el secreto hay que cambiar el código.
-2. **`/api/notify` sin protección.** Cualquiera que conozca la URL puede mandar una
-   campaña a todos los suscriptores.
-3. **KV se marca antes de confirmar el envío.** Si Brevo u OneSignal fallan, la nota
-   queda como "notificada" y el mail nunca sale (pasó el 22/09/2026 por límite de
-   créditos SMTP). Solución manual: borrar la clave del KV y llamar `/api/notify`.
-4. **ID de Notion duplicado y distinto** en `src/routes/blog.ts` línea 21
-   (`3233fd35c85780bf8f1efd29cbdde59e`). No se usa en la práctica.
-5. **`og-image.jpg` no existe** en el repo aunque la home lo referencia.
-6. **No hay publicación por fecha.** "Programar" hoy es solo tildar Publicar a mano.
-7. Sin límite de intentos ni anti-spam en formularios.
+1. ~~Secreto del cron escrito en el código.~~ **Resuelto en la etapa 2:** se lee de
+   `CRON_SECRET`. Si la variable falta, `/api/cron` responde 503.
+2. ~~`/api/notify` sin protección.~~ **Resuelto:** exige el mismo secreto
+   (header `x-cron-secret` o `?secret=`).
+3. ~~KV se marca antes de confirmar el envío.~~ **Resuelto:** se marca solo si la
+   campaña de Brevo salió. Si falla, reintenta en las corridas siguientes reusando la
+   campaña ya creada, hasta 3 veces, y después manda un mail de alerta a
+   `ALERT_EMAIL` (por defecto tomascatalani@gmail.com). Para destrabar a mano: borrar
+   la clave `pending:<pageId>` del KV.
+4. ~~ID de Notion duplicado.~~ **Resuelto:** toda la lógica de Notion está en
+   `src/lib/notion.ts`.
+5. ~~`og-image.jpg` no existe.~~ **Resuelto:** `src/lib/site.ts` apunta a la foto de
+   Cloudinary elegida por Tomás, recortada a 1200x630.
+6. ~~No hay publicación por fecha.~~ **Resuelto:** una nota se muestra cuando Publicar
+   está tildado Y (no tiene Fecha o la Fecha ya llegó, en hora de Argentina). Se
+   pueden dejar notas cargadas con fecha futura y salen solas.
+7. Sin límite de intentos ni anti-spam en formularios. Pendiente, baja prioridad.
+
+Además en la etapa 2: `NOTIFY_ENABLED` (si no es `"true"`, el cron solo simula y no
+manda ni graba nada; así el proyecto de prueba nunca spamea), `?dry=1` para forzar
+simulación, escape de HTML del contenido de Notion, proyecto de Pages renombrado a
+`puesto-de-palta-web`, `ecosystem.config.cjs` eliminado, `npm run typecheck`.
 
 ---
 
@@ -298,6 +308,8 @@ Notión: https://www.notion.so
 | `ONESIGNAL_APP_ID` | Sí | No |
 | `ONESIGNAL_API_KEY` | Sí | No |
 | `CRON_SECRET` | Sí | No |
+| `NOTIFY_ENABLED` (`true` SOLO en producción) | Sí | No |
+| `ALERT_EMAIL` (opcional) | Sí | No |
 | `CLOUDINARY_CLOUD_NAME` | No | Sí |
 | `CLOUDINARY_UPLOAD_PRESET` | No | Sí |
 | `GEMINI_API_KEY` (opcional, requiere facturación) | No | Sí |
@@ -326,6 +338,63 @@ búsqueda web.
 5. **Automatizar.** Rutina semanal. Actualizar cron-job.org con el secreto nuevo.
 6. **Cambio final.** Conectar el proyecto Pages de producción a GitHub (o mover el
    dominio personalizado al proyecto nuevo desde el panel). Sin DNS. Cancelar Genspark.
+
+---
+
+## 8. Guía: crear el proyecto de Cloudflare Pages conectado a GitHub
+
+Se hace una sola vez, después de que el PR esté mergeado en `main`. El sitio actual
+(proyecto `puesto-de-palta`) no se toca hasta la etapa final.
+
+1. Entrá a https://dash.cloudflare.com → menú izquierdo **Workers & Pages** →
+   botón **Create** → pestaña **Pages** → **Import an existing Git repository**
+   (o "Connect to Git").
+2. Elegí **GitHub**. Si te pide autorizar, aceptá e instalá la app de Cloudflare
+   Pages dándole acceso al repo **tomascatalani/Distribuidora** (puede ser solo a ese
+   repo). Volvés a Cloudflare y seleccionás el repo → **Begin setup**.
+3. Completá:
+   - **Project name:** `puesto-de-palta-web` (exactamente así; tiene que coincidir
+     con `wrangler.jsonc`).
+   - **Production branch:** `main`.
+   - **Framework preset:** None.
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
+4. Abrí **Environment variables (advanced)** y agregá, para **Production** y también
+   para **Preview** (hay un selector), estas seis como tipo Secret / encrypted:
+   `NOTION_TOKEN`, `NOTION_DB_ID`, `BREVO_API_KEY`, `ONESIGNAL_APP_ID`,
+   `ONESIGNAL_API_KEY`, `CRON_SECRET` (el que empieza con `4K0_`).
+   **NO agregar `NOTIFY_ENABLED`** todavía: así el proyecto nuevo nunca manda avisos
+   reales. Se agrega recién en la etapa final.
+   Si el asistente no deja cargar variables antes del primer deploy, no importa: se
+   cargan después en Settings → Variables and secrets y se vuelve a desplegar con
+   **Retry deployment**.
+5. **Save and Deploy.** Esperá 1 o 2 minutos. Tiene que terminar en verde y mostrar la
+   URL `https://puesto-de-palta-web.pages.dev`.
+6. El binding del KV `NOTIFIED_ARTICLES` lo toma solo de `wrangler.jsonc`. Verificá en
+   Settings → Bindings que aparezca. Si no, agregalo a mano: KV namespace, nombre
+   `NOTIFIED_ARTICLES`, namespace `NOTIFIED_ARTICLES` (el existente).
+7. Avisale a Claude la URL. Claude corre las pruebas de la etapa 3 contra esa URL.
+
+A partir de ahí, cada push a `main` despliega solo. Cada push a otra rama genera una
+URL de vista previa (`<rama>.puesto-de-palta-web.pages.dev`) con las variables de
+Preview.
+
+### Etapa final (cuando la etapa 3 esté verde)
+
+1. En el proyecto nuevo: Settings → Variables and secrets → agregar
+   `NOTIFY_ENABLED` = `true` en **Production** → Retry deployment.
+2. En el proyecto nuevo: **Custom domains** → **Set up a custom domain** →
+   `puestodepalta.com`. Cloudflare avisa que el dominio está en otro proyecto; hay que
+   sacarlo primero: proyecto viejo `puesto-de-palta` → Custom domains → `...` →
+   Remove. Después agregarlo en el nuevo. Repetir con `www.puestodepalta.com` si
+   Cloudflare no lo agrega solo. El corte dura segundos.
+3. En cron-job.org: editar el job y cambiar la URL a
+   `https://puestodepalta.com/api/cron?secret=<CRON_SECRET nuevo>`. Guardar. Ver en
+   el historial que la siguiente corrida responda 200 con `"mode":"real"`.
+4. Probar: `https://puestodepalta.com/api/cron?secret=<CRON_SECRET>&dry=1` tiene que
+   listar las 15 notas como "ya notificada".
+5. Cancelar Genspark. Desconectar la conexión "Genspark" de Notion. Opcional: borrar
+   el proyecto viejo `puesto-de-palta` después de unos días.
 
 ---
 
@@ -460,14 +529,22 @@ nadie.
   contactos**. Remitentes activos: ID 1 "Puesto de Palta" e ID 2 "Puesto de Palta -
   Blog Paltero", ambos contacto@puestodepalta.com.
 
+- [x] **Etapa 2 (código) hecha el 20/10/2026** en la rama
+  `claude/intelligent-maxwell-99xw57`, commit `94a4d0d`. Probada en Node contra el
+  Notion real: 15 notas visibles, slugs con tilde y nota sin slug OK, 404 OK, cron
+  401/503/simulación OK, notify protegido. Nota: `wrangler pages dev` no funciona
+  dentro del entorno de Claude Code (workerd no usa el proxy de red); probar con
+  `node` importando `dist/_worker.js` (ver scratchpad de la sesión) o en Cloudflare.
+
 ### Pendiente, en orden
 
-1. **Tomás:** dar el OK a la etapa 2. (Checklist de la sección 7 completa.)
-2. **Claude, etapa 2 (web):** correcciones de código listadas en la sección 1
-   ("Problemas detectados"), limpieza de restos de Genspark, guía para conectar
-   Cloudflare Pages a GitHub con un proyecto de prueba.
-3. **Claude, etapa 3 (pruebas):** verificar blog, formularios y notificaciones en la
-   URL de prueba `*.pages.dev`.
+1. **Tomás:** aprobar y mergear el Pull Request de la rama de trabajo a `main`
+   (Claude lo abre). Sin esto, `main` sigue con el código viejo y el proyecto nuevo
+   de Pages no compila (el `name` de `wrangler.jsonc` no coincidiría).
+2. **Tomás:** crear el proyecto `puesto-de-palta-web` en Cloudflare Pages conectado a
+   GitHub, siguiendo la sección 8.
+3. **Claude, etapa 3 (pruebas):** verificar blog, formularios y cron en simulación en
+   la URL `puesto-de-palta-web.pages.dev`.
 4. **Claude, etapa 4 (contenido):** comando de generación de notas que reproduce los
    pasos 2 a 6 de la sección 3. Primera corrida a mano con Publicar en falso.
 5. **Claude, etapa 5:** Rutina semanal (lunes 9:00 Argentina) y actualización de
