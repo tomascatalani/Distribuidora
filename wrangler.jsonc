@@ -1,6 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "puesto-de-palta",
+  // Nombre del proyecto en Cloudflare Pages. Tiene que coincidir con el proyecto
+  // conectado a GitHub (ver docs/MIGRACION.md, sección 8).
+  "name": "puesto-de-palta-web",
   "compatibility_date": "2026-03-14",
   "pages_build_output_dir": "./dist",
   "compatibility_flags": ["nodejs_compat"],

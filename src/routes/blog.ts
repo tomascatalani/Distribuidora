@@ -1,39 +1,21 @@
 import { Hono } from 'hono'
 import { blogDetailHTML, blogNotFoundHTML } from '../templates/blog-detail'
 import { blogListHTML } from '../templates/blog-list'
+import { getArticleBySlug, type NotionEnv } from '../lib/notion'
 
-type Bindings = {
-  NOTION_TOKEN: string
-  NOTION_DB_ID: string
-}
+export const blogPage = new Hono<{ Bindings: NotionEnv }>()
 
-export const blogPage = new Hono<{ Bindings: Bindings }>()
+// Listado /blog (las notas se cargan desde /api/blog en el navegador)
+blogPage.get('/', (c) => c.html(blogListHTML()))
 
-// Página listado /blog
-blogPage.get('/', async (c) => {
-  return c.html(blogListHTML())
-})
-
+// Nota individual /blog/:slug
 blogPage.get('/:slug', async (c) => {
-  const slug = c.req.param('slug')
   try {
-    const token = c.env?.NOTION_TOKEN || ''
-    const dbId = c.env?.NOTION_DB_ID || '3233fd35c85780bf8f1efd29cbdde59e'
-
-    const host = c.req.header('host') || 'localhost:3000'
-    const proto = host.includes('localhost') ? 'http' : 'https'
-    const apiUrl = `${proto}://${host}/api/blog/${slug}`
-
-    const res = await fetch(apiUrl)
-    if (!res.ok) {
-      return c.html(blogNotFoundHTML())
-    }
-    const data = await res.json() as any
-    if (!data.article) {
-      return c.html(blogNotFoundHTML())
-    }
-    return c.html(blogDetailHTML(data.article))
-  } catch (err: any) {
-    return c.html(blogNotFoundHTML())
+    const article = await getArticleBySlug(c.env, c.req.param('slug'))
+    if (!article) return c.html(blogNotFoundHTML(), 404)
+    c.header('Cache-Control', 'no-store')
+    return c.html(blogDetailHTML(article))
+  } catch (_) {
+    return c.html(blogNotFoundHTML(), 404)
   }
 })

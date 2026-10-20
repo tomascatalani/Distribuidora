@@ -1,0 +1,12 @@
+# Copiar este archivo a .dev.vars (que NO se sube al repo) para correr el sitio en
+# la computadora con `npm run build && npm run preview`. En Cloudflare Pages estas
+# mismas variables se cargan en Settings → Variables and Secrets.
+NOTION_TOKEN=
+NOTION_DB_ID=3233fd35-c857-8076-8608-f97f0cbf9873
+BREVO_API_KEY=
+ONESIGNAL_APP_ID=f79c1b7e-b2fc-4f3f-a7eb-fb0ba3dec26e
+ONESIGNAL_API_KEY=
+CRON_SECRET=
+# Dejar vacío salvo en producción. Si no es "true", el cron solo simula y no manda nada.
+NOTIFY_ENABLED=
+ALERT_EMAIL=tomascatalani@gmail.com
