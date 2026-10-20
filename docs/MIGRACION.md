@@ -433,6 +433,9 @@ nadie.
 - [x] Claves verificadas en vivo el 20/10/2026: Notion, OneSignal y Cloudflare responden
   bien. Brevo responde pero bloquea por IP (ver checklist, punto F).
 - [x] La integración "Puesto de Palta BLOG" ya tiene acceso a la guía de voz (verificado).
+- [x] Brevo: rango de IP autorizado, 12/12 llamadas OK (20/10/2026).
+- [x] Confirmaciones de DNS, custom domain, variables de Pages y cron-job.org (20/10/2026).
+- [x] Imágenes: Cloudflare Workers AI con Phoenix 1.0, probado y subido a Cloudinary (20/10/2026).
 
 ### Datos verificados en vivo (20/10/2026)
 
@@ -459,7 +462,8 @@ nadie.
 
 ### Pendiente, en orden
 
-1. **Tomás:** completar la checklist de la sección 7 (variables, red, Notion, proveedor de imagen).
+1. **Tomás:** cargar `CF_AI_TOKEN` en el entorno de Claude Code y `CRON_SECRET` en
+   Cloudflare Pages (ver sección 7, puntos H e I). Dar el OK a la etapa 2.
 2. **Claude, etapa 2 (web):** correcciones de código listadas en la sección 1
    ("Problemas detectados"), limpieza de restos de Genspark, guía para conectar
    Cloudflare Pages a GitHub con un proyecto de prueba.
@@ -538,20 +542,27 @@ Todo esto se hace una sola vez. Los valores de las claves ya existen en las cuen
 2. Camino alternativo: abrí la página "ESTILO Y VOZ — TOMI" → tres puntos arriba a la
    derecha → **Connections** → elegí **Puesto de Palta BLOG**.
 
-### D. Proveedor de imágenes (en curso)
+### D. Proveedor de imágenes (resuelto el 20/10/2026)
+
+**Decisión: Cloudflare Workers AI, modelo `@cf/leonardo/phoenix-1.0`**, 1792x1024
+(16:9 nativo), gratis dentro de la cuenta. Probado con el token `CF_AI_TOKEN`
+(plantilla "Workers AI"): los cuatro modelos funcionan; Phoenix dio la mejor calidad,
+Lucid Origin es la segunda opción (más oscuro), Flux Schnell solo genera cuadrado,
+SDXL es más flojo. Subida a Cloudinary con el preset unsigned verificada: quedó
+`prueba-claude-borrar.jpg` en la raíz del cloud (borrarla a mano cuando se quiera).
+Importante: el preset NO pone carpeta; las portadas caen en la raíz con el slug como
+nombre, igual que hacía Genspark.
+
+Historial de la decisión:
 
 - Clave de Gemini creada y cargada como `GEMINI_API_KEY` (formato nuevo, empieza con
   `AQ.`). Es válida, pero **la cuota gratuita de la API para imágenes es cero**: todos
   los modelos de imagen devuelven `RESOURCE_EXHAUSTED` en la primera llamada. Para usarla
   hay que activar facturación en Google Cloud (tarjeta), ~USD 0,04 por imagen. La
   suscripción Google AI Pro de la app de Gemini (USD 20/mes) **no** aplica a la API.
-- Alternativa gratuita elegida: **Cloudflare Workers AI** (incluido en la cuenta, 10.000
-  neuronas/día). El token `CF_API_TOKEN` actual no tiene permiso de Workers AI
-  ("Authentication error"). Falta crear un token con la plantilla **Workers AI** en
-  https://dash.cloudflare.com/profile/api-tokens y cargarlo como `CF_AI_TOKEN`.
-- Modelos candidatos en Workers AI: `@cf/black-forest-labs/flux-1-schnell`,
-  `@cf/leonardo/lucid-origin`, `@cf/leonardo/phoenix-1.0`,
-  `@cf/stabilityai/stable-diffusion-xl-base-1.0`. Elegir probando calidad y 16:9.
+- Cloudflare Workers AI (incluido en la cuenta, 10.000 neuronas/día). El token
+  `CF_API_TOKEN` original no tiene permiso de Workers AI; se creó un segundo token con
+  la plantilla **Workers AI**, cargado como `CF_AI_TOKEN`.
 
 ### E. Confirmaciones (hecho el 20/10/2026, con capturas)
 
@@ -571,8 +582,10 @@ Todo esto se hace una sola vez. Los valores de las claves ya existen en las cuen
 3. **cron-job.org: sí.** Job "Puesto de Palta — Notify notas", cada 5 minutos
    (`*/5 * * * *`, zona UTC), URL `https://puestodepalta.com/api/cron?secret=...`,
    habilitado, guarda respuestas en el historial.
-4. `og-image.jpg`: pendiente (opcional). Si no hay foto, usar una de la galería de
-   Cloudinary.
+4. `og-image.jpg` (la foto que muestran WhatsApp, Instagram o Google cuando alguien
+   comparte el link del sitio): Tomás no tiene una. Decisión: usar la foto de la
+   galería `puesto-de-palta/galeria/foto-plato-oscuro.jpg` de Cloudinary, con
+   transformación a 1200x630. Se resuelve en la etapa 2 cambiando la meta `og:image`.
 
 ### F. Brevo: restricción por IP (hecho el 20/10/2026)
 
@@ -580,6 +593,19 @@ Se autorizó el rango `160.79.106.0/24` en https://app.brevo.com/security/author
 (las sesiones de Claude Code salen de IPs variables dentro de ese rango). Verificado:
 12 de 12 llamadas aceptadas. Si en el futuro Brevo vuelve a rechazar por IP, revisar
 que el rango siga cargado ahí.
+
+### H. Cargar `CF_AI_TOKEN` en el entorno de Claude Code
+
+Menú del entorno → Edit → Environment variables → agregar la línea
+`CF_AI_TOKEN=<token con plantilla Workers AI>` → Save.
+
+### I. Cargar `CRON_SECRET` en Cloudflare Pages (ya se puede hacer)
+
+Workers & Pages → `puesto-de-palta` → Settings → Variables and secrets → **Add** →
+tipo **Secret**, nombre `CRON_SECRET`, valor: el secreto que Claude generó (está en el
+chat del 20/10/2026, empieza con `4K0_`). Guardar. **No cambiar todavía la URL en
+cron-job.org**: el código actual ignora esta variable; la URL se cambia recién cuando
+la etapa 2 esté desplegada en producción.
 
 ### G. PERSEA (resuelto)
 
