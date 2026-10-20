@@ -428,6 +428,33 @@ nadie.
 - [x] Relevamiento completo del repo y del workflow de Genspark (sesión del 23/09/2026).
 - [x] Este documento guardado en el repo (20/10/2026).
 - [x] `CLAUDE.md` en la raíz para que toda sesión nueva lea este documento primero.
+- [x] Red del entorno de Claude Code en **Full** (20/10/2026).
+- [x] Claves verificadas en vivo el 20/10/2026: Notion, OneSignal y Cloudflare responden
+  bien. Brevo responde pero bloquea por IP (ver checklist, punto F).
+- [x] La integración "Puesto de Palta BLOG" ya tiene acceso a la guía de voz (verificado).
+
+### Datos verificados en vivo (20/10/2026)
+
+- Base del blog en Notion: **26 páginas, 15 publicadas, 11 borradores**. La web muestra
+  las mismas 15. Todas las portadas están en Cloudinary.
+- Propiedades reales de la base: `Title` (title), `Slug` (rich_text), `Fecha` (date),
+  `Publicar` (checkbox), `Imagen` (url), `Excerpt` (rich_text), y además
+  **`Publicar PERSEA`** (checkbox) y **`Notificado PERSEA`** (checkbox). Estas dos
+  últimas no las usa el código del sitio. Preguntar a Tomás qué es PERSEA.
+- Hay 6 borradores con `Fecha` futura (noviembre y diciembre de 2026) y 4 sin fecha.
+  Parece que Tomás deja notas listas y las publica a mano cuando llega la fecha. Esto
+  confirma el valor de la publicación automática por fecha (etapa 2).
+- Varios slugs tienen tildes (`el-árbol-...`, `la-hipocresía-...`, `el-número-...`).
+  Funcionan, pero la regla dice sin tildes. Una nota publicada ("Cuando hay demasiada
+  palta") no tiene slug y usa el ID de página como URL. Corregir en Notion cuando se pueda.
+- OneSignal: app "Puesto de Palta", **1 solo suscriptor push**. El canal que importa es
+  el email.
+- Cloudflare: cuenta `69cab80f6399b619326813da2ca872ef` ("Tomascatalani@gmail.com's
+  Account"). El sitio responde con `server: cloudflare`.
+- Brevo: la API key es válida pero la cuenta tiene **restricción por IP autorizada**.
+  Las llamadas desde Claude Code salen de IPs variables (rango 160.79.106.x) y son
+  rechazadas. Desde Cloudflare funcionan porque esas IPs ya estaban autorizadas (o la
+  restricción se agregó después). Ver punto F.
 
 ### Pendiente, en orden
 
@@ -528,3 +555,17 @@ Todo esto se hace una sola vez. Los valores de las claves ya existen en las cuen
 3. cron-job.org: ¿podés entrar y ver el job que llama a `/api/cron`? (sí / no)
 4. ¿Tenés el archivo `og-image.jpg` o una foto para usar como previsualización en
    redes? Si sí, subila a la sesión.
+
+### F. Brevo: sacar la restricción por IP (obligatorio para la etapa 4)
+
+1. Entrá a https://app.brevo.com/security/authorised_ips
+2. Desactivá la restricción de IPs autorizadas (o, si preferís mantenerla, agregá el
+   rango `160.79.106.0/24`, que es desde donde salen las sesiones de Claude Code).
+3. Guardá. Sin esto, Claude no puede mandar el mail de "borrador listo" ni leer la
+   lista de suscriptores.
+
+### G. Qué es PERSEA (solo responder)
+
+La base del blog se llama "BLOG PUESTO DE PALTA / PERSEA" y tiene las columnas
+`Publicar PERSEA` y `Notificado PERSEA`. ¿Es otro sitio, otra marca, otro newsletter?
+¿Hay que tenerlo en cuenta en la migración?
