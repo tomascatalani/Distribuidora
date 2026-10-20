@@ -55,7 +55,7 @@ Relevamiento: 23 de septiembre de 2026. Última actualización: 20 de octubre de
 |---|---|---|
 | Notion | CMS del blog | Base de datos ID `3233fd35-c857-8076-8608-f97f0cbf9873`. Propiedades: Title (title), Slug (text), Fecha (date), Publicar (checkbox), Imagen (url), Excerpt (text, opcional). |
 | Notion | Guía de voz y estilo | Página ID `3243fd35c857805ea524c1aedcc9f022`. |
-| Brevo | Emails | Lista ID 2 (196 suscriptores al 23/09/2026). Remitente ID 2 "Blog Paltero" / "Puesto de Palta Blog", contacto@puestodepalta.com. Plan gratuito: 300 mails/día. |
+| Brevo | Emails | Lista ID 2 "Your first list" (165 contactos al 20/10/2026). Remitente ID 2 "Blog Paltero" / "Puesto de Palta Blog", contacto@puestodepalta.com. Plan gratuito: 300 mails/día. |
 | OneSignal | Push en navegador | App ID `f79c1b7e-b2fc-4f3f-a7eb-fb0ba3dec26e`. |
 | Cloudflare KV | Memoria de notas ya notificadas | Namespace `c3392b7e9a07445eac9bb73d9ea24ac7`. Claves `notified:{pageId}`. 12 claves al 23/09/2026. |
 | Cloudinary | Imágenes y videos | Cloud `dxlunrd1f`. Carpeta `puesto-de-palta` (logos, galeria, testimonios). Upload preset unsigned `blog-puesto-de-palta` para portadas del blog. |
@@ -281,7 +281,7 @@ Notión: https://www.notion.so
 | GitHub | Gratis |
 | Notion | Gratis |
 | Cloudinary | Gratis (plan actual) |
-| Brevo | Gratis hasta 300 mails/día (196 suscriptores hoy) |
+| Brevo | Gratis hasta 300 mails/día (165 contactos hoy) |
 | OneSignal | Gratis |
 | cron-job.org | Gratis |
 | Generación de imágenes | USD 0,5 a 3 por mes |
@@ -451,10 +451,10 @@ nadie.
   el email.
 - Cloudflare: cuenta `69cab80f6399b619326813da2ca872ef` ("Tomascatalani@gmail.com's
   Account"). El sitio responde con `server: cloudflare`.
-- Brevo: la API key es válida pero la cuenta tiene **restricción por IP autorizada**.
-  Las llamadas desde Claude Code salen de IPs variables (rango 160.79.106.x) y son
-  rechazadas. Desde Cloudflare funcionan porque esas IPs ya estaban autorizadas (o la
-  restricción se agregó después). Ver punto F.
+- Brevo (verificado 20/10/2026 tras autorizar el rango `160.79.106.0/24`): plan
+  **gratuito, 300 mails/día**. Lista 2 se llama "Your first list" y tiene **165
+  contactos**. Remitentes activos: ID 1 "Puesto de Palta" e ID 2 "Puesto de Palta -
+  Blog Paltero", ambos contacto@puestodepalta.com.
 
 ### Pendiente, en orden
 
@@ -556,13 +556,12 @@ Todo esto se hace una sola vez. Los valores de las claves ya existen en las cuen
 4. ¿Tenés el archivo `og-image.jpg` o una foto para usar como previsualización en
    redes? Si sí, subila a la sesión.
 
-### F. Brevo: sacar la restricción por IP (obligatorio para la etapa 4)
+### F. Brevo: restricción por IP (hecho el 20/10/2026)
 
-1. Entrá a https://app.brevo.com/security/authorised_ips
-2. Desactivá la restricción de IPs autorizadas (o, si preferís mantenerla, agregá el
-   rango `160.79.106.0/24`, que es desde donde salen las sesiones de Claude Code).
-3. Guardá. Sin esto, Claude no puede mandar el mail de "borrador listo" ni leer la
-   lista de suscriptores.
+Se autorizó el rango `160.79.106.0/24` en https://app.brevo.com/security/authorised_ips
+(las sesiones de Claude Code salen de IPs variables dentro de ese rango). Verificado:
+12 de 12 llamadas aceptadas. Si en el futuro Brevo vuelve a rechazar por IP, revisar
+que el rango siga cargado ahí.
 
 ### G. PERSEA (resuelto)
 
