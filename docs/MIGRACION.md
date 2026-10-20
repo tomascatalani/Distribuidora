@@ -539,15 +539,32 @@ nadie.
   dentro del entorno de Claude Code (workerd no usa el proxy de red); probar con
   `node` importando `dist/_worker.js` (ver scratchpad de la sesión) o en Cloudflare.
 
+- [x] PR #1 mergeado en `main` (20/10/2026, lo mergeó Claude con permiso de Tomás).
+- [x] Proyecto **`puesto-de-palta-web`** creado en Cloudflare Pages conectado a GitHub
+  (rama `main`, build `npm run build`, salida `dist`). URL:
+  https://puesto-de-palta-web.pages.dev. Las variables habían quedado solo en
+  Preview; Claude las cargó en Production por API con `CF_API_TOKEN` (que sí tiene
+  permiso de Pages) y disparó un redeploy. KV `NOTIFIED_ARTICLES` vinculado en
+  Production desde `wrangler.jsonc`.
+- [x] **Etapa 3 (pruebas en la URL nueva) verde el 20/10/2026:** home, blog, favicons
+  y worker de OneSignal 200; `/api/blog` devuelve las mismas 15 notas que el sitio
+  actual; notas con tilde, nota sin slug y 404 OK; cron 401 sin secreto y con el
+  secreto viejo; cron en simulación ve las 15 notas como "ya notificadas" (el KV es
+  compartido, así que el corte no reenvía nada); `/api/notify` 401; formularios
+  validan (400) sin enviar.
+- Decisión de hora: **9:00 ahora; en diciembre de 2026 pasar a 19:00** (cambiar
+  `PUBLISH_HOUR_ARG` en `src/lib/notion.ts`).
+
 ### Pendiente, en orden
 
-1. **Tomás:** aprobar y mergear el Pull Request de la rama de trabajo a `main`
-   (Claude lo abre). Sin esto, `main` sigue con el código viejo y el proyecto nuevo
-   de Pages no compila (el `name` de `wrangler.jsonc` no coincidiría).
-2. **Tomás:** crear el proyecto `puesto-de-palta-web` en Cloudflare Pages conectado a
-   GitHub, siguiendo la sección 8.
-3. **Claude, etapa 3 (pruebas):** verificar blog, formularios y cron en simulación en
-   la URL `puesto-de-palta-web.pages.dev`.
+1. **Tomás:** probar desde el navegador en https://puesto-de-palta-web.pages.dev la
+   suscripción con su propio mail (tiene que llegar la bienvenida de Brevo) y el
+   formulario de contacto (tiene que llegar el mail a su Gmail). Opcional: el botón de
+   push.
+2. **Etapa final** (sección 8, "Etapa final"): `NOTIFY_ENABLED=true` en Production del
+   proyecto nuevo, mover el dominio, cambiar la URL en cron-job.org, verificar, cancelar
+   Genspark.
+3. **Etapa 4:** comando de contenido (reemplazo del workflow de Genspark).
 4. **Claude, etapa 4 (contenido):** comando de generación de notas que reproduce los
    pasos 2 a 6 de la sección 3. Primera corrida a mano con Publicar en falso.
 5. **Claude, etapa 5:** Rutina semanal (lunes 9:00 Argentina) y actualización de
