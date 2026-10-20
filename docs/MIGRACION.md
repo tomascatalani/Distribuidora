@@ -402,6 +402,36 @@ Preview.
 
 ---
 
+## 9. Etapa 4: el comando de contenido (`/nota-semanal`)
+
+Reemplaza el workflow de Genspark (sección 3). Vive en el repo:
+
+| Archivo | Qué hace |
+|---|---|
+| `.claude/skills/nota-semanal/SKILL.md` | El comando. Claude lo sigue paso a paso: contexto → investigación (hasta 4 búsquedas web) → redacción → portada → borrador en Notion → mail → informe. Tiene la configuración editorial literal (áreas, lista negra, plan B, reglas de voz). |
+| `scripts/contenido/lib.mjs` | Utilidades: variables de entorno (o `.dev.vars`), cliente de Notion, slug, fecha argentina. |
+| `scripts/contenido/1-contexto.mjs` | Lee de Notion la guía de voz, todos los títulos y las URLs de fuentes de los últimos 5 artículos → `.contenido/contexto.json`. |
+| `scripts/contenido/3-imagen.mjs` | Genera la portada con Cloudflare Workers AI (`@cf/leonardo/phoenix-1.0`, 1792x1024, prompt fotográfico + negative prompt) y la sube a Cloudinary con el preset unsigned, `public_id` = slug. Imprime la URL. |
+| `scripts/contenido/4-notion-borrador.mjs` | Crea la página en Notion: Title, Slug, Fecha, Publicar en falso, Imagen; cuerpo en párrafos (negrita y cursiva soportadas) y fuentes al final. Avisa si el largo sale de 400-700. |
+| `scripts/contenido/5-avisar.mjs` | Mail transaccional por Brevo a `ALERT_EMAIL` (tomascatalani@gmail.com) con título, slug, fecha, imagen y link directo a la página de Notion. |
+
+La investigación (búsqueda web) y la redacción las hace Claude en la sesión, no un
+script: así no hace falta API de Anthropic.
+
+**Cómo se usa.** En una sesión de Claude Code sobre este repo: `/nota-semanal`, o
+"generá la nota de la semana", o "escribí una nota sobre X" (modo manual). Los
+scripts se corren desde la raíz con `NODE_USE_ENV_PROXY=1` (necesario en el entorno
+web de Claude Code). Archivos intermedios en `.contenido/` (ignorado por git).
+
+**Variables que necesita** (entorno de Claude Code): `NOTION_TOKEN`, `NOTION_DB_ID`,
+`NOTION_STYLE_GUIDE_ID`, `BREVO_API_KEY`, `CF_AI_TOKEN`, `CLOUDINARY_CLOUD_NAME`,
+`CLOUDINARY_UPLOAD_PRESET`, opcional `ALERT_EMAIL` e `IMAGE_MODEL`.
+
+**Límites conocidos.** Workers AI gratis: 10.000 neuronas/día ≈ 4 portadas. Brevo:
+300 mails/día. Notion: 100 bloques por llamada (el script pagina).
+
+---
+
 ## Anexo A. Guía de voz y estilo (copia de referencia; la fuente es la página de Notion)
 
 ### Identidad de la voz
@@ -573,14 +603,24 @@ nadie.
 - Permiso de Tomás (20/10/2026): Claude puede subir cambios directo a `main`. Los
   cambios grandes se consultan antes. Cada push a `main` despliega el sitio real.
 
+- [x] Push probado por Tomás en puestodepalta.com: funciona. cron-job.org con la URL
+  nueva: 200 OK cada 5 minutos, `"mode":"real"`, todas "ya notificada".
+- [x] **Etapa 4 preparada (20/10/2026):** scripts en `scripts/contenido/` y comando
+  `/nota-semanal` en `.claude/skills/nota-semanal/SKILL.md` (ver sección 9). Probados
+  contra cuentas reales: contexto de Notion (guía de voz + 26 títulos + fuentes),
+  creación de borrador en Notion (archivado después), mail de aviso. La imagen se
+  prueba cuando se libera la cuota diaria de Workers AI.
+
 ### Pendiente, en orden
 
-1. **Tomás:** probar el botón de notificaciones push en https://puestodepalta.com y
-   confirmar en cron-job.org que la primera corrida con la URL nueva responde 200.
-2. **Tomás:** cancelar Genspark cuando quiera. Hay 11 borradores en Notion de reserva.
-   Desconectar la conexión "Genspark" de Notion (Settings → Connections).
-3. **Etapa 4:** comando de contenido (reemplazo del workflow de Genspark, sección 3).
+1. **Sesión nueva:** correr `/nota-semanal` por primera vez con Tomás mirando. Revisar
+   el borrador, la portada y el mail. Ajustar prompts si hace falta.
+2. **Tomás:** cancelar Genspark y desconectar la conexión "Genspark" de Notion
+   (Settings → Connections). Hay 11 borradores de reserva en Notion.
+3. **Etapa 5:** rutina programada (lunes 9:00 Argentina) en claude.ai/code → Routines,
+   que corra `/nota-semanal` en este repo. Recién después de 2 o 3 corridas manuales OK.
 4. Borrar el proyecto viejo `puesto-de-palta` en Cloudflare (opcional, después de unos días).
+5. En diciembre de 2026: cambiar `PUBLISH_HOUR_ARG` a 19 en `src/lib/notion.ts`.
 4. **Claude, etapa 4 (contenido):** comando de generación de notas que reproduce los
    pasos 2 a 6 de la sección 3. Primera corrida a mano con Publicar en falso.
 5. **Claude, etapa 5:** Rutina semanal (lunes 9:00 Argentina) y actualización de

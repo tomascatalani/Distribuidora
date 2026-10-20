@@ -30,7 +30,24 @@ Emails en Brevo. Push en OneSignal. Imágenes en Cloudinary. Cron externo en cro
 ## Comandos
 
 ```
-npm install      # dependencias
-npm run build    # compila a dist/
-npm run preview  # wrangler pages dev dist (local)
+npm install        # dependencias
+npm run typecheck  # chequeo de tipos
+npm run build      # compila a dist/
+npm run preview    # wrangler pages dev dist (local; NO funciona en el entorno web de Claude Code)
 ```
+
+Para probar el Worker en el entorno web: importar `dist/_worker.js` desde Node con un
+KV en memoria (ver `docs/MIGRACION.md`, sección 6).
+
+## Contenido del blog
+
+`/nota-semanal` (`.claude/skills/nota-semanal/SKILL.md`) genera una nota nueva y la
+deja como borrador en Notion. Scripts en `scripts/contenido/`. Nunca tildar Publicar
+desde el código: eso lo decide Tomás.
+
+## Despliegue
+
+Cada push a `main` despliega puestodepalta.com (Cloudflare Pages, proyecto
+`puesto-de-palta-web`). Tomás autorizó pushes directos a `main` para cambios chicos y
+documentación; para cambios visuales usar una rama y mostrarle la URL de vista previa
+`<rama>.puesto-de-palta-web.pages.dev` antes de mergear.
