@@ -300,7 +300,8 @@ Notión: https://www.notion.so
 | `CRON_SECRET` | Sí | No |
 | `CLOUDINARY_CLOUD_NAME` | No | Sí |
 | `CLOUDINARY_UPLOAD_PRESET` | No | Sí |
-| `GEMINI_API_KEY` | No | Sí |
+| `GEMINI_API_KEY` (opcional, requiere facturación) | No | Sí |
+| `CF_AI_TOKEN` (token con plantilla Workers AI) | No | Sí |
 
 Dominios que el entorno de Claude Code debe poder alcanzar para correr el comando de
 contenido: `api.notion.com`, `api.cloudinary.com`, `res.cloudinary.com`,
@@ -480,11 +481,9 @@ nadie.
 - Primera versión del comando de contenido: a mano. Programada recién después de
   revisar dos o tres borradores.
 
-- **Proveedor de imágenes: Google Gemini.** Genspark usaba su herramienta nativa
-  `image_generation` sin modelo fijo y sin registro de corridas, así que no hay nada
-  que replicar. El prompt se genera en cada corrida según el tema. Clave en el
-  entorno de Claude Code como `GEMINI_API_KEY`. Si el estilo no convence, se cambia de
-  proveedor sin tocar el resto.
+- **Proveedor de imágenes: Cloudflare Workers AI** (gratis), con Gemini como opción
+  si Tomás activa facturación. Genspark usaba su herramienta nativa sin modelo fijo, así
+  que no hay nada que replicar. El prompt se genera en cada corrida según el tema.
 - **Integración de Notion:** la interna se llama **"Puesto de Palta BLOG"** y es la
   que usa la web (token `NOTION_TOKEN`). La conexión "Genspark" era la del workflow
   viejo y se puede desconectar cuando se cancele Genspark. La página de la guía de voz
@@ -539,22 +538,41 @@ Todo esto se hace una sola vez. Los valores de las claves ya existen en las cuen
 2. Camino alternativo: abrí la página "ESTILO Y VOZ — TOMI" → tres puntos arriba a la
    derecha → **Connections** → elegí **Puesto de Palta BLOG**.
 
-### D. Clave de Google Gemini para las imágenes (obligatorio para la etapa 4)
+### D. Proveedor de imágenes (en curso)
 
-1. Entrá a aistudio.google.com con tu cuenta de Google.
-2. **Get API key** → **Create API key** → copiá la clave.
-3. En Edit del entorno de Claude Code, agregá la línea `GEMINI_API_KEY=<clave>` al
-   bloque de Environment variables y guardá.
+- Clave de Gemini creada y cargada como `GEMINI_API_KEY` (formato nuevo, empieza con
+  `AQ.`). Es válida, pero **la cuota gratuita de la API para imágenes es cero**: todos
+  los modelos de imagen devuelven `RESOURCE_EXHAUSTED` en la primera llamada. Para usarla
+  hay que activar facturación en Google Cloud (tarjeta), ~USD 0,04 por imagen. La
+  suscripción Google AI Pro de la app de Gemini (USD 20/mes) **no** aplica a la API.
+- Alternativa gratuita elegida: **Cloudflare Workers AI** (incluido en la cuenta, 10.000
+  neuronas/día). El token `CF_API_TOKEN` actual no tiene permiso de Workers AI
+  ("Authentication error"). Falta crear un token con la plantilla **Workers AI** en
+  https://dash.cloudflare.com/profile/api-tokens y cargarlo como `CF_AI_TOKEN`.
+- Modelos candidatos en Workers AI: `@cf/black-forest-labs/flux-1-schnell`,
+  `@cf/leonardo/lucid-origin`, `@cf/leonardo/phoenix-1.0`,
+  `@cf/stabilityai/stable-diffusion-xl-base-1.0`. Elegir probando calidad y 16:9.
 
-### E. Confirmaciones (solo mirar y avisar)
+### E. Confirmaciones (hecho el 20/10/2026, con capturas)
 
-1. Cloudflare → tu dominio → pestaña **DNS**: ¿los registros de puestodepalta.com
-   están ahí? (sí / no)
-2. Cloudflare → **Workers & Pages** → proyecto `puesto-de-palta` → pestaña
-   **Custom domains**: ¿figura puestodepalta.com? (sí / no)
-3. cron-job.org: ¿podés entrar y ver el job que llama a `/api/cron`? (sí / no)
-4. ¿Tenés el archivo `og-image.jpg` o una foto para usar como previsualización en
-   redes? Si sí, subila a la sesión.
+1. **DNS en Cloudflare: sí.** 14 registros. `puestodepalta.com` y `www` son CNAME a
+   `puesto-de-palta.pages.dev` (proxied). `www` redirige con 301 al dominio raíz. El
+   mail del dominio está en Hostmar (registros `mail`, `mx1`, MX, SPF `spf.hostmar.com`)
+   y Brevo tiene DKIM (`brevo1._domainkey`, `brevo2._domainkey`), DMARC y el TXT de
+   verificación. **No tocar ninguno de esos registros.**
+2. **Custom domain en Pages: sí.** `puestodepalta.com` Active con SSL. El proyecto
+   **no está conectado a Git** (Build → Git repository → "Connect"): Genspark subía con
+   `wrangler pages deploy` (direct upload). Variables cargadas en Pages: solo **5**:
+   `BREVO_API_KEY`, `NOTION_DB_ID`, `NOTION_TOKEN`, `ONESIGNAL_API_KEY`,
+   `ONESIGNAL_APP_ID` (todas como Secret). `CRON_SECRET`, `CF_API_TOKEN` y
+   `CF_KV_NAMESPACE` NO existen en Pages, y el código tampoco las usa; Genspark las
+   listó de más. `CRON_SECRET` se agrega en la etapa 2. Binding KV `NOTIFIED_ARTICLES`
+   presente.
+3. **cron-job.org: sí.** Job "Puesto de Palta — Notify notas", cada 5 minutos
+   (`*/5 * * * *`, zona UTC), URL `https://puestodepalta.com/api/cron?secret=...`,
+   habilitado, guarda respuestas en el historial.
+4. `og-image.jpg`: pendiente (opcional). Si no hay foto, usar una de la galería de
+   Cloudinary.
 
 ### F. Brevo: restricción por IP (hecho el 20/10/2026)
 
