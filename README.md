@@ -1,21 +1,21 @@
-```txt
+# puestodepalta.com
+
+Web y blog de Puesto de Palta. Hono + TypeScript, desplegado en Cloudflare Pages.
+El contenido del blog vive en Notion; los emails en Brevo; las imágenes en Cloudinary.
+
+**Toda la documentación está en [`docs/MIGRACION.md`](docs/MIGRACION.md)**: arquitectura,
+servicios, variables, workflow de contenido, plan y estado actual.
+
+## Correr en la computadora
+
+```
 npm install
-npm run dev
+cp .dev.vars.example .dev.vars   # y completar las claves
+npm run build
+npm run preview                   # abre http://localhost:8788
 ```
 
-```txt
-npm run deploy
-```
+## Despliegue
 
-[For generating/synchronizing types based on your Worker configuration run](https://developers.cloudflare.com/workers/wrangler/commands/#types):
-
-```txt
-npm run cf-typegen
-```
-
-Pass the `CloudflareBindings` as generics when instantiation `Hono`:
-
-```ts
-// src/index.ts
-const app = new Hono<{ Bindings: CloudflareBindings }>()
-```
+Cada push a la rama principal despliega solo en Cloudflare Pages (proyecto conectado
+a GitHub). No hace falta correr nada a mano.

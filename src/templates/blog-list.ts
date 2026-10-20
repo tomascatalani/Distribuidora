@@ -1,3 +1,5 @@
+import { OG_IMAGE, SITE_URL } from '../lib/site'
+
 export function blogListHTML(): string {
   return `<!DOCTYPE html>
 <html lang="es">
@@ -9,6 +11,8 @@ export function blogListHTML(): string {
   <meta property="og:title" content="Blog — Puesto de Palta">
   <meta property="og:description" content="Notas sobre palta, gastronomía y el mundo de la maduración artesanal.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="${OG_IMAGE}">
+  <meta property="og:url" content="${SITE_URL}/blog">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
   <link rel="apple-touch-icon" href="/favicon-512.png">

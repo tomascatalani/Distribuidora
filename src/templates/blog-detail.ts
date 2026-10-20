@@ -1,5 +1,7 @@
+import { OG_IMAGE, SITE_URL } from '../lib/site'
+
 export function blogDetailHTML(article: any): string {
-  const { title, fecha, imageUrl, htmlContent, excerpt } = article
+  const { title, fecha, imageUrl, htmlContent, excerpt, slug } = article
   const formattedDate = fecha
     ? new Date(fecha).toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: 'numeric' })
     : ''
@@ -14,7 +16,8 @@ export function blogDetailHTML(article: any): string {
   <meta property="og:title" content="${title} — Puesto de Palta">
   <meta property="og:description" content="${excerpt || ''}">
   <meta property="og:type" content="article">
-  ${imageUrl ? `<meta property="og:image" content="${imageUrl}">` : ''}
+  <meta property="og:image" content="${imageUrl || OG_IMAGE}">
+  <meta property="og:url" content="${SITE_URL}/blog/${slug}">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
   <link rel="apple-touch-icon" href="/favicon-512.png">

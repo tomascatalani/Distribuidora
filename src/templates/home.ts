@@ -1,3 +1,5 @@
+import { OG_IMAGE, SITE_URL } from '../lib/site'
+
 export function homeHTML(): string {
   return `<!DOCTYPE html>
 <html lang="es">
@@ -9,7 +11,8 @@ export function homeHTML(): string {
   <meta property="og:title" content="Puesto de Palta">
   <meta property="og:description" content="La calidad no se explica, se nota. Maduración personalizada, trato humano, logística rápida. Buenos Aires.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://puestodepalta.com/og-image.jpg">
+  <meta property="og:image" content="${OG_IMAGE}">
+  <meta property="og:url" content="${SITE_URL}/">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
   <link rel="apple-touch-icon" href="/favicon-512.png">
