@@ -440,7 +440,7 @@ nadie.
 - Propiedades reales de la base: `Title` (title), `Slug` (rich_text), `Fecha` (date),
   `Publicar` (checkbox), `Imagen` (url), `Excerpt` (rich_text), y además
   **`Publicar PERSEA`** (checkbox) y **`Notificado PERSEA`** (checkbox). Estas dos
-  últimas no las usa el código del sitio. Preguntar a Tomás qué es PERSEA.
+  últimas no las usa el código del sitio. Tomás pidió ignorarlas (ver punto G).
 - Hay 6 borradores con `Fecha` futura (noviembre y diciembre de 2026) y 4 sin fecha.
   Parece que Tomás deja notas listas y las publica a mano cuando llega la fecha. Esto
   confirma el valor de la publicación automática por fecha (etapa 2).
@@ -564,8 +564,8 @@ Todo esto se hace una sola vez. Los valores de las claves ya existen en las cuen
 3. Guardá. Sin esto, Claude no puede mandar el mail de "borrador listo" ni leer la
    lista de suscriptores.
 
-### G. Qué es PERSEA (solo responder)
+### G. PERSEA (resuelto)
 
-La base del blog se llama "BLOG PUESTO DE PALTA / PERSEA" y tiene las columnas
-`Publicar PERSEA` y `Notificado PERSEA`. ¿Es otro sitio, otra marca, otro newsletter?
-¿Hay que tenerlo en cuenta en la migración?
+Tomás indicó el 20/10/2026 que PERSEA no se usa por ahora y no interesa para la
+migración. Ignorar las columnas `Publicar PERSEA` y `Notificado PERSEA`: no leerlas,
+no escribirlas, no borrarlas.
