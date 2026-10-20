@@ -125,12 +125,17 @@ ni a resumen, ni a nota escolar.
 **Slug:** título en minúsculas, sin tildes, palabras separadas por guiones
 ("El carozo que no es basura" → `el-carozo-que-no-es-basura`). Sin tildes ni eñes.
 
+**Subtítulo (`excerpt`):** una o dos oraciones, máximo unos 200 caracteres, en el
+mismo tono. Es lo que se ve en las tarjetas del blog y en el mail a los suscriptores.
+Sin spoilear el cierre, sin clickbait.
+
 Guardá `.contenido/articulo.json`:
 
 ```json
 {
   "titulo": "",
   "slug": "",
+  "excerpt": "",
   "contenido_markdown": "Párrafos separados por una línea en blanco. Se permite **negrita** y *cursiva*. Sin títulos ni listas.",
   "fuentes_usadas": [ { "titulo": "", "url": "", "fecha": "YYYY-MM-DD" } ]
 }
@@ -160,7 +165,7 @@ Regenerar como máximo 2 veces; si se agota, avisar y seguir con la URL que haya
 node scripts/contenido/4-notion-borrador.mjs .contenido/articulo.json
 ```
 
-Crea la página con Title, Slug, Fecha (hoy), Publicar **destildado** e Imagen; cuerpo
+Crea la página con Title, Slug, Excerpt, Fecha (hoy), Publicar **destildado** e Imagen; cuerpo
 solo párrafos y las fuentes al final. Avisa si el largo está fuera de regla. Guarda en
 el mismo JSON `notion_url`, `notion_page_id`, `palabras`.
 

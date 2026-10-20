@@ -1,6 +1,7 @@
 // PASO 4 — Crea el borrador en Notion (Publicar destildado).
 // Uso: node scripts/contenido/4-notion-borrador.mjs .contenido/articulo.json
-// articulo.json: { titulo, slug, contenido_markdown, fuentes_usadas:[{titulo,url,fecha}], imagen_url }
+// articulo.json: { titulo, slug, excerpt, contenido_markdown, fuentes_usadas:[{titulo,url,fecha}], imagen_url }
+// excerpt = subtítulo: 1 o 2 oraciones que aparecen en las tarjetas del blog y en el mail.
 // Cuerpo: solo párrafos (el artículo) y las fuentes al final, como hacía Genspark.
 import { readFileSync, writeFileSync } from 'node:fs'
 import { env, notion, slugify, todayArgentina, countWords } from './lib.mjs'
@@ -49,6 +50,7 @@ const page = await notion('/pages', { method: 'POST', body: {
     Fecha:    { date: { start: a.fecha || todayArgentina() } },
     Publicar: { checkbox: false },
     Imagen:   { url: a.imagen_url },
+    ...(a.excerpt ? { Excerpt: { rich_text: [{ text: { content: a.excerpt.slice(0, 2000) } }] } } : {}),
   },
   children: children.slice(0, 100),
 }})
