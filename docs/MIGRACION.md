@@ -99,8 +99,11 @@ Relevamiento: 23 de septiembre de 2026. Última actualización: 20 de octubre de
 5. ~~`og-image.jpg` no existe.~~ **Resuelto:** `src/lib/site.ts` apunta a la foto de
    Cloudinary elegida por Tomás, recortada a 1200x630.
 6. ~~No hay publicación por fecha.~~ **Resuelto:** una nota se muestra cuando Publicar
-   está tildado Y (no tiene Fecha o la Fecha ya llegó, en hora de Argentina). Se
-   pueden dejar notas cargadas con fecha futura y salen solas.
+   está tildado Y (no tiene Fecha, o la Fecha ya llegó). Las notas con fecha salen a
+   las **9:00 de Argentina** de ese día (constante `PUBLISH_HOUR_ARG` en
+   `src/lib/notion.ts`), y el aviso a suscriptores sale en los 5 minutos siguientes.
+   Reglas: tilde sin fecha → al instante; tilde con fecha pasada o de hoy (después de
+   las 9) → al instante; tilde con fecha futura → ese día a las 9; sin tilde → nunca.
 7. Sin límite de intentos ni anti-spam en formularios. Pendiente, baja prioridad.
 
 Además en la etapa 2: `NOTIFY_ENABLED` (si no es `"true"`, el cron solo simula y no

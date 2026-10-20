@@ -17,26 +17,44 @@ export type Article = {
 
 const NOTION_VERSION = '2022-06-28'
 
-// ── Fecha de "hoy" en Argentina ─────────────────────────────────────────────
+// ── Hora de publicación ─────────────────────────────────────────────────────
 // Cloudflare corre en UTC. Una nota con Fecha = lunes tiene que aparecer el lunes
-// a la hora argentina, no a las 21:00 del domingo.
+// en hora argentina, y no a medianoche sino a una hora razonable para que el mail
+// a los suscriptores llegue de mañana. Antes de esa hora, la fecha de corte es
+// "ayer", así que las notas de hoy todavía no se ven.
 
-export function todayInArgentina(now: Date = new Date()): string {
+export const PUBLISH_HOUR_ARG = 9   // las notas con fecha salen a las 9:00 de Argentina
+
+function argentinaParts(now: Date): { date: string; hour: number } {
   const parts = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'America/Argentina/Buenos_Aires',
-    year: 'numeric', month: '2-digit', day: '2-digit',
+    year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', hour12: false,
   }).formatToParts(now)
-  const get = (t: string) => parts.find(p => p.type === t)?.value
-  return `${get('year')}-${get('month')}-${get('day')}`
+  const get = (t: string) => parts.find(p => p.type === t)?.value || '00'
+  return { date: `${get('year')}-${get('month')}-${get('day')}`, hour: Number(get('hour')) % 24 }
+}
+
+export function todayInArgentina(now: Date = new Date()): string {
+  return argentinaParts(now).date
+}
+
+// Última fecha cuyas notas ya se muestran: hoy si ya son las 9:00 en Argentina,
+// si no, ayer.
+export function publishCutoffDate(now: Date = new Date()): string {
+  const { date, hour } = argentinaParts(now)
+  if (hour >= PUBLISH_HOUR_ARG) return date
+  const d = new Date(`${date}T12:00:00Z`)
+  d.setUTCDate(d.getUTCDate() - 1)
+  return d.toISOString().slice(0, 10)
 }
 
 // ── Filtro de publicación ───────────────────────────────────────────────────
 // Una nota está publicada cuando Publicar está tildado Y (no tiene Fecha, o la
-// Fecha ya llegó). Así se pueden dejar notas cargadas con fecha futura y salen
-// solas el día indicado.
+// Fecha ya llegó, a partir de las 9:00 de Argentina). Así se pueden dejar notas
+// cargadas con fecha futura y salen solas el día indicado, de mañana.
 
 export function publishedFilter(extra?: any) {
-  const today = todayInArgentina()
+  const today = publishCutoffDate()
   const base: any[] = [
     { property: 'Publicar', checkbox: { equals: true } },
     {
