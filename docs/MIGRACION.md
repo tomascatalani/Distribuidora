@@ -300,7 +300,7 @@ Notión: https://www.notion.so
 | `CRON_SECRET` | Sí | No |
 | `CLOUDINARY_CLOUD_NAME` | No | Sí |
 | `CLOUDINARY_UPLOAD_PRESET` | No | Sí |
-| `GEMINI_API_KEY` (o el proveedor elegido) | No | Sí |
+| `GEMINI_API_KEY` | No | Sí |
 
 Dominios que el entorno de Claude Code debe poder alcanzar para correr el comando de
 contenido: `api.notion.com`, `api.cloudinary.com`, `res.cloudinary.com`,
@@ -453,12 +453,20 @@ nadie.
 - Primera versión del comando de contenido: a mano. Programada recién después de
   revisar dos o tres borradores.
 
+- **Proveedor de imágenes: Google Gemini.** Genspark usaba su herramienta nativa
+  `image_generation` sin modelo fijo y sin registro de corridas, así que no hay nada
+  que replicar. El prompt se genera en cada corrida según el tema. Clave en el
+  entorno de Claude Code como `GEMINI_API_KEY`. Si el estilo no convence, se cambia de
+  proveedor sin tocar el resto.
+- **Integración de Notion:** la interna se llama **"Puesto de Palta BLOG"** y es la
+  que usa la web (token `NOTION_TOKEN`). La conexión "Genspark" era la del workflow
+  viejo y se puede desconectar cuando se cancele Genspark. La página de la guía de voz
+  se llama **"ESTILO Y VOZ — TOMI"**. La base del blog se llama
+  **"BLOG PUESTO DE PALTA / PERSEA"**.
+
 ### Decisiones abiertas
 
-- **Proveedor de imágenes.** Genspark usaba su herramienta nativa `image_generation`
-  y no exportó qué modelo había detrás. Se le pidió a Genspark el nombre exacto. Si no
-  responde o no se puede replicar, usar Google Gemini. Cualquier proveedor sirve
-  porque el prompt es texto; lo que cambia es el estilo del resultado.
+- Ninguna por ahora.
 
 ---
 
@@ -485,43 +493,31 @@ Todo esto se hace una sola vez. Los valores de las claves ya existen en las cuen
    | `CF_API_TOKEN` | el token de API de Cloudflare (empieza con `cfut_`) |
    | `CLOUDINARY_CLOUD_NAME` | `dxlunrd1f` |
    | `CLOUDINARY_UPLOAD_PRESET` | `blog-puesto-de-palta` |
+   | `CF_KV_NAMESPACE` | `c3392b7e9a07445eac9bb73d9ea24ac7` |
+   | `GEMINI_API_KEY` | la clave creada en el paso D |
 
 4. Guardá. Las sesiones nuevas las levantan solas; esta sesión no.
 
 ### B. Red del entorno (obligatorio)
 
 1. En la misma pantalla de **Edit** del entorno, buscá **Network access**.
-2. Elegí el nivel más amplio disponible, o agregá estos dominios a la lista de
-   permitidos: `api.notion.com`, `api.cloudinary.com`, `res.cloudinary.com`,
-   `api.brevo.com`, `onesignal.com`, `api.cloudflare.com`, `puestodepalta.com`,
-   `generativelanguage.googleapis.com`.
+2. Elegí **Full**. (Hecho el 20/10/2026.)
 3. Guardá.
 
 ### C. Compartir la guía de voz con la integración de Notion (obligatorio)
 
-1. Abrí en Notion la página de la guía de voz y estilo.
-2. Click en los tres puntos (`...`) arriba a la derecha → **Conexiones** (o
-   "Connections") → **Conectar con** → elegí la misma integración que ya está
-   conectada a la base del blog.
-3. Si no sabés cuál es: abrí la base del blog, mismos tres puntos → Conexiones, y
-   fijate el nombre que aparece ahí.
+1. En Notion: Settings → **Connections** → pestaña **Connected** → al lado de
+   **Puesto de Palta BLOG** apretá **Manage** → **Access** → agregá la página
+   **ESTILO Y VOZ — TOMI** (la base "BLOG PUESTO DE PALTA / PERSEA" ya debería estar).
+2. Camino alternativo: abrí la página "ESTILO Y VOZ — TOMI" → tres puntos arriba a la
+   derecha → **Connections** → elegí **Puesto de Palta BLOG**.
 
-### D. Preguntarle a Genspark qué modelo de imagen usaba (recomendado)
+### D. Clave de Google Gemini para las imágenes (obligatorio para la etapa 4)
 
-Pegale esto a Genspark:
-
-```
-En el Paso 4 del workflow (generar imagen de portada), la herramienta
-image_generation ¿qué modelo y proveedor usa exactamente? Necesito el nombre
-literal del modelo (por ejemplo "gpt-image-1", "flux-1.1-pro", "imagen-4",
-"ideogram-v3" u otro), el tamaño en píxeles que se pidió, y pegame el último
-prompt de imagen que generó el workflow y la URL de la última imagen subida a
-Cloudinary. Sin resumir.
-```
-
-Con la respuesta, Claude elige el proveedor que más se parece y te dice qué clave
-crear. Si Genspark no sabe, se usa Google Gemini: entrás a aistudio.google.com →
-**Get API key** → creás una → la cargás en el entorno como `GEMINI_API_KEY`.
+1. Entrá a aistudio.google.com con tu cuenta de Google.
+2. **Get API key** → **Create API key** → copiá la clave.
+3. En Edit del entorno de Claude Code, agregá la línea `GEMINI_API_KEY=<clave>` al
+   bloque de Environment variables y guardá.
 
 ### E. Confirmaciones (solo mirar y avisar)
 
