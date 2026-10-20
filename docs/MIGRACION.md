@@ -462,8 +462,7 @@ nadie.
 
 ### Pendiente, en orden
 
-1. **Tomás:** cargar `CF_AI_TOKEN` en el entorno de Claude Code y `CRON_SECRET` en
-   Cloudflare Pages (ver sección 7, puntos H e I). Dar el OK a la etapa 2.
+1. **Tomás:** dar el OK a la etapa 2. (Checklist de la sección 7 completa.)
 2. **Claude, etapa 2 (web):** correcciones de código listadas en la sección 1
    ("Problemas detectados"), limpieza de restos de Genspark, guía para conectar
    Cloudflare Pages a GitHub con un proyecto de prueba.
@@ -553,6 +552,20 @@ SDXL es más flojo. Subida a Cloudinary con el preset unsigned verificada: qued�
 Importante: el preset NO pone carpeta; las portadas caen en la raíz con el slug como
 nombre, igual que hacía Genspark.
 
+**Límite diario a tener en cuenta:** la capa gratuita de Workers AI son 10.000
+neuronas por día (se reinicia a las 00:00 UTC). Cuatro imágenes de prueba a 1792x1024
+la agotaron. Alcanza de sobra para una portada semanal, pero **no para probar muchas
+variantes el mismo día**: en el comando de contenido, generar una sola imagen por
+corrida y, si hay que regenerar, hacerlo al día siguiente o bajar a 1344x768.
+
+**Feedback de Tomás (20/10/2026):** la primera prueba (palta abierta) le pareció
+"de plástico o impresión 3D". Para la etapa 4 el prompt debe pedir foto documental,
+luz natural de ventana, piel mate con imperfecciones, grano de película, lente 50mm
+f2.8, y usar `negative_prompt` con "plastic, 3d render, cgi, glossy, oversaturated,
+smooth, artificial". Preferir frutas enteras o escenas (tierra, madera, manos
+trabajando) antes que cortes perfectos. Pendiente de probar cuando se reinicie la
+cuota.
+
 Historial de la decisión:
 
 - Clave de Gemini creada y cargada como `GEMINI_API_KEY` (formato nuevo, empieza con
@@ -583,9 +596,11 @@ Historial de la decisión:
    (`*/5 * * * *`, zona UTC), URL `https://puestodepalta.com/api/cron?secret=...`,
    habilitado, guarda respuestas en el historial.
 4. `og-image.jpg` (la foto que muestran WhatsApp, Instagram o Google cuando alguien
-   comparte el link del sitio): Tomás no tiene una. Decisión: usar la foto de la
-   galería `puesto-de-palta/galeria/foto-plato-oscuro.jpg` de Cloudinary, con
-   transformación a 1200x630. Se resuelve en la etapa 2 cambiando la meta `og:image`.
+   comparte el link del sitio): **resuelto.** Tomás eligió la imagen de Cloudinary
+   `PALTA_PERU_METALES_PESADOS_ARTÍCULO_1_eeasg2` (JPEG 1376x768, palta abierta sobre
+   tierra agrietada). En la etapa 2 la meta `og:image` de las tres plantillas pasa a:
+   `https://res.cloudinary.com/dxlunrd1f/image/upload/c_fill,w_1200,h_630,q_auto,f_jpg/PALTA_PERU_METALES_PESADOS_ART%C3%8DCULO_1_eeasg2.jpg`
+   (la tilde de ARTÍCULO va codificada como `%C3%8D`).
 
 ### F. Brevo: restricción por IP (hecho el 20/10/2026)
 
@@ -594,18 +609,17 @@ Se autorizó el rango `160.79.106.0/24` en https://app.brevo.com/security/author
 12 de 12 llamadas aceptadas. Si en el futuro Brevo vuelve a rechazar por IP, revisar
 que el rango siga cargado ahí.
 
-### H. Cargar `CF_AI_TOKEN` en el entorno de Claude Code
+### H. `CF_AI_TOKEN` en el entorno de Claude Code (hecho el 20/10/2026 según Tomás)
 
-Menú del entorno → Edit → Environment variables → agregar la línea
-`CF_AI_TOKEN=<token con plantilla Workers AI>` → Save.
+Se confirma en la próxima sesión nueva, igual que el resto de las variables.
 
-### I. Cargar `CRON_SECRET` en Cloudflare Pages (ya se puede hacer)
+### I. `CRON_SECRET` en Cloudflare Pages (hecho el 20/10/2026)
 
-Workers & Pages → `puesto-de-palta` → Settings → Variables and secrets → **Add** →
-tipo **Secret**, nombre `CRON_SECRET`, valor: el secreto que Claude generó (está en el
-chat del 20/10/2026, empieza con `4K0_`). Guardar. **No cambiar todavía la URL en
-cron-job.org**: el código actual ignora esta variable; la URL se cambia recién cuando
-la etapa 2 esté desplegada en producción.
+Cargado como Secret en el proyecto `puesto-de-palta`. Valor: el generado por Claude el
+20/10/2026 (empieza con `4K0_`, está en el chat de esa fecha). **La URL de cron-job.org
+NO se cambió todavía**: el código actual ignora la variable. Cambiarla recién cuando la
+etapa 2 esté en producción, a
+`https://puestodepalta.com/api/cron?secret=<CRON_SECRET>`.
 
 ### G. PERSEA (resuelto)
 
