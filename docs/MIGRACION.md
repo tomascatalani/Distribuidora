@@ -621,18 +621,24 @@ nadie.
   investigación (4 búsquedas) y redacción OK. Nota "Trece pesos y un certificado"
   (619 palabras, con Excerpt). Portada pendiente por cuota de Workers AI; Tomás
   aprobó el texto.
-- **Cuota de Workers AI:** NO se reinicia a las 00:00 UTC exactas. A las 00:01 UTC
-  seguía agotada después de 4 imágenes generadas a las ~22:40 UTC del día anterior.
-  Parece una ventana móvil de 24 h o un reinicio con retraso. Regla práctica: generar
-  la portada a una hora fija (por ejemplo la rutina del lunes a las 9:00) y no hacer
-  pruebas el mismo día. Si hace falta más margen, el plan Workers Paid de Cloudflare
-  (USD 5/mes) saca el límite.
+- **Cuota de Workers AI, confirmado el 21/10/2026:** el bloqueo NO se levanta a las
+  00:00 UTC aunque la documentación lo diga. Se agotó el 20/10 a las ~22:40 UTC
+  (11.344 neuronas: Phoenix ≈ 2.700 por imagen, Lucid Origin ≈ 2.850, SDXL y Flux
+  casi nada) y seguía bloqueado a las 00:01, 02:00 y 17:24 UTC del 21/10, incluso
+  para modelos de texto. Volvió a funcionar a las 22:51 UTC del 21/10: **es una
+  ventana móvil de 24 horas desde que se agota**, y mientras dura bloquea TODA la IA
+  de la cuenta. Regla práctica: una portada por corrida, nunca más de 3 imágenes
+  grandes en 24 h, y cero pruebas el día de la rutina. Si hace falta más margen,
+  Workers Paid (USD 5/mes, USD 0,011 por 1.000 neuronas extra) saca el límite. Las
+  estadísticas se consultan con GraphQL `aiInferenceAdaptiveGroups` usando
+  `CF_API_TOKEN` (el de Workers AI no tiene permiso de analytics).
 
 ### Pendiente, en orden
 
-1. **Cerrar la primera corrida:** portada de "Trece pesos y un certificado" (cuando la
-   cuota lo permita), borrador en Notion y mail. Tomás le pone fecha y tilda Publicar.
-   Verificar el ciclo completo: nota en la web, campaña en Brevo, push, KV.
+1. **Cerrar la primera corrida:** el borrador "Trece pesos y un certificado" está en
+   Notion completo (portada generada el 21/10 a las 19:51 ART, reemplazada por
+   script). Falta que Tomás le ponga fecha y tilde Publicar, y verificar el ciclo:
+   nota en la web, campaña en Brevo, push, KV.
 2. **Etapa 5:** rutina programada (lunes 9:00 Argentina) en claude.ai/code → Routines,
    que corra `/nota-semanal` en este repo. Recién después de 2 o 3 corridas manuales OK.
 3. Borrar el proyecto viejo `puesto-de-palta` en Cloudflare (opcional, después de unos días).
