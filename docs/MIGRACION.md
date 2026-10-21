@@ -611,16 +611,32 @@ nadie.
   creación de borrador en Notion (archivado después), mail de aviso. La imagen se
   prueba cuando se libera la cuota diaria de Workers AI.
 
+- [x] **Genspark cancelado el 20/10/2026** (la suscripción vence el 22/10/2026) y la
+  conexión "Genspark" desconectada de Notion. Desde ese día no queda nada en Genspark.
+- [x] Prueba de edición por chat (20/10/2026): rama `prueba-edicion` → vista previa
+  `prueba-edicion.puesto-de-palta-web.pages.dev` → `main` → puestodepalta.com →
+  revert. Un minuto por paso. (La rama remota no se pudo borrar desde la sesión: el
+  acceso de Claude no permite borrar ramas; se borra a mano en GitHub si molesta.)
+- [x] Primera corrida real de `/nota-semanal` (20/10/2026, en la misma sesión):
+  investigación (4 búsquedas) y redacción OK. Nota "Trece pesos y un certificado"
+  (619 palabras, con Excerpt). Portada pendiente por cuota de Workers AI; Tomás
+  aprobó el texto.
+- **Cuota de Workers AI:** NO se reinicia a las 00:00 UTC exactas. A las 00:01 UTC
+  seguía agotada después de 4 imágenes generadas a las ~22:40 UTC del día anterior.
+  Parece una ventana móvil de 24 h o un reinicio con retraso. Regla práctica: generar
+  la portada a una hora fija (por ejemplo la rutina del lunes a las 9:00) y no hacer
+  pruebas el mismo día. Si hace falta más margen, el plan Workers Paid de Cloudflare
+  (USD 5/mes) saca el límite.
+
 ### Pendiente, en orden
 
-1. **Sesión nueva:** correr `/nota-semanal` por primera vez con Tomás mirando. Revisar
-   el borrador, la portada y el mail. Ajustar prompts si hace falta.
-2. **Tomás:** cancelar Genspark y desconectar la conexión "Genspark" de Notion
-   (Settings → Connections). Hay 11 borradores de reserva en Notion.
-3. **Etapa 5:** rutina programada (lunes 9:00 Argentina) en claude.ai/code → Routines,
+1. **Cerrar la primera corrida:** portada de "Trece pesos y un certificado" (cuando la
+   cuota lo permita), borrador en Notion y mail. Tomás le pone fecha y tilda Publicar.
+   Verificar el ciclo completo: nota en la web, campaña en Brevo, push, KV.
+2. **Etapa 5:** rutina programada (lunes 9:00 Argentina) en claude.ai/code → Routines,
    que corra `/nota-semanal` en este repo. Recién después de 2 o 3 corridas manuales OK.
-4. Borrar el proyecto viejo `puesto-de-palta` en Cloudflare (opcional, después de unos días).
-5. En diciembre de 2026: cambiar `PUBLISH_HOUR_ARG` a 19 en `src/lib/notion.ts`.
+3. Borrar el proyecto viejo `puesto-de-palta` en Cloudflare (opcional, después de unos días).
+4. En diciembre de 2026: cambiar `PUBLISH_HOUR_ARG` a 19 en `src/lib/notion.ts`.
 4. **Claude, etapa 4 (contenido):** comando de generación de notas que reproduce los
    pasos 2 a 6 de la sección 3. Primera corrida a mano con Publicar en falso.
 5. **Claude, etapa 5:** Rutina semanal (lunes 9:00 Argentina) y actualización de
