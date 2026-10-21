@@ -17,7 +17,7 @@ Revisalo, editá si hace falta, y activá Publicar cuando estés listo.
 Si le ponés una fecha futura, sale solo ese día a las 9:00.
 
 Notion: ${a.notion_url || 'https://www.notion.so'}
-`
+${a.aviso ? '\n' + a.aviso + '\n' : ''}`
 const res = await fetch('https://api.brevo.com/v3/smtp/email', {
   method: 'POST',
   headers: { 'api-key': env('BREVO_API_KEY'), 'Content-Type': 'application/json', 'Accept': 'application/json' },
