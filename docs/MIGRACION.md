@@ -639,6 +639,11 @@ nadie.
   @puestodepalta en el pie (rama `claude/project-thread-vq0bxi`). En el celular el
   menú del blog muestra solo el logo para que no se amontone. De paso se corrigió
   que los links largos de las fuentes desbordaban la nota en el celular.
+- Ojo (26/10/2026): el entorno **Preview** de `puesto-de-palta-web` no tiene ninguna
+  variable cargada, así que en las vistas previas de ramas el blog no trae notas
+  (`/api/blog` da "Notion DB error: 401" y cada nota da 404). Para arreglarlo, cargar
+  en Settings → Variables and secrets → Preview solo `NOTION_TOKEN` y `NOTION_DB_ID`
+  (nunca `NOTIFY_ENABLED`, Brevo ni OneSignal) y volver a desplegar la rama.
 
 ### Pendiente, en orden
 
