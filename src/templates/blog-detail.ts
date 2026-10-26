@@ -1,4 +1,4 @@
-import { OG_IMAGE, SITE_URL } from '../lib/site'
+import { INSTAGRAM_ICON, INSTAGRAM_URL, LOGO_URL, OG_IMAGE, SITE_URL } from '../lib/site'
 
 export function blogDetailHTML(article: any): string {
   const { title, fecha, imageUrl, htmlContent, excerpt, slug } = article
@@ -66,11 +66,19 @@ export function blogDetailHTML(article: any): string {
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-family: 'Libre Baskerville', Georgia, serif;
       font-size: 18px;
       color: #faf8f4;
     }
-    .nav-logo span { color: #4a7c59; }
+    .nav-logo-name span { color: #4a7c59; }
+    .nav-logo img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
     .nav-back {
       font-size: 12px;
       font-weight: 500;
@@ -138,6 +146,7 @@ export function blogDetailHTML(article: any): string {
       max-width: 720px;
       margin: 0 auto;
       padding: 72px 48px 100px;
+      overflow-wrap: break-word;
     }
 
     /* Rich text styles */
@@ -389,6 +398,29 @@ export function blogDetailHTML(article: any): string {
       color: #faf8f4;
     }
     .footer-mini-logo span { color: #4a7c59; }
+    .footer-mini-logo img {
+      display: inline-block;
+      vertical-align: middle;
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      margin-right: 8px;
+    }
+    .footer-mini-ig {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: rgba(250,248,244,0.5);
+      transition: color 0.2s;
+    }
+    .footer-mini-ig:hover { color: #faf8f4; }
+    .footer-mini-ig svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
     .footer-mini-copy {
       font-size: 12px;
       color: rgba(250,248,244,0.2);
@@ -396,10 +428,11 @@ export function blogDetailHTML(article: any): string {
 
     @media (max-width: 768px) {
       .nav { padding: 0 24px; }
+      .nav-logo-name { display: none; }
       .blog-hero-content { padding: 0 24px; }
       .article-body { padding: 48px 24px 72px; }
       .article-back { padding: 32px 24px 60px; }
-      .footer-mini { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
+      .footer-mini { padding: 24px; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
       .blog-title { font-size: 28px; }
     }
   </style>
@@ -407,7 +440,10 @@ export function blogDetailHTML(article: any): string {
 <body>
 
   <nav class="nav">
-    <a href="/" class="nav-logo">Puesto de <span>Palta</span></a>
+    <a href="/" class="nav-logo">
+      <img src="${LOGO_URL}" alt="Puesto de Palta" width="44" height="44" loading="eager">
+      <span class="nav-logo-name">Puesto de <span>Palta</span></span>
+    </a>
     <a href="/#blog" class="nav-back">
       <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
       Volver al blog
@@ -461,7 +497,14 @@ export function blogDetailHTML(article: any): string {
   </div>
 
   <footer class="footer-mini">
-    <div class="footer-mini-logo">Puesto de <span>Palta</span></div>
+    <a href="/" class="footer-mini-logo">
+      <img src="${LOGO_URL}" alt="" width="36" height="36" loading="lazy">
+      Puesto de <span>Palta</span>
+    </a>
+    <a href="${INSTAGRAM_URL}" target="_blank" rel="noopener" class="footer-mini-ig">
+      ${INSTAGRAM_ICON}
+      @puestodepalta
+    </a>
     <div class="footer-mini-copy">© 2026 Puesto de Palta. Buenos Aires.</div>
   </footer>
 
