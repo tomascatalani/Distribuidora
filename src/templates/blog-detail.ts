@@ -1,4 +1,4 @@
-import { INSTAGRAM_ICON, INSTAGRAM_URL, LOGO_URL, OG_IMAGE, SITE_URL } from '../lib/site'
+import { FACEBOOK_ICON, FACEBOOK_URL, INSTAGRAM_ICON, INSTAGRAM_URL, LOGO_URL, OG_IMAGE, SITE_URL, socialIcons } from '../lib/site'
 
 export function blogDetailHTML(article: any): string {
   const { title, fecha, imageUrl, htmlContent, excerpt, slug } = article
@@ -92,6 +92,61 @@ export function blogDetailHTML(article: any): string {
     }
     .nav-back:hover { color: #faf8f4; }
     .nav-back svg { width: 14px; height: 14px; fill: currentColor; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    /* Íconos de Instagram y Facebook */
+    .social-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .social-icons a {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(250,248,244,0.25);
+      color: rgba(250,248,244,0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .social-icons a:hover {
+      background: #4a7c59;
+      border-color: #4a7c59;
+      color: #faf8f4;
+    }
+    .social-icons svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+    .inline-social {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(250,248,244,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .inline-social p {
+      font-size: 13px;
+      color: rgba(250,248,244,0.5);
+    }
+    .inline-social .social-icons a {
+      width: 38px;
+      height: 38px;
+    }
+    .inline-social .social-icons svg {
+      width: 17px;
+      height: 17px;
+    }
 
     /* Hero */
     .blog-hero {
@@ -421,6 +476,11 @@ export function blogDetailHTML(article: any): string {
       height: 16px;
       fill: currentColor;
     }
+    .footer-mini-social {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
     .footer-mini-copy {
       font-size: 12px;
       color: rgba(250,248,244,0.2);
@@ -429,6 +489,7 @@ export function blogDetailHTML(article: any): string {
     @media (max-width: 768px) {
       .nav { padding: 0 24px; }
       .nav-logo-name { display: none; }
+      .nav-right { gap: 16px; }
       .blog-hero-content { padding: 0 24px; }
       .article-body { padding: 48px 24px 72px; }
       .article-back { padding: 32px 24px 60px; }
@@ -444,10 +505,13 @@ export function blogDetailHTML(article: any): string {
       <img src="${LOGO_URL}" alt="Puesto de Palta" width="44" height="44" loading="eager">
       <span class="nav-logo-name">Puesto de <span>Palta</span></span>
     </a>
-    <a href="/#blog" class="nav-back">
-      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-      Volver al blog
-    </a>
+    <div class="nav-right">
+      ${socialIcons()}
+      <a href="/#blog" class="nav-back">
+        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        Volver al blog
+      </a>
+    </div>
   </nav>
 
   <div class="blog-hero">
@@ -487,6 +551,10 @@ export function blogDetailHTML(article: any): string {
         <p class="inline-subs-success" id="inline-push-success">¡Listo! Te avisamos cuando sube algo nuevo.</p>
       </div>
     </div>
+    <div class="inline-social">
+      <p>También estamos en Instagram y Facebook.</p>
+      ${socialIcons()}
+    </div>
   </div>
 
   <div class="article-back">
@@ -501,10 +569,16 @@ export function blogDetailHTML(article: any): string {
       <img src="${LOGO_URL}" alt="" width="36" height="36" loading="lazy">
       Puesto de <span>Palta</span>
     </a>
-    <a href="${INSTAGRAM_URL}" target="_blank" rel="noopener" class="footer-mini-ig">
-      ${INSTAGRAM_ICON}
-      @puestodepalta
-    </a>
+    <div class="footer-mini-social">
+      <a href="${INSTAGRAM_URL}" target="_blank" rel="noopener" class="footer-mini-ig">
+        ${INSTAGRAM_ICON}
+        @puestodepalta
+      </a>
+      <a href="${FACEBOOK_URL}" target="_blank" rel="noopener" class="footer-mini-ig">
+        ${FACEBOOK_ICON}
+        Facebook
+      </a>
+    </div>
     <div class="footer-mini-copy">© 2026 Puesto de Palta. Buenos Aires.</div>
   </footer>
 

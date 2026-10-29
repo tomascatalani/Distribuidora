@@ -645,6 +645,22 @@ nadie.
   en Settings → Variables and secrets → Preview solo `NOTION_TOKEN` y `NOTION_DB_ID`
   (nunca `NOTIFY_ENABLED`, Brevo ni OneSignal) y volver a desplegar la rama.
 
+- [x] Logo e Instagram en el blog publicados el 29/10/2026 (PR #2, OK de Tomás).
+- [x] Instagram y Facebook en más lugares (29/10/2026, rama `claude/project-thread-vq0bxi`).
+  Facebook: https://www.facebook.com/profile.php?id=61590740365285 (página "Puesto de
+  Palta"). Los links viven en `src/lib/site.ts` (`INSTAGRAM_URL`, `FACEBOOK_URL`,
+  `socialIcons()`). Dónde aparecen: inicio → menú (solo en pantallas de 1440 px o más
+  y en el menú del celular), hero ("Seguinos"), botones al final de la Galería,
+  Contacto y pie; blog → menú, pie, y al final de cada nota debajo del newsletter. El
+  botón "Ver más en Instagram" de Testimonios sigue apuntando a la historia destacada.
+  También se agregaron datos estructurados (`Organization` con `sameAs`) para que
+  Google asocie el sitio con las dos redes, y en el celular el hero crece en vez de
+  esconder el texto de arriba debajo del menú.
+- Observación (29/10/2026): el menú del inicio queda apretado entre 769 y ~1320 px de
+  ancho (pasaba antes de estos cambios): "Puesto de Palta" y "Quiénes somos" se
+  parten en dos líneas. Arreglo posible: usar la hamburguesa hasta ~1280 px o achicar
+  espacios.
+
 ### Pendiente, en orden
 
 1. **Cerrar la primera corrida:** el borrador "Trece pesos y un certificado" está en
