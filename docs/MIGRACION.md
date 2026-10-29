@@ -646,7 +646,7 @@ nadie.
   (nunca `NOTIFY_ENABLED`, Brevo ni OneSignal) y volver a desplegar la rama.
 
 - [x] Logo e Instagram en el blog publicados el 29/10/2026 (PR #2, OK de Tomás).
-- [x] Instagram y Facebook en más lugares (29/10/2026, rama `claude/project-thread-vq0bxi`).
+- [x] Instagram y Facebook en más lugares (publicado el 29/10/2026, PR #3, OK de Tomás).
   Facebook: https://www.facebook.com/profile.php?id=61590740365285 (página "Puesto de
   Palta"). Los links viven en `src/lib/site.ts` (`INSTAGRAM_URL`, `FACEBOOK_URL`,
   `socialIcons()`). Dónde aparecen: inicio → menú (solo en pantallas de 1440 px o más
