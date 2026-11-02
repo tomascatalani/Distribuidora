@@ -4,31 +4,56 @@ import adapter from '@hono/vite-dev-server/cloudflare'
 import { defineConfig } from 'vite'
 import { writeFileSync, copyFileSync, existsSync } from 'fs'
 import { resolve } from 'path'
+import { pathToFileURL } from 'url'
+
+// Qué atiende el Worker y qué sirve Cloudflare Pages como archivo fijo.
+//
+// El plan gratuito de Workers permite 100.000 pedidos por día a la parte dinámica.
+// Si se pasan (por ejemplo, un bot que prueba miles de direcciones), Cloudflare deja
+// de correr el Worker hasta las 00:00 UTC y solo sirve archivos fijos. Por eso:
+//   - El Worker atiende solo lo que necesita Notion o las claves: /api/* y /blog/:slug.
+//   - El inicio, el listado del blog y la página 404 se generan acá como archivos
+//     fijos (index.html, blog.html, 404.html). No gastan pedidos y se ven siempre.
+//   - Cualquier dirección inventada cae en 404.html, también sin gastar pedidos.
+// Ver docs/MIGRACION.md, sección 6 (incidente del 02/11/2026).
+const WORKER_ROUTES = {
+  version: 1,
+  include: ['/api/*', '/blog/*'],
+  exclude: ['/blog']
+}
+
+// Páginas que se generan como archivos fijos: [dirección, archivo, código esperado]
+const PRERENDER: Array<[string, string, number]> = [
+  ['/', 'index.html', 200],
+  ['/blog', 'blog.html', 200],
+  ['/__pagina-que-no-existe__', '404.html', 404]
+]
+
+async function prerenderPages() {
+  const workerPath = resolve(__dirname, 'dist/_worker.js')
+  const { default: app } = await import(pathToFileURL(workerPath).href + '?t=' + Date.now())
+  const ctx = { waitUntil() {}, passThroughOnException() {} }
+  for (const [path, file, expected] of PRERENDER) {
+    const res = await app.fetch(new Request('https://puestodepalta.com' + path), {}, ctx)
+    const html = await res.text()
+    if (res.status !== expected || !html.startsWith('<!DOCTYPE html>')) {
+      throw new Error(`No se pudo generar ${file} desde ${path} (código ${res.status})`)
+    }
+    writeFileSync(resolve(__dirname, 'dist', file), html)
+    console.log(`✓ ${file} generado desde ${path}`)
+  }
+}
 
 // Plugin to inject static files and fix _routes.json after build
 function staticFilesPlugin() {
   return {
     name: 'static-files-and-routes',
-    closeBundle() {
-      // Fix _routes.json to exclude static files from Worker routing
+    async closeBundle() {
       const routesPath = resolve(__dirname, 'dist/_routes.json')
-      const routes = {
-        version: 1,
-        include: ['/*'],
-        exclude: [
-          '/fonts/*',
-          '/images/*',
-          '/static/*',
-          '/OneSignalSDKWorker.js',
-          '/favicon.svg',
-          '/favicon.ico',
-          '/favicon-512.png',
-          '/og-image.jpg',
-          '/icon-512.png'
-        ]
-      }
-      writeFileSync(routesPath, JSON.stringify(routes))
-      console.log('✓ _routes.json patched with static file exclusions')
+      writeFileSync(routesPath, JSON.stringify(WORKER_ROUTES))
+      console.log('✓ _routes.json: el Worker atiende solo /api/* y /blog/:slug')
+
+      await prerenderPages()
 
       // Copy OneSignalSDKWorker.js to dist root
       const workerSrc = resolve(__dirname, 'public/OneSignalSDKWorker.js')

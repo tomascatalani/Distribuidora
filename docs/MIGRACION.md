@@ -5,7 +5,7 @@ armada la web, qué hacía Genspark, la configuración literal del workflow de c
 y el plan de migración. **No contiene claves ni contraseñas.** Las claves se cargan
 como variables de entorno en Cloudflare y en el entorno de Claude Code.
 
-Relevamiento: 23 de septiembre de 2026. Última actualización: 20 de octubre de 2026.
+Relevamiento: 23 de septiembre de 2026. Última actualización: 2 de noviembre de 2026.
 
 ---
 
@@ -663,7 +663,8 @@ nadie.
 
 - [x] **Ciclo completo verificado (1/11/2026):** Tomás publicó "Supply sin fin"
   (la nota "Cincuenta y dos semanas" renombrada). Apareció en la web y la campaña de
-  Brevo salió a las 15:10 ART. Primera publicación 100% fuera de Genspark.
+  Brevo salió a las 18:10 ART (KV: `notifiedAt` 21:10 UTC, campaña 11, push OK).
+  Primera publicación 100% fuera de Genspark.
 - **INCIDENTE 2/11/2026: sitio en 404.** Entre las 02:00 y las 12:00 UTC un bot hizo
   ~120.000 pedidos (normal: ~1.500/día; casi sin subpedidos a Notion, o sea rutas
   inexistentes o la home). Se superó el límite gratuito de **100.000 pedidos/día de
@@ -675,6 +676,14 @@ nadie.
   pudo ver IP ni rutas del bot. Prevención propuesta: Bot Fight Mode + regla de rate
   limiting en la zona (gratis) y/o Workers Paid (USD 5/mes, 10 millones de pedidos,
   también saca el límite de Workers AI).
+  Por qué quedó en blanco y no solo "sin notas": el proyecto tiene `fail_open: true`
+  y no había ningún `index.html`, así que al cortarse el Worker no había nada para `/`.
+  **Arreglo en el código** (rama `claude/project-thread-wxu1he`): el build genera
+  `index.html`, `blog.html` y `404.html` como archivos fijos (ver `vite.config.ts`) y
+  `_routes.json` manda al Worker solo `/api/*` y `/blog/:slug`. Lo que prueba un bot
+  (direcciones inventadas) cae en `404.html` sin gastar pedidos, y si igual se agota
+  el límite, el inicio y el listado se siguen viendo; lo único que espera al reinicio
+  es el contenido de las notas, la lista de notas y los formularios.
 
 ### Pendiente, en orden
 
