@@ -661,6 +661,21 @@ nadie.
   parten en dos líneas. Arreglo posible: usar la hamburguesa hasta ~1280 px o achicar
   espacios.
 
+- [x] **Ciclo completo verificado (1/11/2026):** Tomás publicó "Supply sin fin"
+  (la nota "Cincuenta y dos semanas" renombrada). Apareció en la web y la campaña de
+  Brevo salió a las 15:10 ART. Primera publicación 100% fuera de Genspark.
+- **INCIDENTE 2/11/2026: sitio en 404.** Entre las 02:00 y las 12:00 UTC un bot hizo
+  ~120.000 pedidos (normal: ~1.500/día; casi sin subpedidos a Notion, o sea rutas
+  inexistentes o la home). Se superó el límite gratuito de **100.000 pedidos/día de
+  Workers** y Cloudflare dejó de ejecutar el código: todo lo dinámico devuelve 404
+  vacío y solo se sirven los archivos estáticos (favicon, OneSignalSDKWorker.js). Le
+  pasa a los dos proyectos Pages de la cuenta porque el límite es por cuenta. Se
+  reinicia a las 00:00 UTC. Diagnóstico: GraphQL `pagesFunctionsInvocationsAdaptiveGroups`
+  por `datetimeHour`. El token `CF_API_TOKEN` no tiene analytics de zona, así que no se
+  pudo ver IP ni rutas del bot. Prevención propuesta: Bot Fight Mode + regla de rate
+  limiting en la zona (gratis) y/o Workers Paid (USD 5/mes, 10 millones de pedidos,
+  también saca el límite de Workers AI).
+
 ### Pendiente, en orden
 
 1. **Cerrar la primera corrida:** el borrador "Trece pesos y un certificado" está en
