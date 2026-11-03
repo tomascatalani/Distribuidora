@@ -690,6 +690,12 @@ nadie.
   hay que reactivarlo a mano. En los primeros minutos del nuevo día ya entraron ~100
   pedidos en 7 minutos (normal: ~15 por hora), señal de que el bot sigue. Protección de
   zona y/o Workers Paid siguen pendientes de decisión de Tomás.
+  Verificado 00:12 UTC por minuto: esos ~100 fueron un solo pico (80 pedidos en el
+  minuto 00:02, probablemente lo acumulado mientras el Worker estuvo apagado) y después
+  1 a 3 pedidos cada varios minutos. Las 16 notas, `/blog/cincuenta-y-dos-semanas` y la
+  404 andan. No hubo llamadas del cron a las 00:05 ni 00:10, lo que confirma que el job
+  de cron-job.org está desactivado. Con el arreglo del PR #4, lo que el bot pide a
+  direcciones inventadas ya no pasa por el Worker, así que no se ve en estas métricas.
 
 ### Pendiente, en orden
 
