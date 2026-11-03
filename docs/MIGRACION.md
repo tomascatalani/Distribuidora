@@ -676,6 +676,12 @@ nadie.
   limiting en la zona (gratis) y/o Workers Paid (USD 5/mes, 10 millones de pedidos,
   también saca el límite de Workers AI).
 
+- 3/11/2026 00:07 UTC: el sitio volvió solo al reiniciarse el contador (home, blog y
+  API en 200). cron-job.org había desactivado el job por 26 fallos seguidos (404):
+  hay que reactivarlo a mano. En los primeros minutos del nuevo día ya entraron ~100
+  pedidos en 7 minutos (normal: ~15 por hora), señal de que el bot sigue. Protección de
+  zona y/o Workers Paid siguen pendientes de decisión de Tomás.
+
 ### Pendiente, en orden
 
 1. **Cerrar la primera corrida:** el borrador "Trece pesos y un certificado" está en
