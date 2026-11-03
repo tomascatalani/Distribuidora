@@ -1,1 +1,1 @@
-{"version":1,"include":["/*"],"exclude":["/fonts/*","/images/*","/static/*","/OneSignalSDKWorker.js","/favicon.svg","/favicon.ico","/og-image.jpg"]}
+{"version":1,"include":["/api/*","/blog/*"],"exclude":["/blog"]}

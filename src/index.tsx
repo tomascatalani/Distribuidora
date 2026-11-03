@@ -7,6 +7,7 @@ import { apiContact } from './routes/api-contact'
 import { apiSubscribe } from './routes/api-subscribe'
 import { apiNotify, sendNotifications, sendAlertEmail, DEFAULT_ALERT_EMAIL, SITE_URL } from './routes/api-notify'
 import { listPublished, parseArticle, fetchBlocks, extractExcerpt, shortExcerpt } from './lib/notion'
+import { notFoundHTML } from './templates/not-found'
 
 // Variables de entorno (se cargan en Cloudflare Pages → Settings → Variables and Secrets).
 // Ver docs/MIGRACION.md, sección 4.
@@ -24,8 +25,11 @@ type Bindings = {
 
 const app = new Hono<{ Bindings: Bindings }>()
 
-// Los archivos estáticos (favicons, worker de OneSignal) los sirve Cloudflare Pages
-// directamente; están excluidos del Worker en dist/_routes.json (ver vite.config.ts).
+// El Worker solo atiende /api/* y las notas /blog/:slug (ver dist/_routes.json en
+// vite.config.ts). El inicio (/), el listado (/blog), la página 404 y los archivos
+// estáticos los sirve Cloudflare Pages como archivos fijos, que no cuentan para el
+// límite diario de pedidos del plan gratuito. Las rutas de páginas de acá abajo
+// siguen existiendo: el build las usa para generar esos archivos, y sirven en `npm run dev`.
 app.use('/api/*', cors())
 
 // ── Protección con secreto para el cron y el envío manual ────────────────────
@@ -152,5 +156,8 @@ app.get('/api/cron', async (c) => {
     return c.json({ ok: false, ran: new Date().toISOString(), report }, 500)
   }
 })
+
+// Cualquier otra dirección: página 404 con el estilo del sitio.
+app.notFound((c) => c.html(notFoundHTML(), 404))
 
 export default app
