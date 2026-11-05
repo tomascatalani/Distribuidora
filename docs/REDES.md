@@ -46,8 +46,28 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
 ## 4. Estado actual
 
 - [x] Relevamiento de conexiones (5/11/2026).
-- [ ] Tomás crea la cuenta de Metricool, vincula Instagram y Facebook, y agrega el
-  conector de Metricool en Claude.
-- [ ] Diagnóstico de las últimas publicaciones (necesita Metricool).
-- [ ] Estudio de competencia.
+- [x] Tomás creó la cuenta de Metricool y agregó el conector en Claude (5/11/2026).
+  Marca de Metricool: `blogId` 7908067. Vincular redes:
+  https://app.metricool.com/brands/connections?blogId=7908067
+- [ ] Tomás vincula Instagram y Facebook dentro de Metricool (al 5/11/2026 21:55 UTC
+  todavía no había ninguna red vinculada). Conviene Instagram "a través de Facebook":
+  es requisito para seguir competidores.
+- [ ] Cargar 5 competidores de Instagram en Metricool (plan gratis: 5 por red, no se
+  pueden cambiar después).
+- [ ] Diagnóstico de las últimas publicaciones (necesita las redes vinculadas).
+- [x] Estudio de competencia, primera versión desde afuera (5/11/2026), en el doc
+  "Competencia en redes y guiones" (https://claude.ai/artifact/KcMVZmLeB5CcgborLRoGxz).
+  Incluye ideas de contenido y tres guiones para grabar en off.
 - [ ] Rutina semanal de publicaciones.
+
+## 5. Contexto que dio Tomás (5/11/2026)
+
+- Tiene una CM que maneja las redes y están bastante activas. Este trabajo es para
+  sumarle contenido, no para reemplazarla.
+- Las notas del blog salen cada dos semanas y las genera `/nota-semanal`. Desde redes
+  se convierten en posts.
+- Quiere guiones para grabar él mismo en off.
+- Competencia que nombró: Palta Sagrada (@paltasagrada, mayorista en Vicente López),
+  La Bella Palta (@labellapalta, distribuidora mayorista), La Paltería (usuario sin
+  confirmar; @lapalteria_ parece ser otro negocio, de la zona de Dolores y La Plata) y
+  las distribuidoras de fruta fresca en general.
