@@ -53,16 +53,20 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   en puestodepalta.com el 5/11/2026: va en el `<head>` del inicio, del listado del blog y
   de cada nota (constante `METRICOOL_TRACKER` en `src/lib/site.ts`). Las páginas 404 no
   lo llevan. Las visitas aparecen en Metricool → sección Web.
-- [ ] Tomás vincula Instagram y Facebook dentro de Metricool (al 5/11/2026 21:55 UTC
-  todavía no había ninguna red vinculada). Conviene Instagram "a través de Facebook":
-  es requisito para seguir competidores.
+- [x] Instagram (@puestodepalta), Facebook y TikTok vinculados en Metricool
+  (5/11/2026). El historial tarda unas horas en cargar.
 - [ ] Cargar 5 competidores de Instagram en Metricool (plan gratis: 5 por red, no se
-  pueden cambiar después).
-- [ ] Diagnóstico de las últimas publicaciones (necesita las redes vinculadas).
-- [x] Estudio de competencia, primera versión desde afuera (5/11/2026), en el doc
-  "Competencia en redes y guiones" (https://claude.ai/artifact/KcMVZmLeB5CcgborLRoGxz).
-  Incluye ideas de contenido y tres guiones para grabar en off.
-- [ ] Rutina semanal de publicaciones.
+  pueden cambiar después). Al 5/11 22:30 UTC ya aparecían @paltasagrada (57.363
+  seguidores) y @lapalteria10 (55.551; 11 Reels y 1 post en 30 días).
+- [ ] Diagnóstico de las últimas publicaciones (esperando que Metricool cargue).
+- [x] **Documento principal: "Plan de redes — Puesto de Palta"**
+  (https://claude.ai/artifact/2uUFoTooRGhhWfVuKPpnSP), con tres pestañas: Análisis,
+  Acción y Creación. Reemplaza al primero, "Competencia en redes y guiones".
+- [x] Lote 1 creado (5/11/2026): carrusel de 6 imágenes "La palta dejó de tener
+  temporada" (nota Supply sin fin) + texto del post, en la carpeta del proyecto
+  `redes/lote-1-temporada/`. Hecho en HTML con las fotos de la galería de Cloudinary y
+  las fuentes del sitio, renderizado con Chromium a 1080x1350. Falta el OK de Tomás.
+- [ ] Rutina semanal de publicaciones (propuesta en la pestaña Acción).
 
 ## 5. Contexto que dio Tomás (5/11/2026)
 
