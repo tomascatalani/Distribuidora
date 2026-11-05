@@ -1,4 +1,4 @@
-import { FACEBOOK_ICON, FACEBOOK_URL, INSTAGRAM_ICON, INSTAGRAM_URL, OG_IMAGE, SITE_URL, socialIcons } from '../lib/site'
+import { FACEBOOK_ICON, FACEBOOK_URL, INSTAGRAM_ICON, INSTAGRAM_URL, OG_IMAGE, SITE_URL, socialIcons, METRICOOL_TRACKER } from '../lib/site'
 
 export function homeHTML(): string {
   return `<!DOCTYPE html>
@@ -1342,6 +1342,7 @@ export function homeHTML(): string {
     ::-webkit-scrollbar-track { background: #0a0a0a; }
     ::-webkit-scrollbar-thumb { background: #4a7c59; }
   </style>
+  ${METRICOOL_TRACKER}
 </head>
 <body>
 

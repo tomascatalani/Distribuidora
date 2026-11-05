@@ -49,6 +49,10 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
 - [x] Tomás creó la cuenta de Metricool y agregó el conector en Claude (5/11/2026).
   Marca de Metricool: `blogId` 7908067. Vincular redes:
   https://app.metricool.com/brands/connections?blogId=7908067
+- [x] Código de medición web de Metricool (JavaScript tag, hash `3617cc31…`) instalado
+  en puestodepalta.com el 5/11/2026: va en el `<head>` del inicio, del listado del blog y
+  de cada nota (constante `METRICOOL_TRACKER` en `src/lib/site.ts`). Las páginas 404 no
+  lo llevan. Las visitas aparecen en Metricool → sección Web.
 - [ ] Tomás vincula Instagram y Facebook dentro de Metricool (al 5/11/2026 21:55 UTC
   todavía no había ninguna red vinculada). Conviene Instagram "a través de Facebook":
   es requisito para seguir competidores.

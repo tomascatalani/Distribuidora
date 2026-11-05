@@ -1,4 +1,4 @@
-import { FACEBOOK_ICON, FACEBOOK_URL, INSTAGRAM_ICON, INSTAGRAM_URL, LOGO_URL, OG_IMAGE, SITE_URL, socialIcons } from '../lib/site'
+import { FACEBOOK_ICON, FACEBOOK_URL, INSTAGRAM_ICON, INSTAGRAM_URL, LOGO_URL, OG_IMAGE, SITE_URL, socialIcons, METRICOOL_TRACKER } from '../lib/site'
 
 export function blogListHTML(): string {
   return `<!DOCTYPE html>
@@ -238,6 +238,7 @@ export function blogListHTML(): string {
       .footer-mini { padding: 24px; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
     }
   </style>
+  ${METRICOOL_TRACKER}
 </head>
 <body>
 

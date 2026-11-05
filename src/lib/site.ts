@@ -26,3 +26,8 @@ export function socialIcons(extraClass = ''): string {
     <a href="${FACEBOOK_URL}" target="_blank" rel="noopener" aria-label="Facebook de Puesto de Palta" title="Facebook">${FACEBOOK_ICON}</a>
   </div>`
 }
+
+// Medición de visitas de Metricool (JavaScript tag que dio el panel de Metricool para
+// puestodepalta.com). Va en el <head> del inicio, del listado del blog y de cada nota.
+// El hash no es secreto: es público en cualquier sitio que usa Metricool.
+export const METRICOOL_TRACKER = `<script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"3617cc31807ca9d216fdc87b4b623b81"})});</script>`

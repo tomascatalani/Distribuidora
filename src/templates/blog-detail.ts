@@ -1,4 +1,4 @@
-import { FACEBOOK_ICON, FACEBOOK_URL, INSTAGRAM_ICON, INSTAGRAM_URL, LOGO_URL, OG_IMAGE, SITE_URL, socialIcons } from '../lib/site'
+import { FACEBOOK_ICON, FACEBOOK_URL, INSTAGRAM_ICON, INSTAGRAM_URL, LOGO_URL, OG_IMAGE, SITE_URL, socialIcons, METRICOOL_TRACKER } from '../lib/site'
 
 export function blogDetailHTML(article: any): string {
   const { title, fecha, imageUrl, htmlContent, excerpt, slug } = article
@@ -497,6 +497,7 @@ export function blogDetailHTML(article: any): string {
       .blog-title { font-size: 28px; }
     }
   </style>
+  ${METRICOOL_TRACKER}
 </head>
 <body>
 
