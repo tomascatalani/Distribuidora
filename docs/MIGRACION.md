@@ -697,6 +697,9 @@ nadie.
   de cron-job.org está desactivado. Con el arreglo del PR #4, lo que el bot pide a
   direcciones inventadas ya no pasa por el Worker, así que no se ve en estas métricas.
 
+- 5/11/2026: se abrió el trabajo de **redes sociales** (Instagram, Facebook, WhatsApp).
+  Todo lo de redes vive en `docs/REDES.md`, no en este documento.
+
 ### Pendiente, en orden
 
 1. **Cerrar la primera corrida:** el borrador "Trece pesos y un certificado" está en
