@@ -61,9 +61,18 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
 - [x] Competidores cargados en Metricool por Tomás (5/11/2026). Al 5/11 23:05 UTC
   aparecen 4: @paltasagrada 57.363 seguidores, @lapalteria10 55.551 (11 Reels y 1 post
   en 30 días), @labellapalta 8.804 (5 posts, ~3 likes), @frutiverdu 6.926 (2 Reels).
-- [ ] Calendario nuevo: Tomás quiere sumar su calendario viejo y sus videos de Google
-  Drive. Camino: conector de Google Drive en claude.ai o links públicos. Idea: pestaña
-  "Calendario" en el plan, 6 semanas, y cargar lo aprobado como borrador en Metricool.
+- [x] **Revisión semanal de la competencia** programada (5/11/2026): tarea "Revisión
+  semanal de la competencia en redes", todos los lunes 8:53 hora de Buenos Aires
+  (primera: 9/11/2026). Mira Metricool (competidores y números propios), actualiza la
+  tabla "La competencia en números" de la pestaña Análisis con fecha y 2 o 3
+  observaciones, deja el resumen en esta sección y le avisa a Tomás en pocas líneas.
+- [ ] **Calendario de diciembre 2026 a febrero 2027** (pedido el 5/11/2026): mucho
+  contenido sin Reels hechos por Claude (carruseles, posts, historias), más tareas de
+  Reels para grabar y guiones en off. Va en una pestaña "Calendario" del Plan de redes.
+  Tomás va a pasar su calendario viejo y videos e imágenes sin usar de Google Drive
+  (pedido: link a la carpeta con permiso "Cualquier persona con el enlace";
+  drive.google.com responde desde el entorno de Claude). Lo aprobado va como borrador
+  a Metricool.
 - [ ] Diagnóstico de las últimas publicaciones (esperando que Metricool cargue).
 - [x] **Documento principal: "Plan de redes — Puesto de Palta"**
   (https://claude.ai/artifact/2uUFoTooRGhhWfVuKPpnSP), con tres pestañas: Análisis,
@@ -91,6 +100,17 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   (**@lapalteria10**, distribuidora de paltas en Castelar, unos 55.000 seguidores según Tomás: el
   competidor más directo; ojo, @lapalteria_ es otro negocio) y las distribuidoras de
   fruta fresca en general.
+- Notas del blog en Notion al 5/11/2026: 16 publicadas (de marzo a "Supply sin fin",
+  1/11) y 10 borradores. Con fecha: 9/11 "La fruta que también clasificó al mundial",
+  15/11 "La hipocresía no es necesariamente intencional", 19/11 "Lo que dice aceite de
+  palta en la etiqueta probablemente no lo es", 29/11 "La palta que nadie cultivó a
+  propósito", 13/12 "La cuna del Hass ya no puede competir", 27/12 "El árbol que no
+  sabemos cómo va a actuar". Sin fecha: "Trece pesos y un certificado", "El tercer
+  intento de Tucumán con la palta", "Cuando la industria del aceite de palta finalmente
+  se mira al espejo", "Una flor, dos sexos, cuarenta y dos millones de años". Sin
+  publicar desde marzo: "El carozo que no es basura". Temas repetidos: aceite (19/11 y
+  la sin fecha) y polinización (27/12 y "Una flor, dos sexos"). Para el calendario se
+  supone una nota nueva cada dos semanas: 13/12, 27/12, 10/1, 24/1, 7/2, 21/2.
 - Lección: Instagram no se puede mirar sin iniciar sesión desde el entorno de Claude, y
   la búsqueda web no siempre encuentra la cuenta por el nombre. Pedirle a Tomás el
   usuario exacto de cada cuenta antes de analizarla.
