@@ -69,7 +69,7 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
 - Quiere guiones para grabar él mismo en off.
 - Competencia que nombró: Palta Sagrada (@paltasagrada, mayorista en Vicente López),
   La Bella Palta (@labellapalta, distribuidora mayorista), La Paltería
-  (**@lapalteria10**, distribuidora de paltas en Castelar, unos 39.000 seguidores: el
+  (**@lapalteria10**, distribuidora de paltas en Castelar, unos 55.000 seguidores según Tomás: el
   competidor más directo; ojo, @lapalteria_ es otro negocio) y las distribuidoras de
   fruta fresca en general.
 - Lección: Instagram no se puede mirar sin iniciar sesión desde el entorno de Claude, y
