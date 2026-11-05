@@ -38,6 +38,9 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
 
 ## 3. Reglas de trabajo en redes
 
+- Los posts que arma Claude van a Metricool siempre como borrador (`draft: true`).
+  Programar en firme o publicar lo hace Tomás.
+
 - **Nada se publica sin el OK de Tomás.** Claude deja borradores o publicaciones
   programadas para revisar; publicar o programar en firme lo decide Tomás.
 - Misma voz que el blog (ver Anexo A de `docs/MIGRACION.md`).
@@ -65,7 +68,12 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
 - [x] Lote 1 creado (5/11/2026): carrusel de 6 imágenes "La palta dejó de tener
   temporada" (nota Supply sin fin) + texto del post, en la carpeta del proyecto
   `redes/lote-1-temporada/`. Hecho en HTML con las fotos de la galería de Cloudinary y
-  las fuentes del sitio, renderizado con Chromium a 1080x1350. Falta el OK de Tomás.
+  las fuentes del sitio, renderizado con Chromium a 1080x1350. Con OK de Tomás
+  (5/11/2026) quedó como **borrador** en Metricool (post 418326829, uuid
+  6454583438595015730) para Instagram y Facebook, sábado 7/11/2026 20:00 ART. Tomás lo
+  confirma con "Planificar". Imágenes en Cloudinary, carpeta
+  `puesto-de-palta/redes/lote-1-temporada/` (preset sin firma). Para Instagram se pasan
+  como JPG con `f_jpg,q_92` en la URL, porque Instagram no acepta PNG.
 - [ ] Rutina semanal de publicaciones (propuesta en la pestaña Acción).
 
 ## 5. Contexto que dio Tomás (5/11/2026)
