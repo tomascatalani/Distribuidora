@@ -58,9 +58,12 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   lo llevan. Las visitas aparecen en Metricool → sección Web.
 - [x] Instagram (@puestodepalta), Facebook y TikTok vinculados en Metricool
   (5/11/2026). El historial tarda unas horas en cargar.
-- [ ] Cargar 5 competidores de Instagram en Metricool (plan gratis: 5 por red, no se
-  pueden cambiar después). Al 5/11 22:30 UTC ya aparecían @paltasagrada (57.363
-  seguidores) y @lapalteria10 (55.551; 11 Reels y 1 post en 30 días).
+- [x] Competidores cargados en Metricool por Tomás (5/11/2026). Al 5/11 23:05 UTC
+  aparecen 4: @paltasagrada 57.363 seguidores, @lapalteria10 55.551 (11 Reels y 1 post
+  en 30 días), @labellapalta 8.804 (5 posts, ~3 likes), @frutiverdu 6.926 (2 Reels).
+- [ ] Calendario nuevo: Tomás quiere sumar su calendario viejo y sus videos de Google
+  Drive. Camino: conector de Google Drive en claude.ai o links públicos. Idea: pestaña
+  "Calendario" en el plan, 6 semanas, y cargar lo aprobado como borrador en Metricool.
 - [ ] Diagnóstico de las últimas publicaciones (esperando que Metricool cargue).
 - [x] **Documento principal: "Plan de redes — Puesto de Palta"**
   (https://claude.ai/artifact/2uUFoTooRGhhWfVuKPpnSP), con tres pestañas: Análisis,
