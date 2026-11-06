@@ -182,7 +182,29 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   | 27/12 19:00 | Historia con link a la nota "El árbol" | 1 | Mañanas en el Depósito | 418424241 | -8493676837517834410 |
   | 29/12 20:00 | Carrusel "La flor de la palta abre dos veces" | 6 | Mañanas en el Depósito | 418424248 | -5204818510854143634 |
   | 31/12 12:00 | Carrusel "2026 en la palta, en 8 números" | 10 | Divina Cosecha | 418424260 | 1273242145772421938 |
-- [ ] Diagnóstico de las últimas publicaciones (esperando que Metricool cargue).
+- [x] **Diagnóstico de publicaciones** (6/11/2026), en "Tus números" de la pestaña
+  Análisis del Plan de redes. Metricool trajo Instagram del 11/7 al 5/11/2026: 96 Reels y
+  4 carruseles (el plan gratis no da más historia). Resumen:
+  - 12.314 seguidores el 4/11; del 31/10 al 4/11, +872 y -12. Alcance de la cuenta:
+    6.000 a 15.000 cuentas por día.
+  - Un Reel típico llega a 744 personas (mediana, sin las 11 pruebas). El hummus del
+    21/10 llegó a 101.796: el 51% del alcance de los cuatro meses. Unos 5 Reels por
+    semana.
+  - Por tipo (mediana de alcance; guardados y compartidos cada 1.000): recetas y videos
+    de otras cuentas 1.282 (27), reacciones de Tom 1.895 (10, solo 3), notas del blog
+    621 (8; el "Comentá X" junta 2 comentarios de mediana), propios 573 (12),
+    efemérides 471 (14), carruseles 447 (11).
+  - Horario: la mayoría sale a las 22 h (mediana 800) o a las 18 h (600). Mejor
+    momento según Metricool (seguidores conectados): 19 a 21 h, pico 20 h. Se recomendó
+    20 a 22 h. Las horas de Metricool se toman como hora de Argentina, que es la zona
+    de la marca (no se pudo confirmar con un post de hora conocida).
+  - Letras especiales: casi todos los textos las usan; no se puede medir el efecto. Se
+    recomendó primera línea especial y el resto en letra común, y probar dos semanas.
+  - Facebook: 73 seguidores, Reels con 216 reproducciones de mediana. TikTok: Metricool
+    sin datos todavía. Historias: Metricool las guarda desde el 5/11, sin alcance aún.
+  - Cómo se leyó: `getAnalyticsDataByMetrics` con IGRE (Reels), IGPO (posts), IGEV
+    (cuenta), FBRE y FBEV, más `getBestTimeToPostByNetwork`. Las 11 "pruebas" son Reels
+    con texto corto en letra común y unas 110 personas de alcance.
 - [x] **Documento principal: "Plan de redes — Puesto de Palta"**
   (https://claude.ai/artifact/2uUFoTooRGhhWfVuKPpnSP), con tres pestañas: Análisis,
   Acción y Creación. Reemplaza al primero, "Competencia en redes y guiones".
@@ -197,7 +219,8 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   acepta PNG. **Tomás lo publicó antes, el 5/11/2026 a las 20:32 ART**, en Instagram
   (https://www.instagram.com/p/DfYOHabIYvJ/), Facebook y TikTok (en Metricool quedó con
   id 418355575, mismo uuid). Le cambió el texto a letras especiales (ver sección 5).
-  Medir su rendimiento 2 o 3 días después.
+  El 6/11 todavía no aparecía en los números de Metricool: se mide el lunes 9/11, junto
+  con la revisión semanal, contra la mediana de los carruseles (447) y de los Reels (744).
 - [ ] Rutina semanal de publicaciones (propuesta en la pestaña Acción).
 
 ## 5. Contexto que dio Tomás (5/11/2026)
