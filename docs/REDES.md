@@ -38,7 +38,11 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
 - **Plan gratis de Metricool** (ayuda oficial, leída el 5/11/2026: "Principales
   diferencias entre el plan Free y planes de pago"): 20 publicaciones por mes, contadas
   cuando salen (los borradores y lo programado no cuentan hasta publicarse) y una vez por
-  cada red (un post a Instagram, Facebook y TikTok cuenta 3). Se reinicia el día 1.
+  cada red (un post a Instagram, Facebook y TikTok cuenta 3). Cuenta por mes calendario:
+  se reinicia el día 1, sin importar cuándo se creó la cuenta (noviembre de 2026: 3
+  usadas, con el carrusel del 5/11). Lo que Tomás o Pipi publican directo desde
+  Instagram, bajando las imágenes de un borrador, no cuenta; después hay que borrar el
+  borrador para que no salga dos veces.
   Además: 1 marca, 1 perfil por red, 30 días de historial en Analítica, 5 competidores
   fijos, sin Google Drive ni flujo de aprobación. El plan pago más barato (Starter) sale
   desde unos 20 dólares por mes, sin límite de publicaciones.
@@ -50,7 +54,9 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   Metricool: o se publica con `autoPublish: false` (a la hora de salir llega un aviso a
   la app de Metricool y se termina a mano en Instagram, con música), o se agrega después
   en Instagram con Editar (Instagram lo está habilitando de a poco).
-- **Comentarios:** Metricool da la cantidad por post, no el texto ni quién comentó.
+- **Comentarios y mensajes privados:** Metricool da la cantidad de comentarios por post,
+  no el texto ni quién comentó. Los mensajes privados de la cuenta tampoco llegan a
+  Claude: si Tomás quiere que lea algo, lo pega en el chat o manda una captura.
 
 ## 3. Reglas de trabajo en redes
 
@@ -93,14 +99,24 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
 - [x] **Calendario de diciembre 2026 a febrero 2027** (pedido y hecho el 5/11/2026).
   - Planilla "Calendario de contenidos PdP — dic 2026 a feb 2027" en Mi unidad de
     Tomás, sin compartir todavía (el link está en la pestaña Calendario del Plan de
-    redes). Columnas: Semana, Fecha, Día, Formato, Pieza, Quién, Material, Estado,
-    Notas. 13 semanas, del 30/11 al 28/2, cada una con una fila "SEMANA n / TEMA". Las
+    redes). Columnas: Semana, Fecha, Día, Formato, Pieza, Quién, Material, Música,
+    Estado, Notas. 13 semanas, del 30/11 al 28/2, cada una con una fila "SEMANA n / TEMA". Las
     fechas van como 2026-12-01 para que Sheets no las lea al revés. Mantiene todo lo
     que Pipi tenía en su Agenda hasta el 1/1/2027; desde el 4/1 son propuestas.
   - El conector de Drive no edita el contenido de una planilla: para cambiarla se crea
     de nuevo (CSV como texto, tipo `text/csv`) y la anterior va a la papelera. Así se
-    hizo el 5/11 para cambiar "CM" por "Pipi"; la copia de trabajo del CSV no queda en
-    el repo.
+    hizo el 5/11 (cambiar "CM" por "Pipi") y el 6/11 (versión 3). La copia de trabajo
+    del CSV no queda en el repo. **Una vez que Tomás o Pipi empiecen a editarla, no
+    recrearla:** se perderían sus cambios. Desde ahí, los cambios se proponen en el
+    chat o en el Plan de redes.
+  - Versión 3 (6/11/2026), con lo que contestó Tomás: este verano no hay mango y por
+    ahora no hay colaboraciones (quizás algún intento o propuesta). La semana 8 (18/1)
+    pasó de "Palta y mango" a "La palta del sushi" (carrusel 19/1, receta propuesta de
+    poke o rolls 20/1, Reel 22/1 con tomas nuevas). Los miércoles de colaboración (27/1
+    y 24/2) volvieron a ser recetas, con nota de que ahí puede ir un intento. El
+    carrusel del 8/12 lleva los días de entrega, y hay avisos de Pipi el 22/12 y el
+    30/12. Columna nueva "Música" con la canción sugerida para cada pieza de Claude y
+    cada Reel con guion (ver sección 7).
   - Semana tipo del verano: lunes Reel de la nota o Tom especialista; martes carrusel
     (Claude); miércoles receta (Pipi); jueves dato en post e historia con encuesta
     (Claude); viernes Reel de reacción o con voz en off; sábado receta; domingo nota del
@@ -111,17 +127,18 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     tirás de una palta; 11 nota del 7/2, Carnaval, ciencia y San Valentín; 12 Apurarla o
     frenarla; 13 nota del 21/2.
   - Pestaña "Calendario" del Plan de redes: cómo se armó, 7 tareas de Reels con guion en
-    off y el material de Drive de cada una (23/12 La semana más larga del año, a grabar
-    del 21 al 23/12; 6/1 tostada con huevo poché; 8/1 Lo que dice la cáscara; 22/1
-    Palta y mango; 29/1 Así le mostramos un cajón a un cliente; 5/2 Lo que tirás también
-    es palta; 19/2 Domingo de tostadas), temas de Tom especialista (4/1, 18/1, 1/2 y
-    15/2), el inventario del Drive y lo que falta.
+    off, el material de Drive y la canción de cada una (23/12 La semana más larga del
+    año, a grabar del 21 al 23/12; 6/1 tostada con huevo poché; 8/1 Lo que dice la
+    cáscara; 22/1 La palta del sushi, a grabar antes; 29/1 Así le mostramos un cajón a
+    un cliente; 5/2 Lo que tirás también es palta; 19/2 Domingo de tostadas), temas de
+    Tom especialista (4/1, 18/1, 1/2 y 15/2), la guía de música, el inventario del Drive
+    y lo que falta.
   - Cuenta del plan gratis: en diciembre las piezas de Claude son 8 posts y 3
     historias. Los 8 posts a Instagram y Facebook ya son 16 de las 20 del mes.
-  - Falta de Tomás: hasta qué día se puede pedir para Navidad y Año Nuevo, y zonas y
-    días de reparto (carrusel del 8/12); si hay mango este verano; con qué clientes
-    hacer las colaboraciones de enero y febrero; mostrarle la planilla a Pipi; OK para
-    cargar el lote de diciembre como borradores en Metricool.
+  - Falta de Tomás: revisar la versión 3 y dar los OK; mostrarle la planilla a Pipi;
+    grabar el Reel del 23/12 (entre el 21 y el 23/12) y las tomas del sushi (antes del
+    22/1). Con su OK, el lote de diciembre va como borradores a Metricool, con la
+    canción sugerida en la planilla.
   - Cuando existan las notas del 10/1, 24/1, 7/2 y 21/2: escribir sus guiones y
     carruseles.
 - [ ] Diagnóstico de las últimas publicaciones (esperando que Metricool cargue).
@@ -151,9 +168,13 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   Unicode en negrita cursiva, como "𝑯𝒖𝒃𝒐 𝒖𝒏 𝒕𝒊𝒆𝒎𝒑𝒐"); los hashtags, en letra común.
   Para plantear en el diagnóstico: Instagram no las toma como palabras en la búsqueda y
   los lectores de pantalla las leen mal.
-- Tomás tiene un álbum de música hecho con IA para Puesto de Palta, en Spotify, y usa
-  esas canciones en Instagram. Quedó en pasar el link o el nombre del artista para
-  buscarlas en la biblioteca de audio de Metricool cuando se suba un Reel.
+- Tomás tiene un álbum de música hecho con IA para Puesto de Palta y usa esas
+  canciones en Instagram (ver sección 7).
+- **Entregas:** de lunes a sábado, feriados incluidos. No hay entregas los domingos, el
+  25/12 ni el 1/1 (dato del 6/11/2026). Zonas: no las pasó; en las piezas, "consultá
+  por WhatsApp".
+- **Este verano (2026-2027) no hay mango**, por ahora. **Colaboraciones con clientes:**
+  no darlas por hechas; a lo sumo algún intento o propuesta.
 - Las notas del blog salen cada dos semanas y las genera `/nota-semanal`. Desde redes
   se convierten en posts.
 - Quiere guiones para grabar él mismo en off.
@@ -232,3 +253,28 @@ nombres (ver sección 3).
 | Una nena comiendo una tostada con palta | DSC_0470 a DSC_0532 | Apreciación paltera |
 | Cajones, depósito, el auto cargado y entregas | Fotos con nombre de número e IMG_6563 a IMG_6591 | Carrusel del 8/12 |
 | Piezas diseñadas viejas (recetas, días de entrega, combos, lista de precios) | ultimas, CONTENIDO, recetas, dias y otras | Solo referencia: la lista de precios está vieja |
+
+## 7. Música de Puesto de Palta (6/11/2026)
+
+Álbum **"El ritual de la palta"**, del artista **PUESTO DE PALTA**, hecho con IA por
+Tomás. Está en Spotify, Deezer (álbum 946500401), Apple Music e Instagram, y es la
+música que ya usan en la cuenta. Las canciones son instrumentales. Lo de abajo sale de
+escuchar la muestra de 30 segundos de cada una (tempo, energía, cuánta percusión).
+
+| Canción | Duración | Cómo suena | Para qué |
+|---|---|---|---|
+| Divina Cosecha | 2:27 | Alegre y festiva, con cortes que vuelven a arrancar | Origen, cosecha, cierre del año, de la planta a la mesa |
+| Interminables Logísticas | 2:56 | La más rítmica: batería y bajo marcados, como un motor | Pedidos, cajones, viajes de la palta, montajes rápidos |
+| Mercado al Alba | 1:38 | Fluida y luminosa, con poca percusión; la más corta | Mañanas, mercado, desayunos, datos livianos |
+| Mañanas en el Depósito | 3:11 | La más tranquila, un poco melancólica | Detrás de escena tranquilo, historias y notas del blog con voz |
+| Ansiada Maduración | 3:00 | Lenta, casi sin percusión, con acordes largos | El punto de la palta (es la de la serie "El punto exacto"), cámara lenta, San Valentín |
+| La Bella Entrega | 3:28 | Alegre y saltarina, la de más ritmo para arriba | Entregas, pedidos de las Fiestas, recetas, la semana del sushi |
+| Temida Facturación | 2:48 | Brillante y juguetona | Humor, reacciones, precios y datos con giro |
+
+- Con voz en off, Mañanas en el Depósito y Ansiada Maduración dejan más lugar a la
+  voz; con las otras, bajar el volumen.
+- Claude no hace Reels. En los carruseles y posts, la música la pone Tomás o Pipi al
+  publicar desde Instagram (Metricool no les pone música). En un Reel subido por
+  Metricool se puede elegir la canción por nombre (`audioConfiguration`), pero arranca
+  desde el segundo 0; el tramo se elige solo en Instagram.
+- La planilla del calendario tiene una columna "Música" con la sugerida por pieza.
