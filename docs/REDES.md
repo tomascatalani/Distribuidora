@@ -208,6 +208,14 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   - Audio para Pipi (6/11/2026, pedido de Tomás): el diagnóstico contado en 2 minutos y
     medio, con voz sintética. MP3 y guion en la carpeta del proyecto
     `redes/audio-analisis/`. Cómo se hace: `scripts/redes/README.md`, sección Audio.
+  - **Falta separar lo pago** (Tomás, 6/11: "hay publicaciones con plata inyectada").
+    Los datos por Reel de Metricool son solo orgánicos (alcance, vistas, likes,
+    guardados, compartidos), pero no marcan qué Reels tuvieron promoción: los campos
+    pagos (IGRE14, 16 a 20) vienen vacíos porque Meta Ads no está conectado. Los
+    seguidores (IGEV) cuentan todos, vengan o no de anuncios. Se le pidió a Tomás que
+    conecte Meta Ads en Metricool (el plan gratis permite una cuenta de anuncios) o que
+    pase la lista de promociones. Hasta tenerlo, el análisis lleva un aviso arriba de
+    "Tus números" y se le sugirió no mandar el audio a Pipi.
 - [x] **Documento principal: "Plan de redes — Puesto de Palta"**
   (https://claude.ai/artifact/2uUFoTooRGhhWfVuKPpnSP), con tres pestañas: Análisis,
   Acción y Creación. Reemplaza al primero, "Competencia en redes y guiones".
