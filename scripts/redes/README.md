@@ -39,3 +39,22 @@ Todo se hace en una carpeta de trabajo fuera del repo (por ejemplo, el scratchpa
 
 Metricool guarda una copia idéntica (byte por byte) de cada imagen que se le pasa, así
 que bajarla de Metricool no pierde calidad.
+
+## Audio con voz (por ejemplo, un resumen para Pipi)
+
+Con esto se armó el audio del diagnóstico de Instagram (6/11/2026). Voz sintética de
+Piper (`es_AR-daniela-high`, mujer, acento argentino), revisada frase por frase con
+Whisper. La primera vez baja el modelo de Whisper (1,6 GB).
+
+1. **Instalar**, en un entorno aparte: `pip install piper-tts faster-whisper num2words`
+   (y `ffmpeg`). Bajar `es_AR-daniela-high.onnx` y `.onnx.json` de
+   `huggingface.co/rhasspy/piper-voices` (carpeta `es/es_AR/daniela/high`).
+2. **Escribir el guion** en un `.txt`, en tono de charla, con un párrafo por tema y una
+   línea en blanco entre párrafos. Unas 500 palabras son 2 minutos y medio.
+   - La voz no dice bien "Reel": usar "video" (el script igual lo cambia solo).
+   - Números delante de palabras femeninas, en letras: "setecientas cincuenta personas".
+   - Evitar palabras que se confunden: "rubro" sonaba a "burro" y "golazo" a "bolazo".
+     Mejor "el campo" y "la rompió".
+3. **Grabar.** `python3 -I scripts/redes/audio.py guion.txt salida.mp3 es_AR-daniela-high.onnx`.
+   Tarda unos 10 minutos. Al final lista las frases que se siguen oyendo mal: cambiarles
+   las palabras y volver a correrlo, que solo regraba esas.

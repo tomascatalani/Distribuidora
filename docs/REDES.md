@@ -205,6 +205,9 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   - Cómo se leyó: `getAnalyticsDataByMetrics` con IGRE (Reels), IGPO (posts), IGEV
     (cuenta), FBRE y FBEV, más `getBestTimeToPostByNetwork`. Las 11 "pruebas" son Reels
     con texto corto en letra común y unas 110 personas de alcance.
+  - Audio para Pipi (6/11/2026, pedido de Tomás): el diagnóstico contado en 2 minutos y
+    medio, con voz sintética. MP3 y guion en la carpeta del proyecto
+    `redes/audio-analisis/`. Cómo se hace: `scripts/redes/README.md`, sección Audio.
 - [x] **Documento principal: "Plan de redes — Puesto de Palta"**
   (https://claude.ai/artifact/2uUFoTooRGhhWfVuKPpnSP), con tres pestañas: Análisis,
   Acción y Creación. Reemplaza al primero, "Competencia en redes y guiones".
