@@ -133,14 +133,55 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     un cliente; 5/2 Lo que tirás también es palta; 19/2 Domingo de tostadas), temas de
     Tom especialista (4/1, 18/1, 1/2 y 15/2), la guía de música, el inventario del Drive
     y lo que falta.
-  - Cuenta del plan gratis: en diciembre las piezas de Claude son 8 posts y 3
-    historias. Los 8 posts a Instagram y Facebook ya son 16 de las 20 del mes.
-  - Falta de Tomás: revisar la versión 3 y dar los OK; mostrarle la planilla a Pipi;
-    grabar el Reel del 23/12 (entre el 21 y el 23/12) y las tomas del sushi (antes del
-    22/1). Con su OK, el lote de diciembre va como borradores a Metricool, con la
-    canción sugerida en la planilla.
+  - Cuenta del plan gratis: en diciembre las piezas de Claude son 8 posts y 5
+    historias. Si los 8 posts salieran desde Metricool a Instagram y Facebook serían 16
+    de las 20 del mes; publicados a mano desde Instagram no cuentan.
+  - Falta de Tomás: mostrarle la planilla a Pipi; grabar el Reel del 23/12 (entre el 21
+    y el 23/12) y las tomas del sushi (antes del 22/1).
   - Cuando existan las notas del 10/1, 24/1, 7/2 y 21/2: escribir sus guiones y
     carruseles.
+- [x] **Lote de diciembre 2026 armado** (OK de Tomás el 6/11/2026, hecho el mismo día).
+  - 13 borradores en Metricool (8 posts a Instagram y Facebook, 5 historias solo a
+    Instagram), todos con `draft: true` y `autoPublish: false`: no salen solos. Tomás
+    pidió que queden así porque la mayoría se va a bajar para ponerle música y subir a
+    mano. Hora de Buenos Aires: posts 20:00 (mejor horario según Metricool), 31/12
+    12:00; historias 12:00, 19:00 o 21:00.
+  - Metricool guarda una copia idéntica de cada imagen (comprobado byte por byte con
+    SHA-256, en el lote 1 y en las portadas de diciembre): bajarla de Metricool no
+    pierde calidad.
+  - Imágenes: 48 JPG (calidad 95, sin submuestreo de color) en Cloudinary, carpeta
+    `puesto-de-palta/redes/diciembre-2026/<pieza>/`. En la carpeta del proyecto de Claude,
+    `redes/diciembre-2026/`: una carpeta por pieza con sus imágenes y un
+    `texto-y-notas.txt` (texto del post, canción y qué agregar en Instagram), un
+    `LEEME.txt` y `diciembre-2026-todo.zip`.
+  - Las notas para Instagram (canción, encuestas, stickers de link) no van en Metricool:
+    su herramienta no tiene campo de notas y el texto del post se publicaría. Están en
+    cada `texto-y-notas.txt` y en la tabla "Borradores de diciembre" de la pestaña
+    Calendario del Plan de redes.
+  - Dependen de notas del blog que hoy son borrador en Notion: 1/12 (nota del 29/11),
+    15/12 y la historia del 13/12 (nota del 13/12), 29/12 y la historia del 27/12 (nota
+    del 27/12), y cinco números del 31/12. Si alguna no sale, esa pieza se corre o se
+    cambia. El título de la nota del 27/12 está escrito "como" sin tilde en Notion.
+  - En las fotos de la palta en la mano se lee la etiqueta de la fruta (Propal, Chile):
+    dato e historia del 10/12, historia del 27/12 y carrusel del 29/12. En el Plan de
+    redes se le ofreció a Tomás cambiar esas fotos si prefiere.
+  - Cómo se armó y cómo repetirlo para enero: `scripts/redes/README.md`.
+
+  | Fecha y hora | Pieza | Imágenes | Canción | Metricool id | uuid |
+  |---|---|---|---|---|---|
+  | 1/12 20:00 | Carrusel "La palta que nadie cultivó a propósito" | 6 | Divina Cosecha | 418423323 | 6321353025592444006 |
+  | 3/12 12:00 | Historia: 47 variedades, encuesta "¿Lo sabías?" | 1 | Mercado al Alba | 418423472 | 8636534181909447004 |
+  | 8/12 20:00 | Carrusel "Pedila en su punto para las Fiestas" | 6 | La Bella Entrega | 418423481 | 82243734738191373 |
+  | 10/12 20:00 | Dato "1926" | 1 | Divina Cosecha | 418423736 | 1721036335684208114 |
+  | 10/12 21:00 | Historia: quiz México, Perú, California o Chile | 1 | Divina Cosecha | 418423749 | -4381109930861377144 |
+  | 13/12 19:00 | Historia con link a la nota "La cuna del Hass" | 1 | Mañanas en el Depósito | 418423754 | -7017967506302349566 |
+  | 15/12 20:00 | Carrusel "La cuna del Hass ya no puede competir" | 7 | Mañanas en el Depósito | 418423764 | -4116599204473190990 |
+  | 17/12 20:00 | Dato 6.000 y 3.000 | 1 | Mercado al Alba | 418423954 | -5001664418404873072 |
+  | 17/12 21:00 | Historia: encuesta "¿Te importa de dónde viene tu palta?" | 1 | Mercado al Alba | 418423966 | -3404494949529334329 |
+  | 22/12 20:00 | Carrusel "El punto exacto 1" | 6 | Ansiada Maduración | 418423977 | 7006424499319817805 |
+  | 27/12 19:00 | Historia con link a la nota "El árbol" | 1 | Mañanas en el Depósito | 418424241 | -8493676837517834410 |
+  | 29/12 20:00 | Carrusel "La flor de la palta abre dos veces" | 6 | Mañanas en el Depósito | 418424248 | -5204818510854143634 |
+  | 31/12 12:00 | Carrusel "2026 en la palta, en 8 números" | 10 | Divina Cosecha | 418424260 | 1273242145772421938 |
 - [ ] Diagnóstico de las últimas publicaciones (esperando que Metricool cargue).
 - [x] **Documento principal: "Plan de redes — Puesto de Palta"**
   (https://claude.ai/artifact/2uUFoTooRGhhWfVuKPpnSP), con tres pestañas: Análisis,
