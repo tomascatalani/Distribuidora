@@ -212,10 +212,15 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     Los datos por Reel de Metricool son solo orgánicos (alcance, vistas, likes,
     guardados, compartidos), pero no marcan qué Reels tuvieron promoción: los campos
     pagos (IGRE14, 16 a 20) vienen vacíos porque Meta Ads no está conectado. Los
-    seguidores (IGEV) cuentan todos, vengan o no de anuncios. Se le pidió a Tomás que
-    conecte Meta Ads en Metricool (el plan gratis permite una cuenta de anuncios) o que
-    pase la lista de promociones. Hasta tenerlo, el análisis lleva un aviso arriba de
-    "Tus números" y se le sugirió no mandar el audio a Pipi.
+    seguidores (IGEV) cuentan todos, vengan o no de anuncios. Tomás conectó su cuenta de
+    anuncios de Meta en Metricool el 6/11 (aparece como `facebookAdsData` en
+    `getBrandSettings`). Ese día todavía no había campañas: Metricool sincroniza de
+    noche y, según su ayuda, al conectar trae unos 30 días para atrás. Dónde mirar:
+    campañas FACA (03 inicio, 04 fin, 05 nombre, 07 objetivo, 12 alcance, 13 gasto,
+    156/157 resultados), anuncios FADE (08 fecha, 13 gasto, 16 alcance, 148 `boostId`,
+    que es el id del Reel promocionado y se cruza con IGRE04/IGRE19) y gasto diario
+    FAEV04. Hasta separarlo, el análisis lleva un aviso arriba de "Tus números" y se
+    le sugirió a Tomás no mandar el audio a Pipi.
 - [x] **Documento principal: "Plan de redes — Puesto de Palta"**
   (https://claude.ai/artifact/2uUFoTooRGhhWfVuKPpnSP), con tres pestañas: Análisis,
   Acción y Creación. Reemplaza al primero, "Competencia en redes y guiones".
