@@ -96,60 +96,117 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   (primera: 9/11/2026). Mira Metricool (competidores y números propios), actualiza la
   tabla "La competencia en números" de la pestaña Análisis con fecha y 2 o 3
   observaciones, deja el resumen en esta sección y le avisa a Tomás en pocas líneas.
-- [x] **Calendario de diciembre 2026 a febrero 2027** (pedido y hecho el 5/11/2026).
+- [x] **Calendario de diciembre 2026 a febrero 2027** (pedido y hecho el 5/11/2026;
+  versión 4 el 7/11/2026).
   - Planilla "Calendario de contenidos PdP — dic 2026 a feb 2027" en Mi unidad de
     Tomás, sin compartir todavía (el link está en la pestaña Calendario del Plan de
-    redes). Columnas: Semana, Fecha, Día, Formato, Pieza, Quién, Material, Música,
-    Estado, Notas. 13 semanas, del 30/11 al 28/2, cada una con una fila "SEMANA n / TEMA". Las
-    fechas van como 2026-12-01 para que Sheets no las lea al revés. Mantiene todo lo
-    que Pipi tenía en su Agenda hasta el 1/1/2027; desde el 4/1 son propuestas.
-  - El conector de Drive no edita el contenido de una planilla: para cambiarla se crea
-    de nuevo (CSV como texto, tipo `text/csv`) y la anterior va a la papelera. Así se
-    hizo el 5/11 (cambiar "CM" por "Pipi") y el 6/11 (versión 3). La copia de trabajo
-    del CSV no queda en el repo. **Una vez que Tomás o Pipi empiecen a editarla, no
-    recrearla:** se perderían sus cambios. Desde ahí, los cambios se proponen en el
-    chat o en el Plan de redes.
-  - Versión 3 (6/11/2026), con lo que contestó Tomás: este verano no hay mango y por
-    ahora no hay colaboraciones (quizás algún intento o propuesta). La semana 8 (18/1)
-    pasó de "Palta y mango" a "La palta del sushi" (carrusel 19/1, receta propuesta de
-    poke o rolls 20/1, Reel 22/1 con tomas nuevas). Los miércoles de colaboración (27/1
-    y 24/2) volvieron a ser recetas, con nota de que ahí puede ir un intento. El
-    carrusel del 8/12 lleva los días de entrega, y hay avisos de Pipi el 22/12 y el
-    30/12. Columna nueva "Música" con la canción sugerida para cada pieza de Claude y
-    cada Reel con guion (ver sección 7).
-  - Semana tipo del verano: lunes Reel de la nota o Tom especialista; martes carrusel
-    (Claude); miércoles receta (Pipi); jueves dato en post e historia con encuesta
-    (Claude); viernes Reel de reacción o con voz en off; sábado receta; domingo nota del
-    blog o efeméride.
+    redes). 13 semanas, del 29/11 al 28/2. Mantiene lo que Pipi tenía en su Agenda hasta
+    el 1/1/2027, salvo lo que se cambió el 7/11 por los números (en amarillo); desde el
+    4/1 son propuestas.
+  - **Versión 4** (7/11/2026). Tomás pidió la planilla "más prolijo y estético" y que
+    diciembre se reestructure si las conclusiones del análisis lo piden. Tiene tres
+    pestañas:
+    - Calendario: Fecha (como 29/11), Día, Hora, Formato, Pieza, Quién, Estado,
+      Material, Música, Notas y "Qué cambió (7/11)". Encabezado negro y una banda verde
+      por semana (número, fechas, tema y la nota de la semana). El formato tiene un
+      color por tipo y el Estado, lista desplegable y color. Las dos primeras columnas
+      y el encabezado quedan fijos al moverse, y hay filtro.
+    - Qué cambió: cada cambio de diciembre con el antes, el ahora y el número que lo
+      justifica, y las reglas para todo el calendario.
+    - Cómo leerla: los colores de formato y estado, el amarillo, la semana tipo con
+      horas y la guía de música.
+  - Diseño: los colores del sitio (verde `#4a7c59` en las bandas, negro en el
+    encabezado), Libre Baskerville en títulos y bandas, Open Sans en el resto. Lo que
+    cambió va en amarillo (`#FFF1C7`); si cambió el formato, el chip lleva borde
+    amarillo. Formatos: Reel verde claro, Receta verde oliva, Carrusel celeste, Post
+    lila, Historia durazno, Nota del blog beige, Revisión gris. Estados: Planificado por
+    Pipi, Idea, A definir, Hay que grabar, Guion listo, Grabado, Borrador en Notion,
+    Borrador en Metricool, Publicado.
+  - Cómo se arma: un script de Python (`v4.py`, con openpyxl) escribe un xlsx que se
+    sube al Drive y se convierte en planilla de Google. Está en la carpeta privada del
+    proyecto, `redes/calendario/`, con el CSV de la versión 3 que usa de base y las
+    fuentes. El alto de cada fila se calcula con las medidas de Open Sans y queda fijo,
+    porque Sheets no siempre agranda solas las filas con texto largo al importar un
+    xlsx. El conector de Drive no edita el contenido de una planilla: para cambiarla se
+    sube de nuevo y la anterior va a la papelera, solo si nadie la editó (mirar la fecha
+    de modificación). **Una vez que Tomás o Pipi empiecen a editarla, no recrearla:** se
+    perderían sus cambios. Desde ahí, los cambios se proponen en el chat o en el Plan de
+    redes.
+  - Qué cambió en diciembre, con los números del diagnóstico sin lo pago:
+    - Las efemérides que no son de la palta pasan de post a historia: Día del Médico
+      (3/12), Solidaridad Humana (20/12) y Meditación o Básquet (21/12). Llegan a 494
+      personas de mediana, contra 783 de un Reel típico.
+    - El Día Mundial del Suelo (5/12) pasa de post a Reel con los productores
+      etiquetados, como el del Día del agricultor (900).
+    - Recetas propias, grabadas por Tom y Pipi: palta rellena (9/12) y huevos rellenos
+      con palta (16/12). Las de otras cuentas siguen los sábados (1.141 de mediana,
+      contra 597 de lo propio).
+    - Una reacción de Tom el lunes 21/12 (las reacciones: 1.895 de mediana).
+    - Los Reels de las notas (30/11, 14/12 y 28/12) arrancan con el dato más fuerte y
+      se comparten en historia con el link a la nota, sin "Comentá X y te paso más
+      info" (2 comentarios de mediana).
+    - Dos piezas nuevas de Claude: la historia con el link a la nota del 29/11 y el dato
+      de las 47 variedades como post del jueves 3/12; la historia de ese día pasó a las
+      21 h.
+    - Apreciación paltera (11/12) sigue como carrusel, con la nota de hacerla en video
+      si el del 13/11 anda bien (carruseles 447, Reels 783).
+    - Para todo el calendario: Reels de 20 a 22 h (los de las 22 h, 1.010; los de las
+      18 h, 746), posts a las 20 h; letras especiales solo en la primera línea, del
+      30/11 al 13/12, para comparar; no subir Reels de prueba (unos 110 de alcance);
+      revisión de diciembre el 4/1.
+    - Enero y febrero: los Reels de las notas también arrancan con el dato más fuerte,
+      cada nota tiene el domingo su historia con el link, y "Resumen" pasó a
+      "Revisión".
+  - Versiones anteriores: la 1 y la 2 el 5/11 (CSV; la 2 cambió "CM" por "Pipi") y la 3
+    el 6/11, con lo que contestó Tomás: este verano no hay mango y por ahora no hay
+    colaboraciones (quizás algún intento o propuesta). La semana 8 (18/1) pasó de "Palta
+    y mango" a "La palta del sushi" (carrusel 19/1, receta propuesta de poke o rolls
+    20/1, Reel 22/1 con tomas nuevas). Los miércoles de colaboración (27/1 y 24/2)
+    volvieron a ser recetas, con nota de que ahí puede ir un intento. El carrusel del
+    8/12 lleva los días de entrega, y hay avisos de Pipi el 22/12 y el 30/12. Columna
+    "Música" con la canción sugerida para cada pieza de Claude y cada Reel con guion
+    (ver sección 7).
+  - Semana tipo del verano: lunes Reel de la nota o Tom especialista (20 a 22 h);
+    martes carrusel (Claude, 20 h); miércoles receta propia o de otra cuenta (Pipi);
+    jueves dato en post (20 h) e historia con encuesta (21 h), de Claude; viernes Reel
+    de reacción o con voz en off; sábado receta de otra cuenta, con créditos; domingo
+    nota del blog, una semana por medio, con su historia con el link (19 h), o
+    efeméride.
   - Temas por semana: 1 La palta que nadie cultivó; 2 Las Fiestas en su punto; 3 La
     cuna del Hass; 4 Navidad con calor; 5 El árbol que necesita pareja y cierre del año;
-    6 El punto exacto; 7 nota del 10/1; 8 Palta y mango; 9 nota del 24/1; 10 Lo que
+    6 El punto exacto; 7 nota del 10/1; 8 La palta del sushi; 9 nota del 24/1; 10 Lo que
     tirás de una palta; 11 nota del 7/2, Carnaval, ciencia y San Valentín; 12 Apurarla o
     frenarla; 13 nota del 21/2.
-  - Pestaña "Calendario" del Plan de redes: cómo se armó, 7 tareas de Reels con guion en
-    off, el material de Drive y la canción de cada una (23/12 La semana más larga del
-    año, a grabar del 21 al 23/12; 6/1 tostada con huevo poché; 8/1 Lo que dice la
-    cáscara; 22/1 La palta del sushi, a grabar antes; 29/1 Así le mostramos un cajón a
-    un cliente; 5/2 Lo que tirás también es palta; 19/2 Domingo de tostadas), temas de
-    Tom especialista (4/1, 18/1, 1/2 y 15/2), la guía de música, el inventario del Drive
-    y lo que falta.
-  - Cuenta del plan gratis: en diciembre las piezas de Claude son 8 posts y 5
-    historias. Si los 8 posts salieran desde Metricool a Instagram y Facebook serían 16
-    de las 20 del mes; publicados a mano desde Instagram no cuentan.
-  - Falta de Tomás: mostrarle la planilla a Pipi; grabar el Reel del 23/12 (entre el 21
-    y el 23/12) y las tomas del sushi (antes del 22/1).
-  - Cuando existan las notas del 10/1, 24/1, 7/2 y 21/2: escribir sus guiones y
-    carruseles.
+  - Pestaña "Calendario" del Plan de redes: cómo se armó, qué cambió en diciembre
+    (7/11), 7 tareas de Reels con guion en off, el material de Drive y la canción de
+    cada una (23/12 La semana más larga del año, a grabar del 21 al 23/12; 6/1 tostada
+    con huevo poché; 8/1 Lo que dice la cáscara; 22/1 La palta del sushi, a grabar
+    antes; 29/1 Así le mostramos un cajón a un cliente; 5/2 Lo que tirás también es
+    palta; 19/2 Domingo de tostadas), temas de Tom especialista (4/1, 18/1, 1/2 y 15/2),
+    la guía de música, el inventario del Drive y lo que falta.
+  - Cuenta del plan gratis: en diciembre las piezas de Claude son 9 posts y 5
+    historias (la historia del 29/11 cuenta en noviembre). Si los 9 posts salieran
+    desde Metricool a Instagram y Facebook serían 18 de las 20 del mes, y las historias
+    sumarían 5 más; publicados a mano desde Instagram no cuentan.
+  - Falta de Tomás: mostrarle la planilla a Pipi (lo que cambió de lo suyo está en
+    amarillo, con el motivo); decidir con Pipi si graban las recetas propias del 9/12 y
+    el 16/12 (si no, van de otras cuentas); grabar el Reel del 23/12 (entre el 21 y el
+    23/12) y las tomas del sushi (antes del 22/1).
+  - Cuando existan las notas del 10/1, 24/1, 7/2 y 21/2: escribir sus guiones,
+    carruseles e historias con el link.
 - [x] **Lote de diciembre 2026 armado** (OK de Tomás el 6/11/2026, hecho el mismo día).
-  - 13 borradores en Metricool (8 posts a Instagram y Facebook, 5 historias solo a
+  - 15 borradores en Metricool (9 posts a Instagram y Facebook, 6 historias solo a
     Instagram), todos con `draft: true` y `autoPublish: false`: no salen solos. Tomás
     pidió que queden así porque la mayoría se va a bajar para ponerle música y subir a
     mano. Hora de Buenos Aires: posts 20:00 (mejor horario según Metricool), 31/12
-    12:00; historias 12:00, 19:00 o 21:00.
+    12:00; historias 19:00 (las del link a una nota) o 21:00 (las del dato).
+  - El 7/11, con la versión 4 del calendario, se sumaron 2: la historia con el link a la
+    nota del 29/11 y el dato de las 47 variedades del 3/12. La historia del 3/12 pasó de
+    las 12:00 a las 21:00 (en Metricool cambió su id; el uuid sigue igual).
   - Metricool guarda una copia idéntica de cada imagen (comprobado byte por byte con
     SHA-256, en el lote 1 y en las portadas de diciembre): bajarla de Metricool no
     pierde calidad.
-  - Imágenes: 48 JPG (calidad 95, sin submuestreo de color) en Cloudinary, carpeta
+  - Imágenes: 50 JPG (calidad 95, sin submuestreo de color) en Cloudinary, carpeta
     `puesto-de-palta/redes/diciembre-2026/<pieza>/`. En la carpeta del proyecto de Claude,
     `redes/diciembre-2026/`: una carpeta por pieza con sus imágenes y un
     `texto-y-notas.txt` (texto del post, canción y qué agregar en Instagram), un
@@ -158,10 +215,12 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     su herramienta no tiene campo de notas y el texto del post se publicaría. Están en
     cada `texto-y-notas.txt` y en la tabla "Borradores de diciembre" de la pestaña
     Calendario del Plan de redes.
-  - Dependen de notas del blog que hoy son borrador en Notion: 1/12 (nota del 29/11),
-    15/12 y la historia del 13/12 (nota del 13/12), 29/12 y la historia del 27/12 (nota
-    del 27/12), y cinco números del 31/12. Si alguna no sale, esa pieza se corre o se
-    cambia. El título de la nota del 27/12 está escrito "como" sin tilde en Notion.
+  - Dependen de notas del blog que hoy son borrador en Notion: la historia del 29/11, el
+    carrusel del 1/12 y el dato y la historia del 3/12 (nota del 29/11); el carrusel del
+    15/12 y la historia del 13/12 (nota del 13/12); el carrusel del 29/12 y la historia
+    del 27/12 (nota del 27/12), y cinco números del 31/12. Si alguna no sale, esa pieza
+    se corre o se cambia. El título de la nota del 27/12 está escrito "como" sin tilde en
+    Notion.
   - En las fotos de la palta en la mano se lee la etiqueta de la fruta (Propal, Chile):
     dato e historia del 10/12, historia del 27/12 y carrusel del 29/12. En el Plan de
     redes se le ofreció a Tomás cambiar esas fotos si prefiere.
@@ -169,8 +228,10 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
 
   | Fecha y hora | Pieza | Imágenes | Canción | Metricool id | uuid |
   |---|---|---|---|---|---|
+  | 29/11 19:00 | Historia con link a la nota "La palta que nadie cultivó a propósito" | 1 | Mañanas en el Depósito | 419966108 | -7470821315535549619 |
   | 1/12 20:00 | Carrusel "La palta que nadie cultivó a propósito" | 6 | Divina Cosecha | 418423323 | 6321353025592444006 |
-  | 3/12 12:00 | Historia: 47 variedades, encuesta "¿Lo sabías?" | 1 | Mercado al Alba | 418423472 | 8636534181909447004 |
+  | 3/12 20:00 | Dato "47 variedades sin registrar" | 1 | Mercado al Alba | 419966136 | -6755557745045714443 |
+  | 3/12 21:00 | Historia: 47 variedades, encuesta "¿Lo sabías?" | 1 | Mercado al Alba | 419966143 | 8636534181909447004 |
   | 8/12 20:00 | Carrusel "Pedila en su punto para las Fiestas" | 6 | La Bella Entrega | 418423481 | 82243734738191373 |
   | 10/12 20:00 | Dato "1926" | 1 | Divina Cosecha | 418423736 | 1721036335684208114 |
   | 10/12 21:00 | Historia: quiz México, Perú, California o Chile | 1 | Divina Cosecha | 418423749 | -4381109930861377144 |

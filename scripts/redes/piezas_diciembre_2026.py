@@ -8,6 +8,7 @@ TZ = 'America/Buenos_Aires'
 WA = '11 4027 0343'
 
 FOTOS = {  # descripción de la foto de fondo por pieza y número de imagen
+    ('2026-11-29-historia', 1): 'Dos mitades de palta sobre una mesa de madera, con luz cálida',
     ('2026-12-01-carrusel', 1): 'Dos mitades de palta sobre una mesa de madera, con luz cálida',
     ('2026-12-01-carrusel', 6): 'Dos mitades de palta, una con carozo, sobre madera',
     ('2026-12-08-carrusel', 1): 'Un cajón con paltas en distintos puntos de maduración',
@@ -25,13 +26,22 @@ FOTOS = {  # descripción de la foto de fondo por pieza y número de imagen
 }
 
 PIEZAS = [
+    dict(id='2026-11-29-historia', fecha='2026-11-29', hora='19:00', dia='domingo', tipo='Historia', titulo='Nota nueva: La palta que nadie cultivó a propósito',
+         musica='Mañanas en el Depósito',
+         notas='Subila recién cuando la nota esté publicada. Agregá el sticker de Enlace entre el texto y la foto, con el link de la nota (puestodepalta.com/blog y tocá la nota).'),
     dict(id='2026-12-01-carrusel', fecha='2026-12-01', hora='20:00', dia='martes', tipo='Carrusel', titulo='La palta que nadie cultivó a propósito',
          musica='Divina Cosecha',
          notas='Sale después de que publiques la nota del 29/11. Va con el Reel del lunes 30/11.',
          texto='El mundo come casi una sola palta: la Hass. Y un hongo que pudre la raíz de los árboles ya es un problema serio en varios países.\n\n'
                'En Nicaragua y Honduras crecen 47 variedades que la ciencia no tenía registradas. Nadie las creó a propósito, y quienes las cultivan nunca tuvieron problemas con ese hongo. ¿Será el plan B del mundo?\n\n'
                'La nota completa, en puestodepalta.com/blog\n\n#palta #paltahass #biodiversidad #puestodepalta'),
-    dict(id='2026-12-03-historia', fecha='2026-12-03', hora='12:00', dia='jueves', tipo='Historia', titulo='Curiosidad: 47 variedades sin registrar',
+    dict(id='2026-12-03-dato', fecha='2026-12-03', hora='20:00', dia='jueves', tipo='Post (dato)', titulo='47 variedades sin registrar',
+         musica='Mercado al Alba',
+         notas='Sale después de la nota del 29/11. Va en lugar del post del Día del Médico, que pasó a historia.',
+         texto='Hay 47 variedades de palta que la ciencia no tenía registradas. Crecen en Nicaragua y Honduras, no tienen nombre y nadie las exporta.\n\n'
+               'Quienes las cultivan nunca tuvieron problemas con el hongo que pudre la raíz de la Hass. La historia completa está en la nota La palta que nadie cultivó a propósito, en puestodepalta.com/blog\n\n'
+               '#palta #paltahass #biodiversidad #puestodepalta'),
+    dict(id='2026-12-03-historia', fecha='2026-12-03', hora='21:00', dia='jueves', tipo='Historia', titulo='Curiosidad: 47 variedades sin registrar',
          musica='Mercado al Alba',
          notas='Agregá una encuesta en el espacio libre de abajo: "¿Lo sabías?" con Sí y No.'),
     dict(id='2026-12-08-carrusel', fecha='2026-12-08', hora='20:00', dia='martes (feriado)', tipo='Carrusel', titulo='Pedila en su punto para las Fiestas',

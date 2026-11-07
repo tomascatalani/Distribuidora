@@ -11,6 +11,7 @@ ASSETS = os.path.join(OUT, 'assets')
 
 # ---------- fotos: recorte (archivo, nombre, formato, desplazamiento 0..1) ----------
 CROPS = {
+    'n29-historia': ('DSC_0604.JPG', 'band', 0.25),
     'd01-portada': ('DSC_0604.JPG', 'post', 0.75),
     'd01-cierre': ('DSC_0612.JPG', 'post', 0.55),
     'd08-portada': ('143969.jpg', 'post', 0.5),
@@ -160,6 +161,13 @@ def R():
 # ---------- piezas ----------
 P = {}
 
+# 29/11 historia: nota nueva (agregada el 7/11: el link de cada nota va en una historia)
+P['2026-11-29-historia'] = [slide('negro story', PDP, 'Nota nueva',
+    R() + '<div class="big m">La palta que nadie cultivó <em>a propósito.</em></div>'
+    '<div class="small" style="margin-top:40px">El mundo come casi una sola palta. En Nicaragua y Honduras crecen 47 que la ciencia no tenía registradas.</div>',
+    'PUESTODEPALTA.COM/BLOG', '<span></span>').replace('<div class="bottom">',
+    f'<div class="gap" style="height:240px"></div><div class="banda2" style="background-image:url(\'assets/{crop("n29-historia")}\')"></div>\n  <div class="bottom">')]
+
 # 1/12 La palta que nadie cultivó a propósito
 P['2026-12-01-carrusel'] = carrusel([
     ('foto', R() + '<div class="big">La palta que nadie cultivó <em>a propósito.</em></div>'
@@ -175,6 +183,13 @@ P['2026-12-01-carrusel'] = carrusel([
     ('foto', R() + '<div class="big">¿Y si el plan B de la palta <em>ya existe?</em></div>'
              '<div class="small">La nota completa está en el blog.</div>', crop('d01-cierre'), 'PUESTODEPALTA.COM/BLOG', LOGO),
 ], 'LA PALTA QUE NADIE CULTIVÓ')
+
+# 3/12 dato 47 variedades (agregado el 7/11: el Día del Médico pasó a historia y el jueves quedó libre)
+P['2026-12-03-dato'] = [slide('verde', PDP, 'Dato del jueves',
+    '<div class="huge xl">47</div>'
+    '<div class="big m" style="margin-top:16px">variedades de palta que la ciencia <em>no tenía registradas.</em></div>'
+    '<div class="small">Crecen en Nicaragua y Honduras. Nadie las cultivó a propósito.</div>',
+    'LA PALTA QUE NADIE CULTIVÓ', '<span>PUESTODEPALTA.COM/BLOG</span>')]
 
 # 3/12 historia: curiosidad
 P['2026-12-03-historia'] = [slide('verde story', PDP, 'Curiosidad',
