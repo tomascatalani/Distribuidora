@@ -208,19 +208,25 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   - Audio para Pipi (6/11/2026, pedido de Tomás): el diagnóstico contado en 2 minutos y
     medio, con voz sintética. MP3 y guion en la carpeta del proyecto
     `redes/audio-analisis/`. Cómo se hace: `scripts/redes/README.md`, sección Audio.
-  - **Falta separar lo pago** (Tomás, 6/11: "hay publicaciones con plata inyectada").
-    Los datos por Reel de Metricool son solo orgánicos (alcance, vistas, likes,
-    guardados, compartidos), pero no marcan qué Reels tuvieron promoción: los campos
-    pagos (IGRE14, 16 a 20) vienen vacíos porque Meta Ads no está conectado. Los
-    seguidores (IGEV) cuentan todos, vengan o no de anuncios. Tomás conectó su cuenta de
-    anuncios de Meta en Metricool el 6/11 (aparece como `facebookAdsData` en
-    `getBrandSettings`). Ese día todavía no había campañas: Metricool sincroniza de
-    noche y, según su ayuda, al conectar trae unos 30 días para atrás. Dónde mirar:
-    campañas FACA (03 inicio, 04 fin, 05 nombre, 07 objetivo, 12 alcance, 13 gasto,
-    156/157 resultados), anuncios FADE (08 fecha, 13 gasto, 16 alcance, 148 `boostId`,
-    que es el id del Reel promocionado y se cruza con IGRE04/IGRE19) y gasto diario
-    FAEV04. Hasta separarlo, el análisis lleva un aviso arriba de "Tus números" y se
-    le sugirió a Tomás no mandar el audio a Pipi.
+  - **Lo pago, separado** (7/11; Tomás, 6/11: "hay publicaciones con plata inyectada").
+    Los datos por Reel de Metricool (alcance, vistas, likes, guardados, compartidos)
+    son solo orgánicos; los seguidores (IGEV) cuentan todos. Tomás conectó su cuenta de
+    anuncios de Meta en Metricool el 6/11 (`facebookAdsData` en `getBrandSettings`) y a
+    la mañana siguiente ya estaban las campañas desde fines de agosto; de antes no hay
+    datos. Cómo se leyó: campañas FACA03 (inicio), 05 (nombre: "Publicación de
+    Instagram: " más el comienzo del texto, que se cruza con el texto del Reel), 07
+    (objetivo), 12 (alcance), 13 (gasto) y 156/157 (resultados); gasto por día FAEV04.
+    Los anuncios por pieza (FADE, con `boostId`) y los campos pagos de IGRE (14, 16 a
+    20) vinieron vacíos.
+    - Resultado: sin los 12 Reels que tuvieron plata hasta el 4/11, las conclusiones
+      no cambian (mediana 783; recetas de otras cuentas 1.141 contra propios 597;
+      efemérides últimas; 22 h mejor que 18 h). El crecimiento del 31/10 al 4/11 y el
+      hummus fueron orgánicos: no hubo anuncios del 24/10 al 4/11, y al hummus se le
+      puso plata recién el 5/11.
+    - Los montos, la tabla de campañas y sus resultados (visitas al perfil, clics a
+      las notas, mensajes) están en "La plata en anuncios", en la pestaña Análisis. No
+      se copian acá porque el repo es público.
+    - El audio para Pipi no cambia: todos sus números son orgánicos y se mantienen.
 - [x] **Documento principal: "Plan de redes — Puesto de Palta"**
   (https://claude.ai/artifact/2uUFoTooRGhhWfVuKPpnSP), con tres pestañas: Análisis,
   Acción y Creación. Reemplaza al primero, "Competencia en redes y guiones".
