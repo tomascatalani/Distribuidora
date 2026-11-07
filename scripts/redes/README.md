@@ -1,6 +1,7 @@
 # Piezas para redes: carruseles, datos e historias
 
-Con esto se armaron el lote 1 (5/11/2026) y el lote de diciembre 2026. Es el mismo
+Con esto se armaron el lote 1 (5/11/2026), el lote de diciembre 2026 (6/11) y el de
+enero y febrero 2027 (7/11). Es el mismo
 diseño que el sitio: Libre Baskerville para los títulos, Open Sans para el texto, y los
 colores verde `#4a7c59`, crema `#faf8f4` y negro `#0a0a0a`. Posts de 1080x1350 e
 historias de 1080x1920.
@@ -15,9 +16,16 @@ Todo se hace en una carpeta de trabajo fuera del repo (por ejemplo, el scratchpa
 1. **Fotos.** Bajar del Drive las fotos elegidas a `<trabajo>/fotos_full/` (cómo se
    leen las carpetas: `docs/REDES.md`, sección 6).
 2. **Fuentes y logo.** `python3 -I scripts/redes/preparar.py <trabajo>`
-3. **HTML de cada pieza.** `python3 -I scripts/redes/diciembre_2026.py <trabajo>`.
-   Recorta las fotos y escribe un HTML por pieza en `<trabajo>/build/`. Para un lote
-   nuevo, copiar el archivo y cambiar `CROPS` (fotos y encuadre) y `P` (las piezas).
+3. **HTML de cada pieza.** `python3 -I scripts/redes/diciembre_2026.py <trabajo>`
+   (enero y febrero: `enero_febrero_2027.py`). Recorta las fotos y escribe un HTML por
+   pieza en `<trabajo>/build/`. Para un lote nuevo, copiar el último y cambiar `CROPS`
+   (fotos y encuadre) y `P` (las piezas). En el de enero y febrero, cada recorte puede
+   llevar un quinto valor, el brillo: una gamma mayor que 1 (1,25 a 1,35) aclara las
+   sombras de las fotos oscuras sin quemar las luces. También suma el formato `band`
+   (1080x820, la foto de las historias con texto abajo) y la clase `foto arriba`, que
+   pone el texto arriba y deja ver la foto abajo. En el Drive hay nombres repetidos, así
+   que cada foto se baja como `n<orden>_<nombre>`; qué foto es cada una (con su id) está
+   en la carpeta del proyecto, `redes/<lote>/fotos.tsv`, nunca en el repo.
 4. **Dibujar.** `node scripts/redes/render.cjs <trabajo>/build/<pieza>.html <trabajo>/png/<pieza> 1080 1350`
    (historias: `1080 1920`). Usa el Chromium que trae Playwright. Es `.cjs` porque el
    `package.json` del repo pide módulos ES. Todas juntas:
@@ -27,15 +35,22 @@ Todo se hace en una carpeta de trabajo fuera del repo (por ejemplo, el scratchpa
    arma una hoja por pieza para mirar todo junto.
 6. **JPG finales.** `python3 -I scripts/redes/finalizar.py <trabajo>`: calidad 95 y sin
    submuestreo de color, para que el texto quede nítido.
-7. **Subir a Cloudinary.** `python3 -I scripts/redes/subir.py <trabajo>`. Usa el preset
-   sin firma y lee `CLOUDINARY_CLOUD_NAME` y `CLOUDINARY_UPLOAD_PRESET` del entorno.
-   Deja las URLs en `<trabajo>/urls.json`.
+7. **Subir a Cloudinary.** `python3 -I scripts/redes/subir.py <trabajo> <lote>` (por
+   ejemplo `enero-febrero-2027`; sin lote usa `diciembre-2026`). Usa el preset sin firma
+   y lee `CLOUDINARY_CLOUD_NAME` y `CLOUDINARY_UPLOAD_PRESET` del entorno. Deja las URLs
+   en `<trabajo>/urls.json`.
 8. **Textos y pedido a Metricool.** `python3 -I scripts/redes/piezas_diciembre_2026.py <trabajo>`
+   (enero y febrero: `piezas_enero_febrero_2027.py`)
    tiene el texto, la hora, la canción y las notas de cada pieza, y arma en
    `<trabajo>/payloads/` lo que se le pasa a `createScheduledPost`: siempre con
    `draft: true` y `autoPublish: false`.
-9. **Entregar.** `python3 -I scripts/redes/entregar.py <trabajo> /mnt/project-files/redes/<lote>/`
-   copia las imágenes con un `texto-y-notas.txt` por pieza y arma un zip.
+9. **Entregar.** `python3 -I scripts/redes/entregar.py <trabajo> /mnt/project-files/redes/<lote>/ <lote> "<título>"`
+   copia las imágenes con un `texto-y-notas.txt` por pieza y arma un zip (sin lote ni
+   título, arma el de diciembre 2026).
+10. **Carpeta del día.** Si la planilla del calendario ya tiene instalado el script, las
+   piezas nuevas se suben también a la carpeta de su día en el Drive (REDES PUESTO DE
+   PALTA > Redes por día). El id de cada carpeta está en la pestaña oculta Carpetas de la
+   planilla, columna D.
 
 Metricool guarda una copia idéntica (byte por byte) de cada imagen que se le pasa, así
 que bajarla de Metricool no pierde calidad.
@@ -58,3 +73,27 @@ Whisper. La primera vez baja el modelo de Whisper (1,6 GB).
 3. **Grabar.** `python3 -I scripts/redes/audio.py guion.txt salida.mp3 es_AR-daniela-high.onnx`.
    Tarda unos 10 minutos. Al final lista las frases que se siguen oyendo mal: cambiarles
    las palabras y volver a correrlo, que solo regraba esas.
+
+## Calendario y carpetas por día (Apps Script)
+
+`apps-script/calendario.gs` va pegado en la planilla del calendario (Extensiones > Apps
+Script) y se instala una sola vez con el menú "Puesto de Palta > Instalar". No tiene ids:
+los lee de las pestañas ocultas Carpetas y Material de la planilla, que arma el
+generador del calendario (`v5.py`, en la carpeta privada del proyecto,
+`redes/calendario/`).
+
+- **Armar carpetas** (`armarCarpetas`): crea REDES PUESTO DE PALTA > Redes por día > un
+  mes > una carpeta por publicación, pone el link en la columna Carpeta y copia el
+  material de la pestaña Material: archivos del Drive (`makeCopy`, con nombre nuevo),
+  imágenes de Claude (las baja de su URL) y textos. Lo que ya está no se vuelve a copiar;
+  si algo falla, queda anotado y se reintenta en la vuelta siguiente.
+- **Buscar finales** (`buscarFinales`): busca archivos cuyo nombre empiece con FINAL,
+  mira en qué carpeta de publicación están, escribe el nombre con link en Archivo final
+  y pasa el estado a "Listo para subir" si estaba en uno de los rojos o en Grabado. No
+  toca lo publicado.
+- Corre cada hora (`cadaHora`) y en tandas de 4,5 minutos, porque Google corta a los 6.
+- **Probarlo sin Google:** en la carpeta del proyecto, `redes/calendario/prueba/`, hay
+  una planilla y un Drive simulados: `node mock_test.js scripts/redes/apps-script/calendario.gs`
+  (desde la raíz del repo, con la ruta completa de `mock_test.js`).
+- **La planilla no se recrea** una vez instalado el script: se perderían el script y los
+  links de las carpetas.

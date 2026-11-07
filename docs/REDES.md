@@ -94,10 +94,11 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
 - [x] **Revisión semanal de la competencia** programada (5/11/2026): tarea "Revisión
   semanal de la competencia en redes", todos los lunes 8:53 hora de Buenos Aires
   (primera: 9/11/2026). Mira Metricool (competidores y números propios), actualiza la
-  tabla "La competencia en números" de la pestaña Análisis con fecha y 2 o 3
-  observaciones, deja el resumen en esta sección y le avisa a Tomás en pocas líneas.
+  tabla "La competencia en números" de la pestaña "B · Información semanal" (hasta el
+  7/11 se llamaba Análisis) con fecha y 2 o 3 observaciones, deja el resumen en esta
+  sección y le avisa a Tomás en pocas líneas.
 - [x] **Calendario de diciembre 2026 a febrero 2027** (pedido y hecho el 5/11/2026;
-  versión 4 el 7/11/2026).
+  versiones 4 y 5 el 7/11/2026; la 5 está más abajo, en su propio punto).
   - Planilla "Calendario de contenidos PdP — dic 2026 a feb 2027" en Mi unidad de
     Tomás, sin compartir todavía (el link está en la pestaña Calendario del Plan de
     redes). 13 semanas, del 29/11 al 28/2. Mantiene lo que Pipi tenía en su Agenda hasta
@@ -177,7 +178,9 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     6 El punto exacto; 7 nota del 10/1; 8 La palta del sushi; 9 nota del 24/1; 10 Lo que
     tirás de una palta; 11 nota del 7/2, Carnaval, ciencia y San Valentín; 12 Apurarla o
     frenarla; 13 nota del 21/2.
-  - Pestaña "Calendario" del Plan de redes: cómo se armó, qué cambió en diciembre
+  - Pestaña "Calendario" del Plan de redes (así quedó hasta el 7/11; desde ahí los
+    guiones, los temas y los borradores están en la pestaña Creación, y la música y el
+    material del Drive en "A · Información fija"): cómo se armó, qué cambió en diciembre
     (7/11), 7 tareas de Reels con guion en off, el material de Drive y la canción de
     cada una (23/12 La semana más larga del año, a grabar del 21 al 23/12; 6/1 tostada
     con huevo poché; 8/1 Lo que dice la cáscara; 22/1 La palta del sushi, a grabar
@@ -192,8 +195,9 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     amarillo, con el motivo); decidir con Pipi si graban las recetas propias del 9/12 y
     el 16/12 (si no, van de otras cuentas); grabar el Reel del 23/12 (entre el 21 y el
     23/12) y las tomas del sushi (antes del 22/1).
-  - Cuando existan las notas del 10/1, 24/1, 7/2 y 21/2: escribir sus guiones,
-    carruseles e historias con el link.
+  - Las notas del 10/1 y el 24/1 ya tienen sus guiones, carruseles e historias (lote de
+    enero y febrero, más abajo). Las del 7/2 y el 21/2 se escriben en enero, con
+    noticias frescas (ver "Tareas programadas").
 - [x] **Lote de diciembre 2026 armado** (OK de Tomás el 6/11/2026, hecho el mismo día).
   - 15 borradores en Metricool (9 posts a Instagram y Facebook, 6 historias solo a
     Instagram), todos con `draft: true` y `autoPublish: false`: no salen solos. Tomás
@@ -214,7 +218,7 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   - Las notas para Instagram (canción, encuestas, stickers de link) no van en Metricool:
     su herramienta no tiene campo de notas y el texto del post se publicaría. Están en
     cada `texto-y-notas.txt` y en la tabla "Borradores de diciembre" de la pestaña
-    Calendario del Plan de redes.
+    Creación del Plan de redes.
   - Dependen de notas del blog que hoy son borrador en Notion: la historia del 29/11, el
     carrusel del 1/12 y el dato y la historia del 3/12 (nota del 29/11); el carrusel del
     15/12 y la historia del 13/12 (nota del 13/12); el carrusel del 29/12 y la historia
@@ -243,9 +247,10 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   | 27/12 19:00 | Historia con link a la nota "El árbol" | 1 | Mañanas en el Depósito | 418424241 | -8493676837517834410 |
   | 29/12 20:00 | Carrusel "La flor de la palta abre dos veces" | 6 | Mañanas en el Depósito | 418424248 | -5204818510854143634 |
   | 31/12 12:00 | Carrusel "2026 en la palta, en 8 números" | 10 | Divina Cosecha | 418424260 | 1273242145772421938 |
-- [x] **Diagnóstico de publicaciones** (6/11/2026), en "Tus números" de la pestaña
-  Análisis del Plan de redes. Metricool trajo Instagram del 11/7 al 5/11/2026: 96 Reels y
-  4 carruseles (el plan gratis no da más historia). Resumen:
+- [x] **Diagnóstico de publicaciones** (6/11/2026), en "Los números de la cuenta" de la
+  pestaña "B · Información semanal" del Plan de redes (antes "Tus números", en
+  Análisis). Metricool trajo Instagram del 11/7 al 5/11/2026: 96 Reels y 4 carruseles
+  (el plan gratis no da más historia). Resumen:
   - 12.314 seguidores el 4/11; del 31/10 al 4/11, +872 y -12. Alcance de la cuenta:
     6.000 a 15.000 cuentas por día.
   - Un Reel típico llega a 744 personas (mediana, sin las 11 pruebas). El hummus del
@@ -285,12 +290,13 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
       hummus fueron orgánicos: no hubo anuncios del 24/10 al 4/11, y al hummus se le
       puso plata recién el 5/11.
     - Los montos, la tabla de campañas y sus resultados (visitas al perfil, clics a
-      las notas, mensajes) están en "La plata en anuncios", en la pestaña Análisis. No
-      se copian acá porque el repo es público.
+      las notas, mensajes) están en "La plata en anuncios", en la pestaña "B ·
+      Información semanal". No se copian acá porque el repo es público.
     - El audio para Pipi no cambia: todos sus números son orgánicos y se mantienen.
 - [x] **Documento principal: "Plan de redes — Puesto de Palta"**
-  (https://claude.ai/artifact/2uUFoTooRGhhWfVuKPpnSP), con tres pestañas: Análisis,
-  Acción y Creación. Reemplaza al primero, "Competencia en redes y guiones".
+  (https://claude.ai/artifact/2uUFoTooRGhhWfVuKPpnSP). Reemplaza al primero,
+  "Competencia en redes y guiones". Desde el 7/11/2026 tiene cinco pestañas (ver
+  "Plan de redes reordenado", más abajo).
 - [x] Lote 1 creado (5/11/2026): carrusel de 6 imágenes "La palta dejó de tener
   temporada" (nota Supply sin fin) + texto del post, en la carpeta del proyecto
   `redes/lote-1-temporada/`. Hecho en HTML con las fotos de la galería de Cloudinary y
@@ -304,7 +310,112 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   id 418355575, mismo uuid). Le cambió el texto a letras especiales (ver sección 5).
   El 6/11 todavía no aparecía en los números de Metricool: se mide el lunes 9/11, junto
   con la revisión semanal, contra la mediana de los carruseles (447) y de los Reels (744).
-- [ ] Rutina semanal de publicaciones (propuesta en la pestaña Acción).
+- [x] Rutina semanal de publicaciones: la semana tipo está en la pestaña "A ·
+  Información fija" del Plan de redes y en la planilla (pestaña Cómo leerla).
+
+- [x] **Lote de enero y febrero 2027 armado** (pedido por Tomás el 7/11/2026, hecho el
+  mismo día).
+  - 24 borradores en Metricool (15 posts a Instagram y Facebook, 9 historias solo a
+    Instagram), con `draft: true` y `autoPublish: false`, igual que diciembre. Enero: 8
+    posts y 6 historias; febrero: 7 posts y 3 historias.
+  - Imágenes en Cloudinary, carpeta `puesto-de-palta/redes/enero-febrero-2027/<pieza>/`.
+    En la carpeta del proyecto, `redes/enero-febrero-2027/`: una carpeta por pieza con
+    sus imágenes y su `texto-y-notas.txt`, `LEEME.txt`, el zip, `metricool.tsv` (ids) y
+    `fotos.tsv` (qué foto del Drive se usó en cada pieza, con su id, que no va al repo).
+  - Scripts: `scripts/redes/enero_febrero_2027.py` (HTML de cada pieza) y
+    `scripts/redes/piezas_enero_febrero_2027.py` (textos, horas, canciones y pedidos a
+    Metricool). `subir.py` y `entregar.py` ahora reciben el nombre del lote. Cómo se usa:
+    `scripts/redes/README.md`.
+  - Cambios contra el calendario: el dato del 21/1 pasó de "400 gramos por persona"
+    (viejo, no cerraba con las 33.770 toneladas del 14/1) a la palta que resiste 8 grados
+    bajo cero (nota "La palta que resiste el hielo"); el jueves 11/2 va un carrusel de
+    investigadoras (Día de la Mujer y la Niña en la Ciencia) en lugar del dato;
+    San Valentín (14/2) lo arma Claude, a las 12:00.
+  - Faltan, a propósito, las piezas de las notas del 7/2 y el 21/2 (historia, carruseles
+    del 9/2 y el 23/2, guiones del 8/2 y el 22/2): se arman en enero con cada nota.
+  - Los guiones de los Reels del 11/1 y el 25/1 (notas de Tucumán y Trece pesos) están en
+    la pestaña Creación del Plan de redes, con los demás.
+
+  | Fecha y hora | Pieza | Imágenes | Canción | Metricool id | uuid |
+  |---|---|---|---|---|---|
+  | 5/1 20:00 | Carrusel: El punto exacto 2: cómo saber si está lista sin lastimarla | 6 | Ansiada Maduración | 420014741 | -634943425460417823 |
+  | 7/1 20:00 | Post (dato): La palta no madura en el árbol | 1 | Divina Cosecha | 420014971 | -342275286291624984 |
+  | 7/1 21:00 | Historia: Curiosidad: la palta no madura en el árbol | 1 | Divina Cosecha | 420014979 | -6009099323051390410 |
+  | 10/1 19:00 | Historia: Nota nueva: El tercer intento de Tucumán con la palta | 1 | Mañanas en el Depósito | 420014986 | 8082961545663105310 |
+  | 12/1 20:00 | Carrusel: El tercer intento de Tucumán con la palta | 6 | Divina Cosecha | 420015295 | -461361780837888634 |
+  | 14/1 20:00 | Post (dato): De 8.100 a 33.770 toneladas | 1 | Interminables Logísticas | 420015301 | 8873021945914148905 |
+  | 14/1 21:00 | Historia: Encuesta: ¿comés más palta que antes? | 1 | Interminables Logísticas | 420015309 | 3446942762671229130 |
+  | 19/1 20:00 | Carrusel: La palta del sushi: lista y firme a la vez | 6 | La Bella Entrega | 420015603 | 7171192677586520347 |
+  | 21/1 20:00 | Post (dato): −8 grados: la palta que resiste el hielo | 1 | Mercado al Alba | 420015613 | -8338500932427428918 |
+  | 21/1 21:00 | Historia: Pregunta: ¿cuánto frío aguanta un palto? | 1 | Mercado al Alba | 420015625 | -4792565007787995280 |
+  | 24/1 19:00 | Historia: Nota nueva: Trece pesos y un certificado | 1 | Mañanas en el Depósito | 420015637 | 1432739590929272574 |
+  | 26/1 20:00 | Carrusel: Trece pesos y un certificado | 7 | Mañanas en el Depósito | 420016069 | -6286087750422673486 |
+  | 28/1 20:00 | Post (dato): 30 días en el mar | 1 | Interminables Logísticas | 420016076 | 7742324505825657256 |
+  | 28/1 21:00 | Historia: Pregunta: ¿cuánto tarda de Chile a Europa? | 1 | Interminables Logísticas | 420016084 | -3027262539540577986 |
+  | 2/2 20:00 | Carrusel: Lo que tirás también es palta | 6 | Temida Facturación | 420016102 | 5677400121914640295 |
+  | 4/2 20:00 | Post (dato): El carozo es el 16% de la palta | 1 | Mercado al Alba | 420016452 | 408128523092772226 |
+  | 4/2 21:00 | Historia: Encuesta: ¿qué hacés con el carozo? | 1 | Mercado al Alba | 420016473 | 1398838500849895052 |
+  | 11/2 20:00 | Carrusel: Investigadoras y palta (Día de la Mujer y la Niña en la Ciencia) | 6 | Mañanas en el Depósito | 420016484 | -3360744350778309297 |
+  | 14/2 12:00 | Post: San Valentín: el palto también necesita pareja | 1 | Ansiada Maduración | 420016493 | 7520442844959100026 |
+  | 16/2 20:00 | Carrusel: El punto exacto 3: apurarla o frenarla | 6 | Ansiada Maduración | 420016914 | 6923167392989529007 |
+  | 18/2 20:00 | Post (dato): 0,72 euros: menos que un café | 1 | Temida Facturación | 420016924 | 5463754828842224505 |
+  | 18/2 21:00 | Historia: Curiosidad: 0,72 euros | 1 | Temida Facturación | 420016947 | 6462862635016799388 |
+  | 25/2 20:00 | Post (dato): Kenia frenó sus exportaciones de palta | 1 | Interminables Logísticas | 420016962 | 7823914362492174384 |
+  | 25/2 21:00 | Historia: Pregunta: ¿por qué frenó Kenia? | 1 | Interminables Logísticas | 420016972 | 633022090592208450 |
+- [x] **Notas del blog con fecha** (7/11/2026, con OK de Tomás en la tarjeta de decisión):
+  "El tercer intento de Tucumán con la palta" el 10/1/2027 y "Trece pesos y un
+  certificado" el 24/1/2027. Arreglos en Notion: en Trece pesos, "En febrero de este año"
+  pasó a "En febrero de 2026" (la nota sale en 2027); a Tucumán se le escribió el
+  Excerpt. Quedan con fecha todas las notas sin publicar: 9/11, 15/11, 19/11, 29/11,
+  13/12, 27/12, 10/1 y 24/1. Ninguna tiene Publicar tildado (se le avisó a Tomás: la del
+  lunes 9/11 no sale si no la tilda). Falta que Tomás diga si "El carozo que no es basura"
+  (marzo, nunca salió, repite otras dos) va a la papelera de Notion.
+- [x] **Calendario versión 5 y carpetas por día en el Drive** (7/11/2026). Tomás pidió
+  ver en rojo lo que falta, que al subir un archivo terminado con un nombre fijo la
+  planilla cambie de color y anote el archivo, y una carpeta por día con copias
+  renombradas del material, sin tocar las carpetas originales.
+  - Planilla nueva con el mismo nombre (el id está en `redes/drive-ids.md`). La versión 4
+    quedó en Mi unidad: el pedido para mandarla a la papelera fue rechazado por permisos
+    esta vez, así que la borra Tomás.
+  - Estados: rojo lo que falta (Idea, A definir, Planificado por Pipi, Hay que grabar,
+    Guion listo), verde claro lo hecho sin publicar (Grabado, Listo para subir, Borrador
+    en Notion, Borrador en Metricool) y verde fuerte Publicado. La celda de la fecha toma
+    el mismo color. Enero y febrero al día con el lote armado.
+  - Columnas nuevas: Carpeta (link "Abrir carpeta"), Archivo final y un ID oculto por
+    fila. Pestañas ocultas: Carpetas (la carpeta madre en B1, el id de "Redes por día" en
+    B2 y una fila por carpeta con su id en la columna D) y Material (lo que se copia a
+    cada carpeta: imágenes de Claude por URL, archivos del Drive y textos).
+  - Script de Apps Script: `scripts/redes/apps-script/calendario.gs` (sin ids: los lee de
+    la planilla). Tomás lo pega una sola vez desde Extensiones > Apps Script y corre
+    "Puesto de Palta > Instalar". Arma REDES PUESTO DE PALTA > Redes por día > un mes >
+    una carpeta por publicación ("2027-01-08 vie · Reel · Lo que dice la cáscara"), copia
+    el material con nombre (unos 1 GB, casi todo video) y cada hora busca archivos cuyo
+    nombre empiece con FINAL: anota el nombre con link en Archivo final y, si el estado
+    era de los rojos o Grabado, lo pasa a "Listo para subir". Trabaja de a tandas de 4,5
+    minutos (el límite de Google es 6) y sigue en la hora siguiente.
+  - Probado con una planilla y un Drive simulados en Node (`prueba/` en
+    `redes/calendario/` de la carpeta del proyecto: `node mock_test.js <ruta del .gs>`).
+  - Se arma con `v5.py` en `redes/calendario/` de la carpeta del proyecto (lee
+    `actual.csv` y `datos.json`, que tiene ids del Drive y no va al repo). **Una vez
+    instalado el script, la planilla no se recrea nunca**: se perderían el script y los
+    links. Los cambios se hacen a mano en la planilla (el conector de Drive no edita su
+    contenido), y Claude le dice a Tomás qué cambiar.
+- [x] **Plan de redes reordenado** (7/11/2026, pedido de Tomás para que a Pipi no lo
+  maree tanta información). Pestañas, en orden: Guía (cómo trabajar con el plan y la
+  planilla, colores, carpetas y FINAL, cómo instalar el script, cómo compartir con Pipi,
+  qué falta por persona y cómo seguimos); "A · Información fija" (el lugar de Puesto de
+  Palta, las cinco líneas, la semana tipo, quién hace qué, qué hace Claude, tono, música,
+  cómo medimos y el material del Drive); "B · Información semanal" (ex Análisis: qué
+  cambia en el plan, la competencia, el mapa, los números de la cuenta y lo pago; se
+  actualiza los lunes); Creación (por fecha, con un índice por tipo: notas del blog,
+  borradores de cada mes, guiones de Reels, temas de Tom especialista y guiones de
+  reserva); Calendario (link a la planilla, cómo se armó y qué cambió en diciembre y en
+  enero y febrero).
+- [x] **Tareas programadas** de redes (todas vuelven a este hilo): revisión semanal de la
+  competencia (lunes 8:53); medir el carrusel del 5/11 (9/11, 8:45); balance de
+  diciembre (4/1/2027, 10:17: carruseles contra 450, recetas propias contra las de otras
+  cuentas, prueba de letras); escribir la nota del 7/2 y sus piezas (19/1/2027, 10:17);
+  escribir la nota del 21/2 y sus piezas (2/2/2027, 10:17). Horas de Buenos Aires.
 
 ## 5. Contexto que dio Tomás (5/11/2026)
 

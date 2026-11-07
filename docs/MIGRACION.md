@@ -698,13 +698,16 @@ nadie.
   direcciones inventadas ya no pasa por el Worker, así que no se ve en estas métricas.
 
 - 5/11/2026: se abrió el trabajo de **redes sociales** (Instagram, Facebook, WhatsApp).
-  Todo lo de redes vive en `docs/REDES.md`, no en este documento.
+  Todo lo de redes vive en `docs/REDES.md`, no en este documento. El 7/11 se sumó un
+  script de Apps Script para la planilla del calendario (`scripts/redes/apps-script/`):
+  no toca la web.
 
 ### Pendiente, en orden
 
 1. **Cerrar la primera corrida:** el borrador "Trece pesos y un certificado" está en
    Notion completo (portada generada el 21/10 a las 19:51 ART, reemplazada por
-   script). Falta que Tomás le ponga fecha y tilde Publicar, y verificar el ciclo:
+   script). Desde el 7/11/2026 tiene fecha: 24/1/2027 (la eligió Tomás para el
+   calendario de redes). Falta que Tomás tilde Publicar, y verificar el ciclo ese día:
    nota en la web, campaña en Brevo, push, KV.
 2. **Etapa 5:** rutina programada (lunes 9:00 Argentina) en claude.ai/code → Routines,
    que corra `/nota-semanal` en este repo. Recién después de 2 o 3 corridas manuales OK.

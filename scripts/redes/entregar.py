@@ -1,12 +1,15 @@
 """Copia las imágenes finales a la carpeta del proyecto, con un texto por pieza, y arma un zip.
-Uso: python3 -I scripts/redes/entregar.py <carpeta de trabajo> <carpeta destino>"""
+Uso: python3 -I scripts/redes/entregar.py <carpeta de trabajo> <carpeta destino> [lote] [título]
+Sin lote ni título arma el de diciembre 2026 (lote diciembre-2026)."""
 import json, os, shutil, sys, zipfile
 
 base, dst = sys.argv[1], sys.argv[2]
+lote = sys.argv[3] if len(sys.argv) > 3 else 'diciembre-2026'
+titulo = sys.argv[4] if len(sys.argv) > 4 else 'Borradores de ' + lote.replace('-', ' ')
 P = json.load(open(os.path.join(base, 'piezas_final.json')))
 os.makedirs(dst, exist_ok=True)
 
-indice = ['Borradores de diciembre 2026 para Instagram y Facebook', '',
+indice = [titulo + ' para Instagram y Facebook', '',
           'Están también en Metricool como borrador: no se publican solos.',
           'Las imágenes de cada carpeta son las mismas que guardó Metricool, en calidad completa.', '']
 for p in P:
@@ -26,12 +29,12 @@ for p in P:
     open(os.path.join(carpeta, 'texto-y-notas.txt'), 'w').write('\n'.join(lineas))
     indice.append(f"- {d}/{int(m)} {p['hora']} · {p['tipo']} · {p['titulo']} · {len(os.listdir(src))} imagen(es) · {p['musica']}")
 open(os.path.join(dst, 'LEEME.txt'), 'w').write('\n'.join(indice) + '\n')
-zp = os.path.join(dst, 'diciembre-2026-todo.zip')
+zp = os.path.join(dst, f'{lote}-todo.zip')
 with zipfile.ZipFile(zp, 'w', zipfile.ZIP_STORED) as z:
-    z.write(os.path.join(dst, 'LEEME.txt'), 'diciembre-2026/LEEME.txt')
+    z.write(os.path.join(dst, 'LEEME.txt'), f'{lote}/LEEME.txt')
     for p in P:
         carpeta = os.path.join(dst, p['id'])
         for f in sorted(os.listdir(carpeta)):
-            z.write(os.path.join(carpeta, f), f"diciembre-2026/{p['id']}/{f}")
+            z.write(os.path.join(carpeta, f), f"{lote}/{p['id']}/{f}")
 print('zip', round(os.path.getsize(zp) / 1e6, 1), 'MB')
 print(open(os.path.join(dst, 'LEEME.txt')).read())

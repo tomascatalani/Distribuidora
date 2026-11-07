@@ -1,9 +1,11 @@
 """Sube las imágenes finales a Cloudinary (preset sin firma) y guarda las URLs.
 Lee CLOUDINARY_CLOUD_NAME y CLOUDINARY_UPLOAD_PRESET del entorno; no imprime claves.
-Uso: python3 -I scripts/redes/subir.py <carpeta de trabajo>"""
+Uso: python3 -I scripts/redes/subir.py <carpeta de trabajo> [lote]
+El lote es el nombre de la carpeta en Cloudinary (por ejemplo enero-febrero-2027); si no se pone, diciembre-2026."""
 import glob, json, os, sys, uuid, urllib.request
 
 base = sys.argv[1]
+lote = sys.argv[2] if len(sys.argv) > 2 else 'diciembre-2026'
 cloud, preset = os.environ['CLOUDINARY_CLOUD_NAME'], os.environ['CLOUDINARY_UPLOAD_PRESET']
 url = f'https://api.cloudinary.com/v1_1/{cloud}/image/upload'
 out_path = os.path.join(base, 'urls.json')
@@ -28,7 +30,7 @@ for f in sorted(glob.glob(os.path.join(base, 'final', '*', '*.jpg'))):
     pid = os.path.splitext(os.path.basename(f))[0]
     if pid in urls:
         continue
-    r = post({'upload_preset': preset, 'folder': f'puesto-de-palta/redes/diciembre-2026/{pieza}', 'public_id': pid}, f)
+    r = post({'upload_preset': preset, 'folder': f'puesto-de-palta/redes/{lote}/{pieza}', 'public_id': pid}, f)
     urls[pid] = {'url': r['secure_url'], 'bytes': r.get('bytes'), 'w': r.get('width'), 'h': r.get('height'), 'format': r.get('format')}
     json.dump(urls, open(out_path, 'w'), indent=1)
     print(pid, r.get('width'), r.get('height'), r.get('bytes'), r.get('format'))
