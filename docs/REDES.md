@@ -151,10 +151,10 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
       21 h.
     - Apreciación paltera (11/12) sigue como carrusel, con la nota de hacerla en video
       si el del 13/11 anda bien (carruseles 447, Reels 783).
-    - Para todo el calendario: Reels de 20 a 22 h (los de las 22 h, 1.010; los de las
-      18 h, 746), posts a las 20 h; letras especiales solo en la primera línea, del
-      30/11 al 13/12, para comparar; no subir Reels de prueba (unos 110 de alcance);
-      revisión de diciembre el 4/1.
+    - Para todo el calendario: Reels de 19 a 21 h (corregido el 9/11; los de las 19 h,
+      1.010; los de las 15 h, 746), posts a las 20 h; letras especiales solo en la
+      primera línea, del 30/11 al 13/12, para comparar; no subir Reels de prueba (unos
+      110 de alcance); revisión de diciembre el 4/1.
     - Enero y febrero: los Reels de las notas también arrancan con el dato más fuerte,
       cada nota tiene el domingo su historia con el link, y "Resumen" pasó a
       "Revisión".
@@ -167,7 +167,7 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     8/12 lleva los días de entrega, y hay avisos de Pipi el 22/12 y el 30/12. Columna
     "Música" con la canción sugerida para cada pieza de Claude y cada Reel con guion
     (ver sección 7).
-  - Semana tipo del verano: lunes Reel de la nota o Tom especialista (20 a 22 h);
+  - Semana tipo del verano: lunes Reel de la nota o Tom especialista (19 a 21 h);
     martes carrusel (Claude, 20 h); miércoles receta propia o de otra cuenta (Pipi);
     jueves dato en post (20 h) e historia con encuesta (21 h), de Claude; viernes Reel
     de reacción o con voz en off; sábado receta de otra cuenta, con créditos; domingo
@@ -260,10 +260,15 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     de otras cuentas 1.282 (27), reacciones de Tom 1.895 (10, solo 3), notas del blog
     621 (8; el "Comentá X" junta 2 comentarios de mediana), propios 573 (12),
     efemérides 471 (14), carruseles 447 (11).
-  - Horario: la mayoría sale a las 22 h (mediana 800) o a las 18 h (600). Mejor
-    momento según Metricool (seguidores conectados): 19 a 21 h, pico 20 h. Se recomendó
-    20 a 22 h. Las horas de Metricool se toman como hora de Argentina, que es la zona
-    de la marca (no se pudo confirmar con un post de hora conocida).
+  - Horario (corregido el 9/11/2026): la mayoría sale a las 19 h de Argentina (mediana
+    800) o a las 15 h (600). Mejor momento según Metricool (seguidores conectados): 19
+    a 21 h, pico 20 h. Se recomienda 19 a 21 h (el 6/11 había quedado 20 a 22 h).
+    Las horas de cada publicación en los números de Metricool (IGRE02, IGPO02) vienen
+    en UTC, 3 horas más que en Argentina: lo confirmó el carrusel del 5/11, que salió a
+    las 20:32 (el planificador, `getScheduledPosts`, lo da así en hora argentina y a
+    las 23:32 si se le pide UTC) y en los números figura a las 23:33.
+    `getBestTimeToPostByNetwork` sí respeta la zona que se le pasa. Ningún Reel cambia
+    de día al pasarlo a hora argentina, así que lo de los días queda igual.
   - Letras especiales: casi todos los textos las usan; no se puede medir el efecto. Se
     recomendó primera línea especial y el resto en letra común, y probar dos semanas.
   - Facebook: 73 seguidores, Reels con 216 reproducciones de mediana. TikTok: Metricool
@@ -286,7 +291,7 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     20) vinieron vacíos.
     - Resultado: sin los 12 Reels que tuvieron plata hasta el 4/11, las conclusiones
       no cambian (mediana 783; recetas de otras cuentas 1.141 contra propios 597;
-      efemérides últimas; 22 h mejor que 18 h). El crecimiento del 31/10 al 4/11 y el
+      efemérides últimas; 19 h mejor que 15 h). El crecimiento del 31/10 al 4/11 y el
       hummus fueron orgánicos: no hubo anuncios del 24/10 al 4/11, y al hummus se le
       puso plata recién el 5/11.
     - Los montos, la tabla de campañas y sus resultados (visitas al perfil, clics a
@@ -308,8 +313,14 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   acepta PNG. **Tomás lo publicó antes, el 5/11/2026 a las 20:32 ART**, en Instagram
   (https://www.instagram.com/p/DfYOHabIYvJ/), Facebook y TikTok (en Metricool quedó con
   id 418355575, mismo uuid). Le cambió el texto a letras especiales (ver sección 5).
-  El 6/11 todavía no aparecía en los números de Metricool: se mide el lunes 9/11, junto
-  con la revisión semanal, contra la mediana de los carruseles (447) y de los Reels (744).
+  **Medido el 9/11/2026** (3 días y medio después, sin anuncios): llegó a 396 personas,
+  con 823 vistas, 19 me gusta, 1 guardado, 1 compartido, 0 comentarios y 0 seguidores
+  nuevos. Un poco menos que la mediana de los carruseles (447) y la mitad que la de los
+  Reels (744); guardados y compartidos, 5 cada 1.000 personas contra 11 de los
+  carruseles. Anotado en "Los números de la cuenta" (pestaña B) y en Creación. Cómo se
+  leyó: IGPO del 5/11 al 9/11 (14 alcance, 28 vistas, 13 me gusta, 15 guardados, 27
+  compartidos, 8 comentarios, 29 seguidores); para ver si tuvo plata, las campañas
+  desde el 5/11 (FACA03 y 05): solo el hummus y "Comentá PLANTA".
 - [x] Rutina semanal de publicaciones: la semana tipo está en la pestaña "A ·
   Información fija" del Plan de redes y en la planilla (pestaña Cómo leerla).
 
@@ -400,6 +411,9 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     instalado el script, la planilla no se recrea nunca**: se perderían el script y los
     links. Los cambios se hacen a mano en la planilla (el conector de Drive no edita su
     contenido), y Claude le dice a Tomás qué cambiar.
+  - 9/11: `v5.py` pasó los Reels a 19 a 21 h (ver Horario, en el diagnóstico). En la
+    planilla de Drive lo cambia Tomás con Buscar y reemplazar (pasos en la Guía, Qué
+    falta). La planilla tal como se subió el 7/11 quedó en `redes/calendario/anteriores/`.
 - [x] **Plan de redes reordenado** (7/11/2026, pedido de Tomás para que a Pipi no lo
   maree tanta información). Pestañas, en orden: Guía (cómo trabajar con el plan y la
   planilla, colores, carpetas y FINAL, cómo instalar el script, cómo compartir con Pipi,
@@ -412,7 +426,7 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   reserva); Calendario (link a la planilla, cómo se armó y qué cambió en diciembre y en
   enero y febrero).
 - [x] **Tareas programadas** de redes (todas vuelven a este hilo): revisión semanal de la
-  competencia (lunes 8:53); medir el carrusel del 5/11 (9/11, 8:45); balance de
+  competencia (lunes 8:53); medir el carrusel del 5/11 (9/11, 8:45, hecho); balance de
   diciembre (4/1/2027, 10:17: carruseles contra 450, recetas propias contra las de otras
   cuentas, prueba de letras); escribir la nota del 7/2 y sus piezas (19/1/2027, 10:17);
   escribir la nota del 21/2 y sus piezas (2/2/2027, 10:17). Horas de Buenos Aires.
