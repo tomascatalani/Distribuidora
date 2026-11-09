@@ -97,6 +97,25 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   tabla "La competencia en números" de la pestaña "B · Información semanal" (hasta el
   7/11 se llamaba Análisis) con fecha y 2 o 3 observaciones, deja el resumen en esta
   sección y le avisa a Tomás en pocas líneas.
+  - **9/11/2026** (la primera; competidores del 10/10 al 8/11 y la semana del 2 al
+    8/11). Seguidores: @paltasagrada 57.346 (-17 desde el 5/11), @lapalteria10 55.679
+    (+128), @labellapalta 8.790 (-14), @frutiverdu 6.924 (-2). La Paltería: 10 Reels y
+    1 post en 30 días, con 112 likes y 7 comentarios de promedio; en la semana, un solo
+    post (avisa que cambió su WhatsApp) y ningún Reel desde el 31/10. Lo que más le
+    funcionó: dos videos de humor sobre el negocio (215 y 212 interacciones) y uno de
+    cómo saber si una palta está madura (144); el de "si llegamos a 100 comentarios
+    regalamos remeras" juntó 22 comentarios pero menos likes. Palta Sagrada: ninguna
+    publicación en el feed en 30 días, según Metricool. La Bella Palta: 3 posts para
+    empresas, de 1 a 5 likes. Frutiverdu: 1 Reel.
+  - Propios, misma revisión: 12.481 seguidores el 7/11; del 2 al 7/11 entraron unos
+    500 (la semana anterior, 1.663). Alcance de la cuenta: de 2.800 a 6.000 por día del
+    4 al 7/11, contra 10.000 a 15.000 del 31/10 al 3/11. 6 Reels y el carrusel del 5/11
+    (396): el sándwich del 3/11, receta de otra cuenta, 10.681 personas, 108 guardados
+    y 61 compartidos; los propios, unas 300; el de la nota, 347 orgánico (y 1.420 con
+    anuncio). Solo uno salió entre las 19 y las 21 h. Ese día se corrigió la hora de
+    los Reels (ver Horario, en el diagnóstico).
+  - Cómo se leyó: IGCO (7 y 30 días), IGCR para los Reels de los competidores (IGCP
+    trae solo sus posts), IGEV por día, IGRE e IGPO.
 - [x] **Calendario de diciembre 2026 a febrero 2027** (pedido y hecho el 5/11/2026;
   versiones 4 y 5 el 7/11/2026; la 5 está más abajo, en su propio punto).
   - Planilla "Calendario de contenidos PdP — dic 2026 a feb 2027" en Mi unidad de
@@ -279,6 +298,9 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   - Audio para Pipi (6/11/2026, pedido de Tomás): el diagnóstico contado en 2 minutos y
     medio, con voz sintética. MP3 y guion en la carpeta del proyecto
     `redes/audio-analisis/`. Cómo se hace: `scripts/redes/README.md`, sección Audio.
+    El 9/11 se regrabó con la hora corregida (Reels de 19 a 21 h) y una frase que la
+    voz decía mal; el del 6/11 quedó en `anteriores/`. La carpeta del proyecto le
+    reescribe la etiqueta ID3 al MP3 (pesa unos 6 KB más), pero el audio es el mismo.
   - **Lo pago, separado** (7/11; Tomás, 6/11: "hay publicaciones con plata inyectada").
     Los datos por Reel de Metricool (alcance, vistas, likes, guardados, compartidos)
     son solo orgánicos; los seguidores (IGEV) cuentan todos. Tomás conectó su cuenta de
