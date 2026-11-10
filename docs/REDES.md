@@ -74,7 +74,9 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
 - La Agenda de contenidos de Pipi (el CM) es de su cuenta: Claude solo la lee, nunca la
   edita. Lo nuevo va en la planilla de Tomás.
 - Del Drive se usan solo los archivos sueltos de las carpetas VIDEO e IMAGEN, nunca lo
-  que está en sus subcarpetas (pedido de Tomás).
+  que está en sus subcarpetas (pedido de Tomás). Lo suelto es lo que está disponible; lo
+  que ya salió lo pasan a las subcarpetas YA USADAS (fotos) y YA USADOS (videos). Desde
+  el 10/11/2026, la carpeta "Material para usar" junta lo disponible (ver sección 4).
 
 ## 4. Estado actual
 
@@ -433,9 +435,11 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     instalado el script, la planilla no se recrea nunca**: se perderían el script y los
     links. Los cambios se hacen a mano en la planilla (el conector de Drive no edita su
     contenido), y Claude le dice a Tomás qué cambiar.
-  - 9/11: `v5.py` pasó los Reels a 19 a 21 h (ver Horario, en el diagnóstico). En la
-    planilla de Drive lo cambia Tomás con Buscar y reemplazar (pasos en la Guía, Qué
-    falta). La planilla tal como se subió el 7/11 quedó en `redes/calendario/anteriores/`.
+  - 9/11: `v5.py` pasó los Reels a 19 a 21 h (ver Horario, en el diagnóstico). La
+    planilla tal como se subió el 7/11 quedó en `redes/calendario/anteriores/`. Al 10/11
+    la planilla de Drive seguía con 20 a 22 h (Tomás la editó el 9/11, pero no eso): desde
+    el 10/11 lo corrige el script una sola vez, al instalarse (`arreglarHoras_`, con
+    Buscar y reemplazar en todas las pestañas). Si Tomás ya lo cambió a mano, no toca nada.
 - [x] **Plan de redes reordenado** (7/11/2026, pedido de Tomás para que a Pipi no lo
   maree tanta información). Pestañas, en orden: Guía (cómo trabajar con el plan y la
   planilla, colores, carpetas y FINAL, cómo instalar el script, cómo compartir con Pipi,
@@ -447,6 +451,37 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   borradores de cada mes, guiones de Reels, temas de Tom especialista y guiones de
   reserva); Calendario (link a la planilla, cómo se armó y qué cambió en diciembre y en
   enero y febrero).
+- [x] **Material ya usado y Material para usar** (10/11/2026). Tomás preguntó por "una
+  carpeta con todo lo usado en drive y una carpeta con todo lo que está para usar". Lo
+  arma el mismo script de la planilla (`ordenarMaterial_` en `calendario.gs`):
+  - En REDES PUESTO DE PALTA, "Material ya usado" y "Material para usar", cada una con
+    Fotos y Videos, llenas de **accesos directos** a los originales (no copias: no ocupan
+    lugar ni tocan IMAGEN Y VIDEO).
+  - Ya usado: lo que está en YA USADAS y YA USADOS (el sistema que ya usaban Tomás y
+    Pipi), lo que usa el calendario (los archivos "drive" de la pestaña Material y la
+    lista "Usado en el calendario (lo actualiza Claude).csv") y las otras copias con el
+    mismo nombre (en el Drive hay fotos subidas dos veces). Para usar: el resto de las
+    fotos y videos sueltos de IMAGEN y VIDEO. Las otras subcarpetas (Familia Palta,
+    Recursos varios, Posibles futuros reels, Reacciones crudas, RECURSOS VIDEO) no entran.
+  - La lista CSV está en el Drive, dentro de Material ya usado (ids en
+    `redes/drive-ids.md`): Archivo, Id y Dónde se usa. Tiene las fotos de los carruseles,
+    posts e historias de diciembre a febrero (que no están en la pestaña Material), los
+    archivos de los Reels y recetas, y DSC_0896 (ya salió en enero de 2026). La arma
+    `redes/calendario/lista_usado.py` (carpeta del proyecto) con `datos.json`, los
+    `fotos.tsv` de cada lote (el de diciembre se armó el 10/11 con los nombres de
+    `diciembre_2026.py`) y el listado público de IMAGEN y VIDEO. **Con cada lote nuevo:**
+    dejar su `fotos.tsv`, correr el script y subir el CSV con el mismo nombre (el
+    conector de Drive no cambia el contenido de un archivo: se sube uno nuevo y el
+    script de la planilla usa el más nuevo).
+  - Se repasa una vez por día (o con "Armar las carpetas ahora"): si un original pasa a
+    YA USADAS o lo empieza a usar el calendario, su acceso directo se muda; lo nuevo
+    aparece en para usar; lo borrado se saca. Si no encuentra IMAGEN o VIDEO, no saca
+    nada y lo avisa.
+  - Con el Drive del 10/11: 154 en ya usado (112 fotos y 42 videos) y 917 para usar (869
+    fotos y 48 videos). Son unos 1.070 accesos directos: el primer armado lleva varias
+    vueltas de una hora, después de las carpetas de cada día.
+  - Probado con el Drive simulado (`prueba/mock_test.js`, versión 2: 46 chequeos) y con
+    una simulación hecha con el listado real de IMAGEN y VIDEO.
 - [x] **Tareas programadas** de redes (todas vuelven a este hilo): revisión semanal de la
   competencia (lunes 8:53); medir el carrusel del 5/11 (9/11, 8:45, hecho); balance de
   diciembre (4/1/2027, 10:17: carruseles contra 450, recetas propias contra las de otras
@@ -517,7 +552,12 @@ nombres (ver sección 3).
   3 o 4 por día, con "Curiosidad" los jueves. Ideas que se guardó: carrusel "cómo saber
   si la palta está a punto" y, para San Valentín, la palta partida como corazón.
 - **Carpetas:** REDES PUESTO DE PALTA > IMAGEN Y VIDEO > VIDEO e IMAGEN. Solo se usan
-  los archivos sueltos de VIDEO e IMAGEN (sección 3).
+  los archivos sueltos de VIDEO e IMAGEN (sección 3). Subcarpetas (10/11/2026): en IMAGEN,
+  YA USADAS (41 fotos que ya salieron), Familia Palta (imágenes y videos hechos con IA) y
+  Recursos varios (overlays); en VIDEO, YA USADOS (1 video), Posibles futuros reels (1
+  video crudo), Reacciones marzo abril mayo 2026 crudas y RECURSOS VIDEO. Al lado de
+  IMAGEN Y VIDEO, el script de la planilla arma "Redes por día", "Material ya usado" y
+  "Material para usar" (sección 4).
 - **Cómo se leen desde el entorno de Claude** (las carpetas son públicas con enlace; los
   ids se sacan del link que pase Tomás o con la búsqueda del conector de Drive):
   - Listado de una carpeta: `https://drive.google.com/embeddedfolderview?id=<carpeta>`
@@ -527,7 +567,9 @@ nombres (ver sección 3).
     (el conector de Drive solo devuelve unas filas de muestra).
   - Audio de videos: ffmpeg a 16 kHz mono y faster-whisper (modelo small), pasándole el
     audio ya leído con numpy; abrir el archivo directo falla por la versión de PyAV.
-- **Inventario:** 85 videos sueltos (unos 16 minutos en total) y 948 imágenes.
+- **Inventario:** 85 videos sueltos (unos 16 minutos en total) y 948 imágenes. Al
+  10/11/2026, contando lo que no es foto ni video: 965 archivos sueltos en IMAGEN y 92
+  en VIDEO.
 
 | Qué hay | Archivos | Para qué sirve |
 |---|---|---|

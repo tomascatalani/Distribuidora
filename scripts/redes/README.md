@@ -13,8 +13,9 @@ pueden usar) están en `docs/REDES.md`.
 
 Todo se hace en una carpeta de trabajo fuera del repo (por ejemplo, el scratchpad).
 
-1. **Fotos.** Bajar del Drive las fotos elegidas a `<trabajo>/fotos_full/` (cómo se
-   leen las carpetas: `docs/REDES.md`, sección 6).
+1. **Fotos.** Elegirlas entre las que no se usaron (la carpeta "Material para usar" del
+   Drive las junta, si el script de la planilla está instalado) y bajarlas a
+   `<trabajo>/fotos_full/` (cómo se leen las carpetas: `docs/REDES.md`, sección 6).
 2. **Fuentes y logo.** `python3 -I scripts/redes/preparar.py <trabajo>`
 3. **HTML de cada pieza.** `python3 -I scripts/redes/diciembre_2026.py <trabajo>`
    (enero y febrero: `enero_febrero_2027.py`). Recorta las fotos y escribe un HTML por
@@ -51,6 +52,12 @@ Todo se hace en una carpeta de trabajo fuera del repo (por ejemplo, el scratchpa
    piezas nuevas se suben también a la carpeta de su día en el Drive (REDES PUESTO DE
    PALTA > Redes por día). El id de cada carpeta está en la pestaña oculta Carpetas de la
    planilla, columna D.
+11. **Lo usado.** Dejar en `redes/<lote>/fotos.tsv` (carpeta del proyecto) qué foto del
+   Drive va en cada pieza, correr `python3 -I lista_usado.py` en `redes/calendario/` y
+   subir el CSV que arma al Drive, en REDES PUESTO DE PALTA > Material ya usado, con el
+   mismo nombre ("Usado en el calendario (lo actualiza Claude).csv"). El script de la
+   planilla usa el más nuevo y, al otro día, pasa esas fotos de "Material para usar" a
+   "Material ya usado".
 
 Metricool guarda una copia idéntica (byte por byte) de cada imagen que se le pasa, así
 que bajarla de Metricool no pierde calidad.
@@ -87,11 +94,25 @@ generador del calendario (`v5.py`, en la carpeta privada del proyecto,
   material de la pestaña Material: archivos del Drive (`makeCopy`, con nombre nuevo),
   imágenes de Claude (las baja de su URL) y textos. Lo que ya está no se vuelve a copiar;
   si algo falla, queda anotado y se reintenta en la vuelta siguiente.
+- **Material ya usado y para usar** (`ordenarMaterial_`, desde el 10/11/2026): en REDES
+  PUESTO DE PALTA arma esas dos carpetas, cada una con Fotos y Videos, con accesos
+  directos (`createShortcut`) a las fotos y videos de IMAGEN Y VIDEO > IMAGEN y VIDEO. Ya
+  usado: lo de las subcarpetas YA USADAS / YA USADOS, los archivos "drive" de la pestaña
+  Material, lo de la lista "Usado en el calendario (lo actualiza Claude).csv" (por id o
+  por nombre; la busca en todo el Drive y usa la más nueva) y las otras copias con el
+  mismo nombre. Para usar: el resto de los sueltos. Encuentra las carpetas por nombre.
+  Se repasa una vez por día (o con el botón): muda los accesos directos que cambiaron de
+  lado y saca los de originales borrados, salvo que falte IMAGEN o VIDEO. Arranca solo
+  si a la vuelta le quedan más de 90 segundos, después de las carpetas de cada día.
 - **Buscar finales** (`buscarFinales`): busca archivos cuyo nombre empiece con FINAL,
   mira en qué carpeta de publicación están, escribe el nombre con link en Archivo final
   y pasa el estado a "Listo para subir" si estaba en uno de los rojos o en Grabado. No
   toca lo publicado.
+- **Una sola vez, al instalar** (`arreglarHoras_`): cambia "20 a 22 h" por "19 a 21 h" (y
+  la frase del horario de Qué cambió) en toda la planilla. Queda anotado en las
+  propiedades del documento para no repetirlo.
 - Corre cada hora (`cadaHora`) y en tandas de 4,5 minutos, porque Google corta a los 6.
+- Saltea lo que está en la papelera (carpetas y archivos), por si `getFiles` lo devuelve.
 - **Probarlo sin Google:** en la carpeta del proyecto, `redes/calendario/prueba/`, hay
   una planilla y un Drive simulados: `node mock_test.js scripts/redes/apps-script/calendario.gs`
   (desde la raíz del repo, con la ruta completa de `mock_test.js`).
