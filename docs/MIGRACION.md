@@ -709,8 +709,9 @@ nadie.
   por los 26 fallos del incidente del 2/11 y nadie lo volvió a prender). Confirmado con
   GraphQL: hay horas con 1 o 2 pedidos al Worker en total, imposible si el cron llamara
   cada 5 minutos. Es la única nota publicada sin aviso, así que al prender el job sale
-  solo esa. Detalle: su slug es `la-fruta-que-también-calificó-al-mundial` (tildes y
-  "calificó" en vez de "clasificó"). Pendiente: que Tomás prenda el job y verificar KV,
+  solo esa. El slug tenía tildes y decía "calificó"; a pedido de Tomás Claude lo
+  cambió en Notion a `la-fruta-que-tambien-clasifico-al-mundial` antes del aviso (el
+  link viejo ahora da 404). Pendiente: que Tomás prenda el job y verificar KV,
   campaña y push. Sugerido: activar en cron-job.org el aviso por mail cuando un job se
   desactiva por fallos.
 
