@@ -711,15 +711,13 @@ nadie.
   cada 5 minutos. Es la única nota publicada sin aviso, así que al prender el job sale
   solo esa. El slug tenía tildes y decía "calificó"; a pedido de Tomás Claude lo
   cambió en Notion a `la-fruta-que-tambien-clasifico-al-mundial` antes del aviso (el
-  link viejo ahora da 404). Pendiente: que Tomás prenda el job y verificar KV,
-  campaña y push. Sugerido: activar en cron-job.org el aviso por mail cuando un job se
+  link viejo ahora da 404). **Resuelto el 10/11/2026:** Tomás prendió el job y en la
+  corrida de las 01:40 UTC (22:40 ART del 9/11) salió la campaña 12 de Brevo, push OK
+  y KV `notified` con el slug nuevo. Sugerido: activar en cron-job.org el aviso por mail cuando un job se
   desactiva por fallos.
 
 ### Pendiente, en orden
 
-0. **Prender el job de cron-job.org** ("Puesto de Palta — Notify notas"). Sin eso,
-   ninguna nota nueva avisa a suscriptores. Después verificar el aviso de "La fruta
-   que también clasificó al mundial".
 1. **Cerrar la primera corrida:** el borrador "Trece pesos y un certificado" está en
    Notion completo (portada generada el 21/10 a las 19:51 ART, reemplazada por
    script). Desde el 7/11/2026 tiene fecha: 24/1/2027 (la eligió Tomás para el
