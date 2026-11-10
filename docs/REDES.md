@@ -402,8 +402,9 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   certificado" el 24/1/2027. Arreglos en Notion: en Trece pesos, "En febrero de este año"
   pasó a "En febrero de 2026" (la nota sale en 2027); a Tucumán se le escribió el
   Excerpt. Quedan con fecha todas las notas sin publicar: 9/11, 15/11, 19/11, 29/11,
-  13/12, 27/12, 10/1 y 24/1. Ninguna tiene Publicar tildado (se le avisó a Tomás: la del
-  lunes 9/11 no sale si no la tilda). Falta que Tomás diga si "El carozo que no es basura"
+  13/12, 27/12, 10/1 y 24/1. Ninguna tenía Publicar tildado; Tomás tildó la del 9/11, que
+  salió (el aviso fue el 10/11, ver `docs/MIGRACION.md`). Al 10/11, la del domingo 15/11 y
+  las siguientes siguen sin tildar (se le avisó). Falta que Tomás diga si "El carozo que no es basura"
   (marzo, nunca salió, repite otras dos) va a la papelera de Notion.
 - [x] **Calendario versión 5 y carpetas por día en el Drive** (7/11/2026). Tomás pidió
   ver en rojo lo que falta, que al subir un archivo terminado con un nombre fijo la
