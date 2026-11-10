@@ -5,7 +5,7 @@ armada la web, qué hacía Genspark, la configuración literal del workflow de c
 y el plan de migración. **No contiene claves ni contraseñas.** Las claves se cargan
 como variables de entorno en Cloudflare y en el entorno de Claude Code.
 
-Relevamiento: 23 de septiembre de 2026. Última actualización: 2 de noviembre de 2026.
+Relevamiento: 23 de septiembre de 2026. Última actualización: 10 de noviembre de 2026.
 
 ---
 
@@ -702,8 +702,23 @@ nadie.
   script de Apps Script para la planilla del calendario (`scripts/redes/apps-script/`):
   no toca la web.
 
+- **10/11/2026: nota publicada sin aviso.** Tomás tildó Publicar en "La fruta que
+  también clasificó al mundial" (Fecha 9/11) el 9/11 a las 18:35 ART. La nota
+  apareció en la web, pero no salió ni la campaña de Brevo ni el push, y no está en el
+  KV. Causa: **el job de cron-job.org sigue desactivado desde el 3/11** (se apagó solo
+  por los 26 fallos del incidente del 2/11 y nadie lo volvió a prender). Confirmado con
+  GraphQL: hay horas con 1 o 2 pedidos al Worker en total, imposible si el cron llamara
+  cada 5 minutos. Es la única nota publicada sin aviso, así que al prender el job sale
+  solo esa. Detalle: su slug es `la-fruta-que-también-calificó-al-mundial` (tildes y
+  "calificó" en vez de "clasificó"). Pendiente: que Tomás prenda el job y verificar KV,
+  campaña y push. Sugerido: activar en cron-job.org el aviso por mail cuando un job se
+  desactiva por fallos.
+
 ### Pendiente, en orden
 
+0. **Prender el job de cron-job.org** ("Puesto de Palta — Notify notas"). Sin eso,
+   ninguna nota nueva avisa a suscriptores. Después verificar el aviso de "La fruta
+   que también clasificó al mundial".
 1. **Cerrar la primera corrida:** el borrador "Trece pesos y un certificado" está en
    Notion completo (portada generada el 21/10 a las 19:51 ART, reemplazada por
    script). Desde el 7/11/2026 tiene fecha: 24/1/2027 (la eligió Tomás para el
