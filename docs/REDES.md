@@ -404,8 +404,9 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   Excerpt. Quedan con fecha todas las notas sin publicar: 9/11, 15/11, 19/11, 29/11,
   13/12, 27/12, 10/1 y 24/1. Ninguna tenía Publicar tildado; Tomás tildó la del 9/11, que
   salió (el aviso fue el 10/11, ver `docs/MIGRACION.md`). Al 10/11, la del domingo 15/11 y
-  las siguientes siguen sin tildar (se le avisó). Falta que Tomás diga si "El carozo que no es basura"
-  (marzo, nunca salió, repite otras dos) va a la papelera de Notion.
+  las siguientes siguen sin tildar (se le avisó). "El carozo que no es basura" (marzo, nunca
+  salió, repite otras dos) se mandó a la papelera de Notion el 11/11, con OK de Tomás en la
+  tarjeta de decisión.
 - [x] **Calendario versión 5 y carpetas por día en el Drive** (7/11/2026). Tomás pidió
   ver en rojo lo que falta, que al subir un archivo terminado con un nombre fijo la
   planilla cambie de color y anote el archivo, y una carpeta por día con copias
@@ -529,10 +530,10 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   mandaron a la papelera de Notion (API: `archived: true`; se recuperan durante 30
   días), porque repetían las del 19/11 y el 27/12. Regla de Tomás: si una nota sin
   fecha trata casi el mismo tema que una con fecha o publicada, se borra. "Trece pesos
-  y un certificado" y "El tercer intento de Tucumán" no repiten nada y quedan. Pendiente
-  que Tomás diga si también se borra "El carozo que no es basura" (15/3, nunca
-  publicada), que cuenta lo mismo que "El naranja que nadie miraba" y "El carozo que
-  tiñe".
+  y un certificado" y "El tercer intento de Tucumán" no repiten nada y quedan. El 11/11,
+  con OK de Tomás, también se mandó a la papelera "El carozo que no es basura" (15/3,
+  nunca publicada), que contaba lo mismo que "El naranja que nadie miraba" y "El carozo
+  que tiñe".
 - Para guiones y carruseles: usar datos de notas publicadas o que salen antes que la
   pieza. Las dos notas del carozo no coinciden en qué institución hizo el estudio, así
   que no se la nombra hasta confirmarlo.
