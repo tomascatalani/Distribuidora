@@ -518,7 +518,13 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     mismo nombre.
   - Lista de lo usado del 11/11: 106 filas (las 95 de antes, las 2 fotos del 5/11 y 9
     copias iguales). La del 10/11 está en la papelera del Drive.
-  - Pendiente: que Tomás pegue la versión nueva del script y revisar el Drive.
+  - Tomás pegó la versión nueva el 11/11 a las 15:15 (hora de Buenos Aires) y tocó
+    "Armar las carpetas ahora". Revisado a las 15:23: Redes por día quedó con un solo
+    mes de cada uno, 102 carpetas (una por publicación) y los 236 archivos que pide la
+    pestaña Material, sin nada repetido. Material ya usado: 120 fotos y 45 videos.
+    Material para usar y Piezas terminadas se terminan de armar en las vueltas de cada
+    hora (a las 15:23 iban 612 fotos y 1 video en para usar). Pendiente: revisarlo el
+    12/11 a la mañana.
 - [x] **Tareas programadas** de redes (todas vuelven a este hilo): revisión semanal de la
   competencia (lunes 8:53); medir el carrusel del 5/11 (9/11, 8:45, hecho); balance de
   diciembre (4/1/2027, 10:17: carruseles contra 450, recetas propias contra las de otras
