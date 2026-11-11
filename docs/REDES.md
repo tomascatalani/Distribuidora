@@ -484,6 +484,36 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     vueltas de una hora, después de las carpetas de cada día.
   - Probado con el Drive simulado (`prueba/mock_test.js`, versión 2: 46 chequeos) y con
     una simulación hecha con el listado real de IMAGEN y VIDEO.
+- [ ] **Instalación doble y Piezas terminadas** (11/11/2026).
+  - Tomás instaló el script el 11/11. La guía decía "si en un minuto no pasa nada, tocá
+    Instalar otra vez" (error de Claude): corrieron dos vueltas a la vez y quedaron
+    repetidos un mes (febrero), 13 carpetas de enero y unas 80 copias del material, y
+    dos avisos de cada hora, que siguen duplicando hasta que se pegue la versión nueva.
+  - Versión nueva de `calendario.gs` (11/11): nunca corren dos vueltas a la vez
+    (`conCandado_`), la vuelta de cada hora deja un solo aviso, y `limpiarRepetidos_`
+    junta lo repetido con lo anotado en la pestaña Carpetas y manda lo que sobra a la
+    papelera (detalle en `scripts/redes/README.md`). La guía ahora dice: tocar una sola
+    vez y esperar el cartel, que puede tardar 5 minutos. Probado con el Drive simulado
+    (`prueba/mock_test.js`, versión 4: 84 chequeos).
+  - **Piezas terminadas.** Tomás pidió que en Material ya usado esté "todo lo usado,
+    punto". Desde esta versión, Material ya usado > Piezas terminadas tiene accesos
+    directos a las piezas de Claude (las filas "url" de la pestaña Material) y a los
+    archivos FINAL de las carpetas de cada día. Con un calendario nuevo (marzo, por
+    ejemplo) pasa lo mismo, siempre que se arme con el generador (pestañas Carpetas y
+    Material) y que el `fotos.tsv` de su lote entre en la lista de lo usado.
+  - **Control con Instagram** (11/11). Se compararon 101 portadas de posts y Reels de
+    julio a noviembre de 2026 (lo que tiene Metricool; 3 portadas tenían el link vencido)
+    con las cerca de 1.100 fotos y videos de IMAGEN y VIDEO (miniaturas y cuadros de los
+    videos, comparados con OpenCV). Lo único del Drive que salió y no estaba en la lista
+    de lo usado son las dos fotos del carrusel del 5/11: quedaron en
+    `redes/lote-1-temporada/fotos.tsv` (carpeta del proyecto). Los Reels de Pipi desde
+    julio usan material que no está en IMAGEN ni VIDEO. Límites: solo portadas (no cada
+    foto de un carrusel ni cada segundo de un video), sin historias y nada antes de julio.
+  - En el Drive hay unos 115 pares de fotos o videos iguales con distinto nombre (la
+    misma foto subida dos veces). El script solo junta las copias con el mismo nombre;
+    se podría sumar a la lista de lo usado las copias iguales de lo que ya se usó.
+  - Pendiente: que Tomás pegue la versión nueva, revisar el Drive y subir la lista de lo
+    usado actualizada.
 - [x] **Tareas programadas** de redes (todas vuelven a este hilo): revisión semanal de la
   competencia (lunes 8:53); medir el carrusel del 5/11 (9/11, 8:45, hecho); balance de
   diciembre (4/1/2027, 10:17: carruseles contra 450, recetas propias contra las de otras

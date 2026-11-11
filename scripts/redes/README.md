@@ -57,7 +57,8 @@ Todo se hace en una carpeta de trabajo fuera del repo (por ejemplo, el scratchpa
    subir el CSV que arma al Drive, en REDES PUESTO DE PALTA > Material ya usado, con el
    mismo nombre ("Usado en el calendario (lo actualiza Claude).csv"). El script de la
    planilla usa el más nuevo y, al otro día, pasa esas fotos de "Material para usar" a
-   "Material ya usado".
+   "Material ya usado". Las piezas terminadas de la planilla (las imágenes de Claude y los
+   FINAL de cada carpeta) entran solas en Material ya usado > Piezas terminadas.
 
 Metricool guarda una copia idéntica (byte por byte) de cada imagen que se le pasa, así
 que bajarla de Metricool no pierde calidad.
@@ -104,6 +105,26 @@ generador del calendario (`v5.py`, en la carpeta privada del proyecto,
   Se repasa una vez por día (o con el botón): muda los accesos directos que cambiaron de
   lado y saca los de originales borrados, salvo que falte IMAGEN o VIDEO. Arranca solo
   si a la vuelta le quedan más de 90 segundos, después de las carpetas de cada día.
+- **Piezas terminadas** (`piezasTerminadas_`, desde el 11/11/2026): dentro de Material ya
+  usado, accesos directos a las piezas de Claude (las filas "url" de la pestaña Material, por
+  el link de la columna Hecho) y a los archivos FINAL de las carpetas de cada día. Así ahí
+  está todo lo usado. Se arma en el mismo repaso diario.
+- **Nunca dos vueltas a la vez** (`conCandado_`, desde el 11/11/2026): la vuelta de cada
+  hora, el menú e Instalar usan el candado del script (`LockService`). Si otra está
+  trabajando, la de cada hora no hace nada y el menú avisa que hay que esperar. Además, la
+  de cada hora borra los avisos de cada hora repetidos.
+- **Limpieza de repetidos** (`limpiarRepetidos_`): el 11/11/2026 la instalación corrió dos
+  veces a la vez (se tocó Instalar de nuevo mientras trabajaba) y dejó un mes repetido,
+  carpetas de publicación repetidas y copias repetidas. Se queda con la carpeta anotada en
+  la columna D de Carpetas (y con el mes que tiene más anotadas), le pasa lo que había en
+  las repetidas (también lo que no armó el script) y manda las repetidas a la papelera. En
+  cada carpeta deja una sola copia de cada archivo del material: la del link de Hecho, o la
+  más vieja (y corrige Hecho). Un archivo con el mismo nombre y otro tamaño (una versión que
+  alguien editó) no se toca. Los links de la columna Carpeta del calendario se corrigen si
+  apuntan a otra carpeta. Si Material ya usado, Material para usar o sus carpetas quedan
+  repetidas, las junta (`unica_`) y saca los accesos directos repetidos. Lo repasa una vez
+  por día y con cada toque del menú. Al instalar: tocar Instalar una sola vez y esperar el
+  cartel (puede tardar 5 minutos).
 - **Buscar finales** (`buscarFinales`): busca archivos cuyo nombre empiece con FINAL,
   mira en qué carpeta de publicación están, escribe el nombre con link en Archivo final
   y pasa el estado a "Listo para subir" si estaba en uno de los rojos o en Grabado. No
