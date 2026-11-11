@@ -509,11 +509,16 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     `redes/lote-1-temporada/fotos.tsv` (carpeta del proyecto). Los Reels de Pipi desde
     julio usan material que no está en IMAGEN ni VIDEO. Límites: solo portadas (no cada
     foto de un carrusel ni cada segundo de un video), sin historias y nada antes de julio.
-  - En el Drive hay unos 115 pares de fotos o videos iguales con distinto nombre (la
-    misma foto subida dos veces). El script solo junta las copias con el mismo nombre;
-    se podría sumar a la lista de lo usado las copias iguales de lo que ya se usó.
-  - Pendiente: que Tomás pegue la versión nueva, revisar el Drive y subir la lista de lo
-    usado actualizada.
+  - **Copias iguales con otro nombre.** En el Drive hay 60 grupos de fotos o videos
+    iguales con distinto nombre (la misma foto subida dos veces, o una versión con el
+    logo): 156 archivos, encontrados comparando miniaturas y cuadros de video y revisados
+    a ojo. Están en `redes/calendario/iguales.tsv` (carpeta del proyecto), y desde el
+    11/11 `lista_usado.py` suma a la lista las copias de lo que ya se usó (o de lo que
+    está en YA USADAS y YA USADOS). El script de la planilla solo junta las copias con el
+    mismo nombre.
+  - Lista de lo usado del 11/11: 106 filas (las 95 de antes, las 2 fotos del 5/11 y 9
+    copias iguales). La del 10/11 está en la papelera del Drive.
+  - Pendiente: que Tomás pegue la versión nueva del script y revisar el Drive.
 - [x] **Tareas programadas** de redes (todas vuelven a este hilo): revisión semanal de la
   competencia (lunes 8:53); medir el carrusel del 5/11 (9/11, 8:45, hecho); balance de
   diciembre (4/1/2027, 10:17: carruseles contra 450, recetas propias contra las de otras

@@ -57,8 +57,10 @@ Todo se hace en una carpeta de trabajo fuera del repo (por ejemplo, el scratchpa
    subir el CSV que arma al Drive, en REDES PUESTO DE PALTA > Material ya usado, con el
    mismo nombre ("Usado en el calendario (lo actualiza Claude).csv"). El script de la
    planilla usa el más nuevo y, al otro día, pasa esas fotos de "Material para usar" a
-   "Material ya usado". Las piezas terminadas de la planilla (las imágenes de Claude y los
-   FINAL de cada carpeta) entran solas en Material ya usado > Piezas terminadas.
+   "Material ya usado". La lista suma también las copias iguales con otro nombre de lo que
+   ya se usó (`redes/calendario/iguales.tsv`, revisado a ojo). Las piezas terminadas de la
+   planilla (las imágenes de Claude y los FINAL de cada carpeta) entran solas en Material
+   ya usado > Piezas terminadas.
 
 Metricool guarda una copia idéntica (byte por byte) de cada imagen que se le pasa, así
 que bajarla de Metricool no pierde calidad.
