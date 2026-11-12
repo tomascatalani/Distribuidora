@@ -522,9 +522,10 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     "Armar las carpetas ahora". Revisado a las 15:23: Redes por día quedó con un solo
     mes de cada uno, 102 carpetas (una por publicación) y los 236 archivos que pide la
     pestaña Material, sin nada repetido. Material ya usado: 120 fotos y 45 videos.
-    Material para usar y Piezas terminadas se terminan de armar en las vueltas de cada
-    hora (a las 15:23 iban 612 fotos y 1 video en para usar). Pendiente: revisarlo el
-    12/11 a la mañana.
+    Material para usar y Piezas terminadas se terminaron de armar solas en las vueltas
+    de cada hora. Revisado el 12/11 a las 9:30: Material ya usado tiene 120 fotos, 45
+    videos y 110 piezas terminadas (las de Claude; todavía no hay archivos FINAL), y
+    Material para usar, 864 fotos y 45 videos. Redes por día sigue sin repetidos.
 - [x] **Tareas programadas** de redes (todas vuelven a este hilo): revisión semanal de la
   competencia (lunes 8:53); medir el carrusel del 5/11 (9/11, 8:45, hecho); balance de
   diciembre (4/1/2027, 10:17: carruseles contra 450, recetas propias contra las de otras
