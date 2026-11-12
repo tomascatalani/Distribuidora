@@ -50,15 +50,15 @@ Todo se hace en una carpeta de trabajo fuera del repo (por ejemplo, el scratchpa
    título, arma el de diciembre 2026).
 10. **Carpeta del día.** Si la planilla del calendario ya tiene instalado el script, las
    piezas nuevas se suben también a la carpeta de su día en el Drive (REDES PUESTO DE
-   PALTA > Redes por día). El id de cada carpeta está en la pestaña oculta Carpetas de la
+   PALTA > CALENDARIO Y PLANILLAS > Redes por día). El id de cada carpeta está en la pestaña oculta Carpetas de la
    planilla, columna D (o en el listado público de Redes por día, por nombre). Subirlas
    con un nombre que empiece con FINAL: así entran solas en Material ya usado > Piezas
    terminadas y la planilla anota el archivo final (las que vienen de la pestaña Material
    ya entran sin eso).
 11. **Lo usado.** Dejar en `redes/<lote>/fotos.tsv` (carpeta del proyecto) qué foto del
    Drive va en cada pieza, correr `python3 -I lista_usado.py` en `redes/calendario/` y
-   subir el CSV que arma al Drive, en REDES PUESTO DE PALTA > Material ya usado, con el
-   mismo nombre ("Usado en el calendario (lo actualiza Claude).csv"). El script de la
+   subir el CSV que arma al Drive, en REDES PUESTO DE PALTA > MATERIAL (FOTOS Y VIDEOS) >
+   Material ya usado, con el mismo nombre ("Usado en el calendario (lo actualiza Claude).csv"). El script de la
    planilla usa el más nuevo y, al otro día, pasa esas fotos de "Material para usar" a
    "Material ya usado". La lista suma también las copias iguales con otro nombre de lo que
    ya se usó (`redes/calendario/iguales.tsv`, revisado a ojo). Las piezas terminadas de la
@@ -95,13 +95,15 @@ los lee de las pestañas ocultas Carpetas y Material de la planilla, que arma el
 generador del calendario (`v5.py`, en la carpeta privada del proyecto,
 `redes/calendario/`).
 
-- **Armar carpetas** (`armarCarpetas`): crea REDES PUESTO DE PALTA > Redes por día > un
-  mes > una carpeta por publicación, pone el link en la columna Carpeta y copia el
+- **Armar carpetas** (`armarCarpetas`): crea Redes por día > un mes > una carpeta por
+  publicación (Redes por día se creó en la carpeta madre; desde el 12/11/2026 está en
+  REDES PUESTO DE PALTA > CALENDARIO Y PLANILLAS), pone el link en la columna Carpeta y copia el
   material de la pestaña Material: archivos del Drive (`makeCopy`, con nombre nuevo),
   imágenes de Claude (las baja de su URL) y textos. Lo que ya está no se vuelve a copiar;
   si algo falla, queda anotado y se reintenta en la vuelta siguiente.
-- **Material ya usado y para usar** (`ordenarMaterial_`, desde el 10/11/2026): en REDES
-  PUESTO DE PALTA arma esas dos carpetas, cada una con Fotos y Videos, con accesos
+- **Material ya usado y para usar** (`ordenarMaterial_`, desde el 10/11/2026): en la
+  carpeta madre (desde el 12/11/2026 se llama MATERIAL (FOTOS Y VIDEOS) y está dentro de
+  REDES PUESTO DE PALTA) arma esas dos carpetas, cada una con Fotos y Videos, con accesos
   directos (`createShortcut`) a las fotos y videos de IMAGEN Y VIDEO > IMAGEN y VIDEO. Ya
   usado: lo de las subcarpetas YA USADAS / YA USADOS, los archivos "drive" de la pestaña
   Material, lo de la lista "Usado en el calendario (lo actualiza Claude).csv" (por id o
@@ -142,5 +144,10 @@ generador del calendario (`v5.py`, en la carpeta privada del proyecto,
 - **Probarlo sin Google:** en la carpeta del proyecto, `redes/calendario/prueba/`, hay
   una planilla y un Drive simulados: `node mock_test.js scripts/redes/apps-script/calendario.gs`
   (desde la raíz del repo, con la ruta completa de `mock_test.js`).
+- **Mover o renombrar carpetas:** la carpeta madre y Redes por día se pueden mover o
+  renombrar, porque el script las busca por id (celdas B1 y B2 de la pestaña Carpetas).
+  Lo que está dentro de la madre no: IMAGEN Y VIDEO (con IMAGEN y VIDEO), Material ya
+  usado y Material para usar se buscan por nombre, y si faltan los dos Material, los
+  crea vacíos. La prueba simulada tiene ese caso (el 16).
 - **La planilla no se recrea** una vez instalado el script: se perderían el script y los
   links de las carpetas.
