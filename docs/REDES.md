@@ -526,6 +526,11 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     de cada hora. Revisado el 12/11 a las 9:30: Material ya usado tiene 120 fotos, 45
     videos y 110 piezas terminadas (las de Claude; todavía no hay archivos FINAL), y
     Material para usar, 864 fotos y 45 videos. Redes por día sigue sin repetidos.
+  - Carpetas vacías a propósito (12/11, Tomás preguntó por febrero): de las 30 de febrero,
+    15 tienen todo; 9 son de Pipi (recetas "A definir", la ensalada de garbanzos del
+    10/2 y las dos reacciones) y 6 son de las notas del 7/2 y el 21/2 (historia, Reel y
+    carrusel), que se escriben en enero. Esas piezas se suben a su carpeta con FINAL al
+    principio del nombre (`scripts/redes/README.md`, paso 10).
 - [x] **Tareas programadas** de redes (todas vuelven a este hilo): revisión semanal de la
   competencia (lunes 8:53); medir el carrusel del 5/11 (9/11, 8:45, hecho); balance de
   diciembre (4/1/2027, 10:17: carruseles contra 450, recetas propias contra las de otras

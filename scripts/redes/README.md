@@ -51,7 +51,10 @@ Todo se hace en una carpeta de trabajo fuera del repo (por ejemplo, el scratchpa
 10. **Carpeta del día.** Si la planilla del calendario ya tiene instalado el script, las
    piezas nuevas se suben también a la carpeta de su día en el Drive (REDES PUESTO DE
    PALTA > Redes por día). El id de cada carpeta está en la pestaña oculta Carpetas de la
-   planilla, columna D.
+   planilla, columna D (o en el listado público de Redes por día, por nombre). Subirlas
+   con un nombre que empiece con FINAL: así entran solas en Material ya usado > Piezas
+   terminadas y la planilla anota el archivo final (las que vienen de la pestaña Material
+   ya entran sin eso).
 11. **Lo usado.** Dejar en `redes/<lote>/fotos.tsv` (carpeta del proyecto) qué foto del
    Drive va en cada pieza, correr `python3 -I lista_usado.py` en `redes/calendario/` y
    subir el CSV que arma al Drive, en REDES PUESTO DE PALTA > Material ya usado, con el
