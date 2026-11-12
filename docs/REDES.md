@@ -531,6 +531,28 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     10/2 y las dos reacciones) y 6 son de las notas del 7/2 y el 21/2 (historia, Reel y
     carrusel), que se escriben en enero. Esas piezas se suben a su carpeta con FINAL al
     principio del nombre (`scripts/redes/README.md`, paso 10).
+- [ ] **Orden del Drive** (12/11/2026). Tomás preguntó si se podía ordenar la carpeta
+  DISTRI PUESTO DE PALTA y si había material útil dando vueltas. Se recorrió entera
+  (unos 2.000 archivos, 22 GB) y el diagnóstico quedó en un Claude Doc (link en
+  `redes/drive-ids.md` de la carpeta del proyecto; los datos y el plan, en
+  `redes/drive-orden/`). Propuesta, esperando el OK de Tomás:
+  - Sacar lo privado (administración y listas de clientes) de lo compartido, a una
+    carpeta aparte sin compartir.
+  - Mandar a la papelera 129 copias idénticas (comparadas por peso y por contenido;
+    quedan las 5 que usa el calendario) y 22 archivos de sistema (desktop.ini y un
+    temporal de Excel).
+  - Acomodar 29 sueltos: fotos de El Principito a YA USADAS, retratos de Tomás a IMAGEN,
+    10 videos a Reels informativos tom, PDF de folletos a EDITABLES.
+  - No cambia nada de lo que usa la planilla ni de donde trabaja Pipi (LISTAS PARA
+    SUBIR, DOCS, la Agenda).
+  - Material útil: Reels informativos tom (91 grabaciones de Tomás) no entra en Material
+    para usar. Pipi les pone USADO o A USAR en el nombre: al 12/11 hay 15 "A USAR" y 5
+    reacciones del 2/7 sin usar. Los 26 testimonios no aparecen en el calendario de
+    diciembre a febrero (15 están en la web). El GRAN MANUAL INTERNO (IDENTIDAD) tiene
+    15 preguntas frecuentes con respuesta y pide posts 3:4 (1080x1440); las piezas de
+    Claude son 4:5.
+  - Lo que crea Pipi con su cuenta (TESTIMONIOS, LOGOS CLIENTES, la Agenda) es de él: si
+    lo borra, desaparece. Se le sugirió a Tomás pedirle que le pase la propiedad.
 - [x] **Tareas programadas** de redes (todas vuelven a este hilo): revisión semanal de la
   competencia (lunes 8:53); medir el carrusel del 5/11 (9/11, 8:45, hecho); balance de
   diciembre (4/1/2027, 10:17: carruseles contra 450, recetas propias contra las de otras
