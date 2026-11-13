@@ -120,9 +120,9 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     trae solo sus posts), IGEV por día, IGRE e IGPO.
 - [x] **Calendario de diciembre 2026 a febrero 2027** (pedido y hecho el 5/11/2026;
   versiones 4 y 5 el 7/11/2026; la 5 está más abajo, en su propio punto).
-  - Planilla "Calendario de contenidos PdP — dic 2026 a feb 2027" en Mi unidad de
-    Tomás, sin compartir todavía (el link está en la pestaña Calendario del Plan de
-    redes). 13 semanas, del 29/11 al 28/2. Mantiene lo que Pipi tenía en su Agenda hasta
+  - Planilla "Calendario de contenidos PdP — dic 2026 a feb 2027" (desde el 13/11 en la
+    carpeta privada de DISTRI; Pipi la puede editar; el link está en la pestaña
+    Calendario del Plan de redes). 13 semanas, del 29/11 al 28/2. Mantiene lo que Pipi tenía en su Agenda hasta
     el 1/1/2027, salvo lo que se cambió el 7/11 por los números (en amarillo); desde el
     4/1 son propuestas.
   - **Versión 4** (7/11/2026). Tomás pidió la planilla "más prolijo y estético" y que
@@ -413,7 +413,7 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   renombradas del material, sin tocar las carpetas originales.
   - Planilla nueva con el mismo nombre (el id está en `redes/drive-ids.md`). La versión 4
     quedó en Mi unidad: el pedido para mandarla a la papelera fue rechazado por permisos
-    esta vez, así que la borra Tomás.
+    esta vez (al 13/11 ya está en la papelera).
   - Estados: rojo lo que falta (Idea, A definir, Planificado por Pipi, Hay que grabar,
     Guion listo), verde claro lo hecho sin publicar (Grabado, Listo para subir, Borrador
     en Notion, Borrador en Metricool) y verde fuerte Publicado. La celda de la fecha toma
@@ -536,8 +536,9 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   (unos 2.000 archivos, 22 GB); el diagnóstico quedó en un Claude Doc (link en
   `redes/drive-ids.md` de la carpeta del proyecto; los datos, en `redes/drive-orden/`).
   Con el OK de Tomás, el mismo 12/11:
-  - Lo privado (administración y listas de clientes) pasó a una carpeta aparte, sin
-    compartir, fuera de DISTRI.
+  - Lo privado (administración y listas de clientes) pasó a una carpeta aparte. El
+    13/11, a pedido de Tomás, esa carpeta pasó adentro de DISTRI (no de REDES), con la
+    planilla del calendario, y solo la abre él.
   - A la papelera: 22 archivos de sistema (desktop.ini y un temporal de Excel) y 64 de
     las 129 copias idénticas (comparadas por peso y por contenido; las 5 que usa el
     calendario no se tocaron). Las otras 65 son de otras cuentas y solo las puede borrar
@@ -546,10 +547,10 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   - 29 sueltos acomodados: fotos de El Principito a YA USADAS, retratos de Tomás a
     IMAGEN, 10 videos a Reels informativos tom, PDF de folletos a EDITABLES.
   - Estructura que pidió Tomás: DISTRI tiene INFO SUELTA, PLANILLAS (las que no son de
-    redes) y REDES PUESTO DE PALTA. Adentro de REDES: CALENDARIO Y PLANILLAS (Redes por
-    día, la Agenda y los textos de Pipi, las planillas de redes y un Doc con el link a la
-    planilla del calendario, que sigue en Mi unidad de Tomás), ESTUDIOS Y DOCUMENTOS y
-    MATERIAL (FOTOS Y VIDEOS). MATERIAL es la carpeta madre de siempre con otro nombre;
+    redes), la carpeta privada (con la planilla del calendario, desde el 13/11) y REDES
+    PUESTO DE PALTA. Adentro de REDES: CALENDARIO Y PLANILLAS (Redes por día, la Agenda
+    y los textos de Pipi, las planillas de redes y un Doc con el link a la planilla del
+    calendario), ESTUDIOS Y DOCUMENTOS y MATERIAL (FOTOS Y VIDEOS). MATERIAL es la carpeta madre de siempre con otro nombre;
     lo que el script busca por nombre quedó igual (`scripts/redes/README.md`, "Mover o
     renombrar carpetas").
   - Material útil: Reels informativos tom (91 grabaciones de Tomás) no entra en Material
