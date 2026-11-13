@@ -120,8 +120,8 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     trae solo sus posts), IGEV por día, IGRE e IGPO.
 - [x] **Calendario de diciembre 2026 a febrero 2027** (pedido y hecho el 5/11/2026;
   versiones 4 y 5 el 7/11/2026; la 5 está más abajo, en su propio punto).
-  - Planilla "Calendario de contenidos PdP — dic 2026 a feb 2027" (desde el 13/11 en la
-    carpeta privada de DISTRI; Pipi la puede editar; el link está en la pestaña
+  - Planilla "Calendario de contenidos PdP — dic 2026 a feb 2027" (desde el 13/11 en REDES >
+    CALENDARIO Y PLANILLAS, donde Pipi la tiene a mano; el link está en la pestaña
     Calendario del Plan de redes). 13 semanas, del 29/11 al 28/2. Mantiene lo que Pipi tenía en su Agenda hasta
     el 1/1/2027, salvo lo que se cambió el 7/11 por los números (en amarillo); desde el
     4/1 son propuestas.
@@ -537,8 +537,8 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   `redes/drive-ids.md` de la carpeta del proyecto; los datos, en `redes/drive-orden/`).
   Con el OK de Tomás, el mismo 12/11:
   - Lo privado (administración y listas de clientes) pasó a una carpeta aparte. El
-    13/11, a pedido de Tomás, esa carpeta pasó adentro de DISTRI (no de REDES), con la
-    planilla del calendario, y solo la abre él.
+    13/11, a pedido de Tomás, esa carpeta pasó adentro de DISTRI (no de REDES) y solo la
+    abre él.
   - A la papelera: 22 archivos de sistema (desktop.ini y un temporal de Excel) y 64 de
     las 129 copias idénticas (comparadas por peso y por contenido; las 5 que usa el
     calendario no se tocaron). Las otras 65 son de otras cuentas y solo las puede borrar
@@ -547,10 +547,10 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   - 29 sueltos acomodados: fotos de El Principito a YA USADAS, retratos de Tomás a
     IMAGEN, 10 videos a Reels informativos tom, PDF de folletos a EDITABLES.
   - Estructura que pidió Tomás: DISTRI tiene INFO SUELTA, PLANILLAS (las que no son de
-    redes), la carpeta privada (con la planilla del calendario, desde el 13/11) y REDES
-    PUESTO DE PALTA. Adentro de REDES: CALENDARIO Y PLANILLAS (Redes por día, la Agenda
-    y los textos de Pipi, las planillas de redes y un Doc con el link a la planilla del
-    calendario), ESTUDIOS Y DOCUMENTOS y MATERIAL (FOTOS Y VIDEOS). MATERIAL es la carpeta madre de siempre con otro nombre;
+    redes), la carpeta privada y REDES PUESTO DE PALTA. Adentro de REDES: CALENDARIO Y
+    PLANILLAS (la planilla del calendario desde el 13/11, para que Pipi la tenga a mano;
+    Redes por día, la Agenda y los textos de Pipi y las planillas de redes), ESTUDIOS Y
+    DOCUMENTOS y MATERIAL (FOTOS Y VIDEOS). MATERIAL es la carpeta madre de siempre con otro nombre;
     lo que el script busca por nombre quedó igual (`scripts/redes/README.md`, "Mover o
     renombrar carpetas").
   - Material útil: Reels informativos tom (91 grabaciones de Tomás) no entra en Material
@@ -566,6 +566,12 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     negocios, porque los mensajes de venta a gastronómicos mandan a mirar el perfil.
   - Lo que crea Pipi con su cuenta (TESTIMONIOS, LOGOS CLIENTES, la Agenda) es de él: si
     lo borra, desaparece. Se le sugirió a Tomás pedirle que le pase la propiedad.
+  - Copia vieja de DISTRI en la copia de la compu de Tomás (13/11, lo pidió él): se
+    comparó entera (387 archivos, por nombre y peso). Lo que solo estaba ahí se copió a
+    la principal, cada cosa en su lugar: 14 fotos a IMAGEN, 10 Reels a VIDEO >
+    reels_videos, 13 guías y manuales viejos de redes a ESTUDIOS Y DOCUMENTOS y 2
+    documentos privados (uno, una versión más nueva de una planilla de administración)
+    a la carpeta privada. La carpeta de la compu no se tocó; Tomás la puede borrar.
 - [x] **Tareas programadas** de redes (todas vuelven a este hilo): revisión semanal de la
   competencia (lunes 8:53); medir el carrusel del 5/11 (9/11, 8:45, hecho); balance de
   diciembre (4/1/2027, 10:17: carruseles contra 450, recetas propias contra las de otras
