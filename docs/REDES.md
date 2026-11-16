@@ -118,6 +118,32 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     los Reels (ver Horario, en el diagnóstico).
   - Cómo se leyó: IGCO (7 y 30 días), IGCR para los Reels de los competidores (IGCP
     trae solo sus posts), IGEV por día, IGRE e IGPO.
+  - **16/11/2026** (competidores del 17/10 al 15/11 y la semana del 9 al 15/11).
+    Seguidores: @paltasagrada 57.312 (-34 en la semana), @lapalteria10 55.864 (+185),
+    @labellapalta 8.776 (-14), @frutiverdu 6.930 (+6). La Paltería: 9 Reels y 1 post en
+    30 días, con 88 likes y 6 comentarios de promedio; en la semana, 3 Reels después de
+    una semana sin nada: un truco para no tirar las paltas que maduran juntas con el
+    calor (por el hashtag, congelarlas; 99 interacciones y 13 comentarios, lo mejor de la
+    semana), el aviso de su nueva línea de WhatsApp (77) y una "Promo emprendedores" con
+    precio mayorista desde un cajón para comercios y restaurantes (27). Palta Sagrada:
+    sigue sin publicar en el feed. La Bella Palta: nada en la semana (3 posts en 30 días,
+    3 likes de promedio). Frutiverdu: 1 Reel (6 likes).
+  - Propios, misma revisión: 12.677 seguidores el 14/11 (+196 desde el 7/11; la semana
+    anterior, unos 500). Alcance de la cuenta: de 2.000 a 3.300 por día del 8 al 14/11.
+    5 Reels, ningún post y sin anuncios: el sándwich del 11/11, receta de otra cuenta,
+    1.390 personas, 21 guardados y 11 compartidos; el video de la palta madurando (13/11,
+    Apreciación paltera), 561 en tres días; las tortillas de zanahoria (14/11, otra
+    cuenta), 413 en un día y medio, con 18 guardados; la reflexión sobre el derroche
+    (9/11), 355; el de la nota del Mundial con "Comentá MUNDIAL" (12/11), 314 y ningún
+    comentario. 4 de 5 entre las 19 y las 21 h (el otro, 18:53). Historias: Metricool ya
+    las mide; 25 del 9 al 14/11, unas 87 personas cada una de promedio. TikTok: sigue en
+    cero en Metricool (o no se publica o hay que volver a vincularlo).
+  - Cambio al plan (16/11): Apreciación paltera del 11/12 en video y no en carrusel, porque
+    el video del 13/11 superó la mediana de los carruseles (447). Se le pidió a Tomás
+    cambiarlo en la planilla (Formato: Reel). Idea anotada en el Plan de redes: sumar
+    cómo congelarla al Tom especialista del 15/2.
+  - Cómo se leyó (16/11): lo mismo, más IGEV16 a IGEV20 para las historias y TKEV para
+    TikTok. Las horas de IGRE e IGCR vienen en UTC (3 horas adelantadas).
 - [x] **Calendario de diciembre 2026 a febrero 2027** (pedido y hecho el 5/11/2026;
   versiones 4 y 5 el 7/11/2026; la 5 está más abajo, en su propio punto).
   - Planilla "Calendario de contenidos PdP — dic 2026 a feb 2027" (desde el 13/11 en REDES >
