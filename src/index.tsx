@@ -170,6 +170,7 @@ app.get('/sitemap.xml', (c) => cachedResponse(c, async () => {
     { loc: `${SITE_URL}/` },
     { loc: `${SITE_URL}/blog` },
   ]
+  let complete = true
   try {
     const pages = await listPublished(c.env)
     for (const page of pages) {
@@ -178,14 +179,18 @@ app.get('/sitemap.xml', (c) => cachedResponse(c, async () => {
     }
     if (urls.length > 2 && urls[2].lastmod) urls[1].lastmod = urls[2].lastmod
   } catch (_) {
-    // Si Notion falla, el mapa sale igual con el inicio y el blog.
+    // Si Notion falla, el mapa sale igual con el inicio y el blog, pero no se guarda.
+    complete = false
   }
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url><loc>${u.loc}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`).join('\n')}
 </urlset>
 `
-  return c.body(body, 200, { 'Content-Type': 'application/xml; charset=utf-8' })
+  return c.body(body, 200, {
+    'Content-Type': 'application/xml; charset=utf-8',
+    ...(complete ? {} : { 'Cache-Control': 'no-store' }),
+  })
 }))
 
 // Cualquier otra dirección: página 404 con el estilo del sitio.

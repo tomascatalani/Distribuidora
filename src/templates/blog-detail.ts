@@ -744,7 +744,7 @@ export function blogDetailHTML(article: ArticlePage): string {
 </html>`
 }
 
-export function blogNotFoundHTML(): string {
+export function blogNotFoundHTML(temporary = false): string {
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -768,8 +768,8 @@ export function blogNotFoundHTML(): string {
 <body>
   <div class="wrap">
     <span class="icon">🥑</span>
-    <h1>Artículo no encontrado.</h1>
-    <p>El artículo que buscás no existe o fue removido.</p>
+    <h1>${temporary ? 'No pudimos cargar la nota.' : 'Artículo no encontrado.'}</h1>
+    <p>${temporary ? 'Probá de nuevo en unos minutos.' : 'El artículo que buscás no existe o fue removido.'}</p>
     <a href="/blog">Volver al blog</a>
   </div>
 </body>

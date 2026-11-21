@@ -23,7 +23,8 @@ function waitUntil(c: Context, p: Promise<any>) {
 }
 
 // Devuelve la copia guardada si existe; si no, arma la respuesta con `build` y,
-// si salió bien (código 200), la guarda. La clave es la dirección sin "?…".
+// si salió bien (código 200 y sin "no-store"), la guarda. La clave es la dirección
+// sin "?…".
 export async function cachedResponse(c: Context, build: () => Promise<Response>, seconds = CACHE_SECONDS): Promise<Response> {
   const cache = edgeCache()
   const url = new URL(c.req.url)
@@ -35,7 +36,7 @@ export async function cachedResponse(c: Context, build: () => Promise<Response>,
     } catch (_) {}
   }
   const res = await build()
-  if (cache && res.status === 200) {
+  if (cache && res.status === 200 && !(res.headers.get('Cache-Control') || '').includes('no-store')) {
     const copy = new Response(res.clone().body, res)
     copy.headers.set('Cache-Control', `public, max-age=${seconds}`)
     waitUntil(c, cache.put(key, copy).catch(() => {}))

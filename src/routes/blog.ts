@@ -23,6 +23,7 @@ blogPage.get('/:slug', (c) => cachedResponse(c, async () => {
     if (asked !== article.slug) return c.redirect(`/blog/${article.slug}`, 301)
     return c.html(blogDetailHTML(article))
   } catch (_) {
-    return c.html(blogNotFoundHTML(), 404)
+    // Notion no respondió: 503 (y no 404) para que Google no dé la nota por borrada.
+    return c.html(blogNotFoundHTML(true), 503, { 'Retry-After': '300' })
   }
 }))
