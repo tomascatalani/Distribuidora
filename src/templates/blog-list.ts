@@ -177,7 +177,7 @@ export function blogListHTML(): string {
       font-family: 'Libre Baskerville', serif;
       font-size: 16px; color: #faf8f4;
     }
-    .footer-mini-logo span { color: #4a7c59; }
+    .footer-mini-logo span { color: #6fa37d; }
     .footer-mini-logo img {
       display: inline-block; vertical-align: middle;
       width: 36px; height: 36px; object-fit: contain; margin-right: 8px;

@@ -738,7 +738,51 @@ nadie.
   - Formularios sin anti-bots (Turnstile); el alta manda bienvenida por Brevo y comparte
     los 300 mails/día con las campañas. El mail de contacto no escapa el HTML.
   - Notion: la nota del 19/11 quedó en borrador sin slug; las del 29/11 y 27/12 tienen
-    tildes en el slug.
+    tildes en el slug. (Más tarde ese día Tomás la publicó; sigue sin slug.)
+
+- **21/11/2026: arreglos de la auditoría** en la rama `claude/project-thread-03p1qu`
+  (vista previa: https://claude-project-thread-03p1qu.puesto-de-palta-web.pages.dev).
+  Esperando el OK de Tomás para pasar a `main`. Qué cambia:
+  - Pedidos: "Pedí por WhatsApp" es el botón principal del hero y del menú. Sección
+    nueva `#como-trabajamos` (3 pasos, datos, 2 botones negocio/casa) con preguntas
+    frecuentes `#preguntas` (respuestas armadas solo con datos de la web y de
+    `docs/REDES.md`; Tomás puede corregirlas en la constante `FAQ` de `home.ts`).
+    WhatsApp primero en Contacto, formulario con campo Negocio. Botón flotante de
+    WhatsApp también en el blog y en las notas, y recuadro "Hacé tu pedido" al final de
+    cada nota. Todos los links abren WhatsApp con un mensaje que dice "Vengo de la web"
+    (así Tomás sabe de dónde viene cada pedido). Todo en `src/lib/site.ts`
+    (`WHATSAPP_NUMBER`, `WA_MSG`, `waLink`, `whatsappFloat`).
+  - Velocidad: portadas por Cloudinary con `cld()` (`IMG_CARD`, `IMG_HERO`,
+    `IMG_SHARE`); el inicio muestra 3 notas; video del hero en dos versiones livianas
+    (`HERO_VIDEO_DESKTOP` recorte horizontal, `HERO_VIDEO_MOBILE`) sin audio; fuentes
+    sin bloquear (`FONTS_HEAD`). Lighthouse celular, antes → vista previa: inicio
+    87 → 100 (8 MB → 3,6 MB), blog 70 → 87 (12 MB → 0,5 MB), nota 69 → 85 (1,5 MB →
+    0,3 MB). El SEO da 69 en la vista previa solo porque pages.dev agrega `noindex`.
+  - SEO: `/sitemap.xml` (lo arma el Worker con las notas publicadas), `public/robots.txt`,
+    canonical, títulos y descripciones nuevos, JSON-LD (Organization con teléfono y
+    contactPoint, FAQPage, BlogPosting), `og:image` 1200x630 en JPG, links de fuentes
+    clicables (`linkify` en `notion.ts`), bloque "Más notas" al final de cada nota.
+  - **Direcciones de notas limpias:** `slugify()` quita tildes y mayúsculas al slug de
+    Notion (o al título si no tiene). La dirección vieja (con tildes, o el ID de página)
+    redirige con 301 a la limpia. Ya no hace falta cuidar las tildes en Notion. El KV de
+    avisos usa el ID de página, así que esto no repite avisos. Los mails nuevos usan la
+    dirección limpia.
+  - **Caché:** cada nota, `/api/blog` y el sitemap se guardan 5 minutos en Cloudflare
+    (`src/lib/edge.ts`). Una nota recién publicada o editada puede tardar hasta 5 minutos
+    en verse. Si Notion falla no se guarda nada y la nota responde 503 (no 404).
+  - Formularios: campo trampa `website`, tiempo mínimo de 2,5 s (campo `t`), origen
+    permitido y máximo 5 envíos por IP cada 10 minutos (`formGuard`). A los bots se les
+    responde "ok" sin hacer nada. El mail de contacto escapa lo que escribe la gente.
+  - Arreglos: hero del celular (el texto ya no queda debajo del menú), menú hamburguesa
+    hasta 1.280 px, fechas de las tarjetas, "Volver al blog" a `/blog`, contrastes,
+    textos alternativos, títulos en orden, sin `alert()`.
+  - Vista previa: se cargaron en Cloudflare Pages → Preview solo `NOTION_TOKEN` y
+    `NOTION_DB_ID` (por API, como `secret_text`: con `plain_text` la API respondió OK
+    pero no lo guardó). Preview usa el mismo KV que producción, pero sin
+    `NOTIFY_ENABLED` ni claves de Brevo/OneSignal, así que no manda avisos.
+  - Pendiente de Tomás: zonas de entrega y pedido mínimo (para la FAQ), qué frases de
+    clientes usar como testimonios en texto, un video horizontal para la compu, alta en
+    Google Search Console (mandar el sitemap).
 
 ### Pendiente, en orden
 

@@ -402,7 +402,7 @@ export function blogDetailHTML(article: ArticlePage): string {
       padding: 28px 24px;
       text-align: left;
     }
-    .inline-subs-option h4 {
+    .inline-subs-option h3 {
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 1px;
@@ -488,7 +488,7 @@ export function blogDetailHTML(article: ArticlePage): string {
       font-size: 16px;
       color: #faf8f4;
     }
-    .footer-mini-logo span { color: #4a7c59; }
+    .footer-mini-logo span { color: #6fa37d; }
     .footer-mini-logo img {
       display: inline-block;
       vertical-align: middle;
@@ -630,7 +630,7 @@ export function blogDetailHTML(article: ArticlePage): string {
     <p class="subs-copy">Notas nuevas, curiosidades y detrás de escena. Sin spam. Sin ruido.</p>
     <div class="inline-subs-grid">
       <div class="inline-subs-option">
-        <h4>✉️ &nbsp;Por email</h4>
+        <h3>✉️ &nbsp;Por email</h3>
         <p>Te mandamos cada nota nueva directo a tu bandeja.</p>
         <form class="inline-email-form" id="inline-email-form">
           <input type="email" class="inline-email-input" id="inline-email-input" placeholder="tu@email.com" autocomplete="email" aria-label="Tu email" required>
@@ -641,7 +641,7 @@ export function blogDetailHTML(article: ArticlePage): string {
         <p class="inline-subs-success" id="inline-subs-success">¡Listo! Te mandamos un mail de confirmación. Si cae en spam, marcalo como No es spam para que los próximos lleguen directo.</p>
       </div>
       <div class="inline-subs-option">
-        <h4>🔔 &nbsp;Notificaciones push</h4>
+        <h3>🔔 &nbsp;Notificaciones push</h3>
         <p>Aviso instantáneo en el navegador cuando publicamos algo nuevo.</p>
         <button class="inline-push-btn" id="inline-push-btn" onclick="handleInlinePush()">Activar notificaciones</button>
         <p class="inline-subs-success" id="inline-push-success">¡Listo! Te avisamos cuando sube algo nuevo.</p>

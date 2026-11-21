@@ -663,7 +663,7 @@ export function homeHTML(): string {
       overflow: hidden;
     }
     #testimonios .section-label {
-      color: #4a7c59;
+      color: #6fa37d;
       text-align: center;
       display: block;
     }
@@ -1366,7 +1366,7 @@ export function homeHTML(): string {
       color: #faf8f4;
       margin-bottom: 10px;
     }
-    .footer-logo span { color: #4a7c59; }
+    .footer-logo span { color: #6fa37d; }
     .footer-tagline {
       font-size: 12px;
       color: rgba(250,248,244,0.6);
@@ -1406,7 +1406,7 @@ export function homeHTML(): string {
     }
     .footer-craft {
       font-size: 11px;
-      color: rgba(250,248,244,0.45);
+      color: rgba(250,248,244,0.6);
       letter-spacing: 1px;
     }
 
