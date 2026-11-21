@@ -11,14 +11,15 @@ import { pathToFileURL } from 'url'
 // El plan gratuito de Workers permite 100.000 pedidos por día a la parte dinámica.
 // Si se pasan (por ejemplo, un bot que prueba miles de direcciones), Cloudflare deja
 // de correr el Worker hasta las 00:00 UTC y solo sirve archivos fijos. Por eso:
-//   - El Worker atiende solo lo que necesita Notion o las claves: /api/* y /blog/:slug.
+//   - El Worker atiende solo lo que necesita Notion o las claves: /api/*, /blog/:slug
+//     y /sitemap.xml.
 //   - El inicio, el listado del blog y la página 404 se generan acá como archivos
 //     fijos (index.html, blog.html, 404.html). No gastan pedidos y se ven siempre.
 //   - Cualquier dirección inventada cae en 404.html, también sin gastar pedidos.
 // Ver docs/MIGRACION.md, sección 6 (incidente del 02/11/2026).
 const WORKER_ROUTES = {
   version: 1,
-  include: ['/api/*', '/blog/*'],
+  include: ['/api/*', '/blog/*', '/sitemap.xml'],
   exclude: ['/blog']
 }
 
@@ -51,7 +52,7 @@ function staticFilesPlugin() {
     async closeBundle() {
       const routesPath = resolve(__dirname, 'dist/_routes.json')
       writeFileSync(routesPath, JSON.stringify(WORKER_ROUTES))
-      console.log('✓ _routes.json: el Worker atiende solo /api/* y /blog/:slug')
+      console.log('✓ _routes.json: el Worker atiende solo /api/*, /blog/:slug y /sitemap.xml')
 
       await prerenderPages()
 

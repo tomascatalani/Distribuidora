@@ -7,6 +7,7 @@ import { apiContact } from './routes/api-contact'
 import { apiSubscribe } from './routes/api-subscribe'
 import { apiNotify, sendNotifications, sendAlertEmail, DEFAULT_ALERT_EMAIL, SITE_URL } from './routes/api-notify'
 import { listPublished, parseArticle, fetchBlocks, extractExcerpt, shortExcerpt } from './lib/notion'
+import { cachedResponse } from './lib/edge'
 import { notFoundHTML } from './templates/not-found'
 
 // Variables de entorno (se cargan en Cloudflare Pages → Settings → Variables and Secrets).
@@ -30,7 +31,10 @@ const app = new Hono<{ Bindings: Bindings }>()
 // estáticos los sirve Cloudflare Pages como archivos fijos, que no cuentan para el
 // límite diario de pedidos del plan gratuito. Las rutas de páginas de acá abajo
 // siguen existiendo: el build las usa para generar esos archivos, y sirven en `npm run dev`.
-app.use('/api/*', cors())
+// Solo la lista de notas se puede leer desde otros sitios. Los formularios
+// (/api/subscribe, /api/contact) aceptan envíos solo desde la propia web.
+app.use('/api/blog', cors())
+app.use('/api/blog/*', cors())
 
 // ── Protección con secreto para el cron y el envío manual ────────────────────
 
@@ -156,6 +160,38 @@ app.get('/api/cron', async (c) => {
     return c.json({ ok: false, ran: new Date().toISOString(), report }, 500)
   }
 })
+
+// ── Mapa del sitio para Google ──────────────────────────────────────────────
+// Lista el inicio, el blog y cada nota publicada con su dirección limpia.
+// Está declarado en public/robots.txt. Se guarda 5 minutos en Cloudflare.
+
+app.get('/sitemap.xml', (c) => cachedResponse(c, async () => {
+  const urls: Array<{ loc: string; lastmod?: string }> = [
+    { loc: `${SITE_URL}/` },
+    { loc: `${SITE_URL}/blog` },
+  ]
+  let complete = true
+  try {
+    const pages = await listPublished(c.env)
+    for (const page of pages) {
+      const a = parseArticle(page)
+      urls.push({ loc: `${SITE_URL}/blog/${a.slug}`, lastmod: (a.lastEdited || a.fecha || '').slice(0, 10) || undefined })
+    }
+    if (urls.length > 2 && urls[2].lastmod) urls[1].lastmod = urls[2].lastmod
+  } catch (_) {
+    // Si Notion falla, el mapa sale igual con el inicio y el blog, pero no se guarda.
+    complete = false
+  }
+  const body = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map(u => `  <url><loc>${u.loc}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`).join('\n')}
+</urlset>
+`
+  return c.body(body, 200, {
+    'Content-Type': 'application/xml; charset=utf-8',
+    ...(complete ? {} : { 'Cache-Control': 'no-store' }),
+  })
+}))
 
 // Cualquier otra dirección: página 404 con el estilo del sitio.
 app.notFound((c) => c.html(notFoundHTML(), 404))

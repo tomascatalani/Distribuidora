@@ -1,0 +1,5 @@
+# Puesto de Palta. Cloudflare agrega arriba sus reglas para robots de IA.
+User-agent: *
+Allow: /
+
+Sitemap: https://puestodepalta.com/sitemap.xml

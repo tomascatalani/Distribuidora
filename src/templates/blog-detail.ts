@@ -1,29 +1,65 @@
-import { FACEBOOK_ICON, FACEBOOK_URL, INSTAGRAM_ICON, INSTAGRAM_URL, LOGO_URL, OG_IMAGE, SITE_URL, socialIcons, METRICOOL_TRACKER } from '../lib/site'
+import { FACEBOOK_ICON, FACEBOOK_URL, INSTAGRAM_ICON, INSTAGRAM_URL, LOGO_URL, OG_IMAGE, SITE_URL, socialIcons, METRICOOL_TRACKER, WA_MSG, waLink, whatsappFloat, WHATSAPP_ICON, FONTS_HEAD, yearSpan, esc, cld, IMG_HERO, IMG_SHARE } from '../lib/site'
+import type { ArticlePage } from '../lib/notion'
 
-export function blogDetailHTML(article: any): string {
-  const { title, fecha, imageUrl, htmlContent, excerpt, slug } = article
-  const formattedDate = fecha
-    ? new Date(fecha).toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: 'numeric' })
-    : ''
+function formatDateAR(fecha: string | null): string {
+  if (!fecha) return ''
+  return new Date(String(fecha).slice(0, 10) + 'T12:00:00Z').toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+}
+
+export function blogDetailHTML(article: ArticlePage): string {
+  const { fecha, imageUrl, htmlContent, slug, related } = article
+  const title = esc(article.title)
+  const excerpt = esc(article.excerpt)
+  const description = esc(article.description)
+  const formattedDate = formatDateAR(fecha)
+  const url = `${SITE_URL}/blog/${slug}`
+  const heroUrl = cld(imageUrl, IMG_HERO)
+  const shareUrl = imageUrl ? cld(imageUrl, IMG_SHARE) : OG_IMAGE
+  const jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.title,
+    description: article.description,
+    image: imageUrl ? [shareUrl] : [OG_IMAGE],
+    datePublished: fecha || undefined,
+    dateModified: article.lastEdited || fecha || undefined,
+    mainEntityOfPage: url,
+    url,
+    inLanguage: 'es-AR',
+    author: { '@type': 'Organization', name: 'Puesto de Palta', url: SITE_URL },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Puesto de Palta',
+      logo: { '@type': 'ImageObject', url: 'https://res.cloudinary.com/dxlunrd1f/image/upload/v1773665883/puesto-de-palta/isologotipo.png' },
+    },
+  }).replace(/</g, '\\u003c')
 
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title} — Puesto de Palta</title>
-  <meta name="description" content="${excerpt || ''}">
-  <meta property="og:title" content="${title} — Puesto de Palta">
-  <meta property="og:description" content="${excerpt || ''}">
+  <title>${title} — Blog Paltero | Puesto de Palta</title>
+  <meta name="description" content="${description}">
+  <link rel="canonical" href="${url}">
+  <meta property="og:title" content="${title}">
+  <meta property="og:description" content="${description}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="${imageUrl || OG_IMAGE}">
-  <meta property="og:url" content="${SITE_URL}/blog/${slug}">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="Puesto de Palta">
+  <meta property="og:image" content="${esc(shareUrl)}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="${url}">
+  ${fecha ? `<meta property="article:published_time" content="${esc(fecha)}">` : ''}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0a0a0a">
+  <script type="application/ld+json">${jsonLd}</script>
+  ${heroUrl ? `<link rel="preload" as="image" href="${esc(heroUrl)}" fetchpriority="high">` : ''}
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
   <link rel="apple-touch-icon" href="/favicon-512.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  ${FONTS_HEAD}
   <!-- OneSignal Web SDK -->
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
   <script>
@@ -84,7 +120,7 @@ export function blogDetailHTML(article: any): string {
       font-weight: 500;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(250,248,244,0.5);
+      color: rgba(250,248,244,0.7);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -137,7 +173,7 @@ export function blogDetailHTML(article: any): string {
     }
     .inline-social p {
       font-size: 13px;
-      color: rgba(250,248,244,0.5);
+      color: rgba(250,248,244,0.7);
     }
     .inline-social .social-icons a {
       width: 38px;
@@ -152,7 +188,7 @@ export function blogDetailHTML(article: any): string {
     .blog-hero {
       margin-top: 72px;
       ${imageUrl ? `
-      background: linear-gradient(to bottom, rgba(10,10,10,0.1), rgba(10,10,10,0.7)), url('${imageUrl}') center/cover no-repeat;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.1), rgba(10,10,10,0.7)), url('${esc(heroUrl)}') center/cover no-repeat;
       min-height: 480px;
       display: flex;
       align-items: flex-end;
@@ -176,7 +212,7 @@ export function blogDetailHTML(article: any): string {
       font-weight: 600;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: #4a7c59;
+      color: #8fc29c;
       margin-bottom: 16px;
       display: block;
     }
@@ -335,21 +371,21 @@ export function blogDetailHTML(article: any): string {
       font-weight: 600;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: rgba(74,124,89,0.8);
+      color: #6fa37d;
       display: block;
       margin-bottom: 14px;
     }
-    .inline-subs h3 {
+    .inline-subs h2 {
       font-family: 'Libre Baskerville', serif;
       font-size: clamp(20px, 3vw, 28px);
       font-weight: 400;
       color: #faf8f4;
       margin-bottom: 10px;
     }
-    .inline-subs h3 em { font-style: italic; color: #6aaa82; }
+    .inline-subs h2 em { font-style: italic; color: #6aaa82; }
     .inline-subs .subs-copy {
       font-size: 14px;
-      color: rgba(250,248,244,0.5);
+      color: rgba(250,248,244,0.7);
       margin-bottom: 28px;
       line-height: 1.6;
     }
@@ -366,7 +402,7 @@ export function blogDetailHTML(article: any): string {
       padding: 28px 24px;
       text-align: left;
     }
-    .inline-subs-option h4 {
+    .inline-subs-option h3 {
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 1px;
@@ -376,7 +412,7 @@ export function blogDetailHTML(article: any): string {
     }
     .inline-subs-option p {
       font-size: 13px;
-      color: rgba(250,248,244,0.45);
+      color: rgba(250,248,244,0.7);
       margin-bottom: 18px;
       line-height: 1.55;
     }
@@ -452,7 +488,7 @@ export function blogDetailHTML(article: any): string {
       font-size: 16px;
       color: #faf8f4;
     }
-    .footer-mini-logo span { color: #4a7c59; }
+    .footer-mini-logo span { color: #6fa37d; }
     .footer-mini-logo img {
       display: inline-block;
       vertical-align: middle;
@@ -467,7 +503,7 @@ export function blogDetailHTML(article: any): string {
       gap: 8px;
       font-size: 12px;
       letter-spacing: 1px;
-      color: rgba(250,248,244,0.5);
+      color: rgba(250,248,244,0.7);
       transition: color 0.2s;
     }
     .footer-mini-ig:hover { color: #faf8f4; }
@@ -483,8 +519,47 @@ export function blogDetailHTML(article: any): string {
     }
     .footer-mini-copy {
       font-size: 12px;
-      color: rgba(250,248,244,0.2);
+      color: rgba(250,248,244,0.55);
     }
+    .hp { position: absolute !important; left: -10000px !important; width: 1px; height: 1px; overflow: hidden; }
+    .subs-msg { font-size: 12px; color: #e8a0a0; min-height: 16px; margin-top: 8px; }
+
+    /* Caja del negocio (fuera del texto de la nota) */
+    .negocio-box {
+      max-width: 720px; margin: 0 auto 56px; padding: 28px 32px;
+      background: #f1efe9; border-left: 3px solid #4a7c59;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .negocio-box p { font-size: 15px; color: #333; line-height: 1.6; }
+    .negocio-box p strong { color: #0a0a0a; }
+    .negocio-btn {
+      flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px;
+      background: #4a7c59; color: #faf8f4; padding: 12px 18px; border-radius: 2px;
+      font-size: 12px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+    }
+    .negocio-btn:hover { background: #3f6e4d; }
+    .negocio-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* Más notas */
+    .mas-notas { max-width: 1080px; margin: 0 auto; padding: 8px 48px 72px; }
+    .mas-notas h2 {
+      font-family: 'Libre Baskerville', Georgia, serif; font-weight: 400;
+      font-size: clamp(22px, 2.6vw, 30px); color: #0a0a0a; margin-bottom: 28px;
+    }
+    .mas-notas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .mas-card { display: block; }
+    .mas-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #e8e4dc; margin-bottom: 14px; }
+    .mas-card span { display: block; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #3d6b4a; margin-bottom: 6px; }
+    .mas-card h3 { font-family: 'Libre Baskerville', Georgia, serif; font-weight: 400; font-size: 18px; line-height: 1.4; color: #0a0a0a; }
+    .mas-card:hover h3 { color: #4a7c59; }
+    .mas-card:focus-visible { outline: 2px solid #4a7c59; outline-offset: 4px; }
+    .mas-notas-all { margin-top: 32px; }
+    @media (max-width: 768px) {
+      .negocio-box { flex-direction: column; align-items: flex-start; margin: 0 24px 48px; padding: 24px; }
+      .mas-notas { padding: 8px 24px 56px; }
+      .mas-notas-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
     @media (max-width: 768px) {
       .nav { padding: 0 24px; }
@@ -501,15 +576,15 @@ export function blogDetailHTML(article: any): string {
 </head>
 <body>
 
-  <nav class="nav">
+  <nav class="nav" aria-label="Principal">
     <a href="/" class="nav-logo">
       <img src="${LOGO_URL}" alt="Puesto de Palta" width="44" height="44" loading="eager">
-      <span class="nav-logo-name">Puesto de <span>Palta</span></span>
+      <span class="nav-logo-name" aria-hidden="true">Puesto de <span>Palta</span></span>
     </a>
     <div class="nav-right">
       ${socialIcons()}
-      <a href="/#blog" class="nav-back">
-        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+      <a href="/blog" class="nav-back">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
         Volver al blog
       </a>
     </div>
@@ -530,23 +605,43 @@ export function blogDetailHTML(article: any): string {
     }
   </article>
 
+  <!-- Caja del negocio: va afuera del texto, así la nota sigue sin mencionar la marca -->
+  <aside class="negocio-box" aria-label="Sobre Puesto de Palta">
+    <p><strong>Este blog es de Puesto de Palta</strong>, una distribuidora que lleva paltas en su punto a restaurantes, cafés y casas de Buenos Aires.</p>
+    <a href="${waLink(WA_MSG.blog)}" target="_blank" rel="noopener" class="negocio-btn">${WHATSAPP_ICON}Hacé tu pedido</a>
+  </aside>
+
+  ${related && related.length ? `<section class="mas-notas" aria-labelledby="mas-notas-titulo">
+    <h2 id="mas-notas-titulo">Más notas del Blog Paltero</h2>
+    <div class="mas-notas-grid">
+      ${related.map(r => `<a class="mas-card" href="/blog/${encodeURIComponent(r.slug)}">
+        ${r.thumbUrl ? `<img src="${esc(r.thumbUrl)}" alt="" loading="lazy" width="800" height="450">` : ''}
+        ${r.fecha ? `<span>${formatDateAR(r.fecha)}</span>` : ''}
+        <h3>${esc(r.title)}</h3>
+      </a>`).join('')}
+    </div>
+    <p class="mas-notas-all"><a href="/blog" class="back-link">Ver todas las notas</a></p>
+  </section>` : ''}
+
   <!-- Suscripción inline post-artículo -->
   <div class="inline-subs">
     <span class="subs-label">Newsletter</span>
-    <h3>¿Te gustó la nota? <em>Quedá en el loop.</em></h3>
+    <h2>¿Te gustó la nota? <em>Quedá en el loop.</em></h2>
     <p class="subs-copy">Notas nuevas, curiosidades y detrás de escena. Sin spam. Sin ruido.</p>
     <div class="inline-subs-grid">
       <div class="inline-subs-option">
-        <h4>✉️ &nbsp;Por email</h4>
+        <h3>✉️ &nbsp;Por email</h3>
         <p>Te mandamos cada nota nueva directo a tu bandeja.</p>
         <form class="inline-email-form" id="inline-email-form">
-          <input type="email" class="inline-email-input" id="inline-email-input" placeholder="tu@email.com" required>
+          <input type="email" class="inline-email-input" id="inline-email-input" placeholder="tu@email.com" autocomplete="email" aria-label="Tu email" required>
+          <input type="text" id="inline-email-website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button type="submit" class="inline-email-btn" id="inline-email-btn">Suscribirme</button>
         </form>
+        <p class="subs-msg" id="inline-subs-msg" role="status"></p>
         <p class="inline-subs-success" id="inline-subs-success">¡Listo! Te mandamos un mail de confirmación. Si cae en spam, marcalo como No es spam para que los próximos lleguen directo.</p>
       </div>
       <div class="inline-subs-option">
-        <h4>🔔 &nbsp;Notificaciones push</h4>
+        <h3>🔔 &nbsp;Notificaciones push</h3>
         <p>Aviso instantáneo en el navegador cuando publicamos algo nuevo.</p>
         <button class="inline-push-btn" id="inline-push-btn" onclick="handleInlinePush()">Activar notificaciones</button>
         <p class="inline-subs-success" id="inline-push-success">¡Listo! Te avisamos cuando sube algo nuevo.</p>
@@ -559,8 +654,8 @@ export function blogDetailHTML(article: any): string {
   </div>
 
   <div class="article-back">
-    <a href="/#blog" class="back-link">
-      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    <a href="/blog" class="back-link">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
       Volver al blog
     </a>
   </div>
@@ -580,23 +675,28 @@ export function blogDetailHTML(article: any): string {
         Facebook
       </a>
     </div>
-    <div class="footer-mini-copy">© 2026 Puesto de Palta. Buenos Aires.</div>
+    <div class="footer-mini-copy">© ${yearSpan()} Puesto de Palta. Buenos Aires.</div>
   </footer>
+
+  ${whatsappFloat(WA_MSG.blog)}
 
   <script>
     // Email suscripción inline
+    var pageLoadedAt = Date.now();
     document.getElementById('inline-email-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = document.getElementById('inline-email-btn');
       const success = document.getElementById('inline-subs-success');
       const emailVal = document.getElementById('inline-email-input').value;
+      const msg = document.getElementById('inline-subs-msg');
+      msg.textContent = '';
       btn.disabled = true;
       btn.textContent = 'Procesando…';
       try {
         const res = await fetch('/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: emailVal })
+          body: JSON.stringify({ email: emailVal, website: document.getElementById('inline-email-website').value, t: pageLoadedAt })
         });
         const data = await res.json();
         if (data.success) {
@@ -605,11 +705,12 @@ export function blogDetailHTML(article: any): string {
         } else {
           btn.disabled = false;
           btn.textContent = 'Suscribirme';
-          alert('Error al suscribirse. Intentá de nuevo.');
+          msg.textContent = data.error || 'Error al suscribirse. Intentá de nuevo.';
         }
       } catch (err) {
         btn.disabled = false;
         btn.textContent = 'Suscribirme';
+        msg.textContent = 'No hay conexión. Intentá de nuevo en un rato.';
       }
     });
 
@@ -643,12 +744,13 @@ export function blogDetailHTML(article: any): string {
 </html>`
 }
 
-export function blogNotFoundHTML(): string {
+export function blogNotFoundHTML(temporary = false): string {
   return `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
   <title>Artículo no encontrado — Puesto de Palta</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -666,9 +768,9 @@ export function blogNotFoundHTML(): string {
 <body>
   <div class="wrap">
     <span class="icon">🥑</span>
-    <h1>Artículo no encontrado.</h1>
-    <p>El artículo que buscás no existe o fue removido.</p>
-    <a href="/#blog">Volver al blog</a>
+    <h1>${temporary ? 'No pudimos cargar la nota.' : 'Artículo no encontrado.'}</h1>
+    <p>${temporary ? 'Probá de nuevo en unos minutos.' : 'El artículo que buscás no existe o fue removido.'}</p>
+    <a href="/blog">Volver al blog</a>
   </div>
 </body>
 </html>`
