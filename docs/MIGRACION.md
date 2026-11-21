@@ -742,7 +742,8 @@ nadie.
 
 - **21/11/2026: arreglos de la auditoría** en la rama `claude/project-thread-03p1qu`
   (vista previa: https://claude-project-thread-03p1qu.puesto-de-palta-web.pages.dev).
-  Esperando el OK de Tomás para pasar a `main`. Qué cambia:
+  **Publicado el 21/11/2026** con OK de Tomás (PR #5, merge `78b2a2e`); verificado en
+  puestodepalta.com: páginas, 19 notas, redirecciones 301, sitemap, caché y anti-bots. Qué cambia:
   - Pedidos: "Pedí por WhatsApp" es el botón principal del hero y del menú. Sección
     nueva `#como-trabajamos` (3 pasos, datos, 2 botones negocio/casa) con preguntas
     frecuentes `#preguntas` (respuestas armadas solo con datos de la web y de
