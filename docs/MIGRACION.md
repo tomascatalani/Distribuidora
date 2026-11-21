@@ -5,7 +5,7 @@ armada la web, qué hacía Genspark, la configuración literal del workflow de c
 y el plan de migración. **No contiene claves ni contraseñas.** Las claves se cargan
 como variables de entorno en Cloudflare y en el entorno de Claude Code.
 
-Relevamiento: 23 de septiembre de 2026. Última actualización: 10 de noviembre de 2026.
+Relevamiento: 23 de septiembre de 2026. Última actualización: 21 de noviembre de 2026.
 
 ---
 
@@ -715,6 +715,30 @@ nadie.
   corrida de las 01:40 UTC (22:40 ART del 9/11) salió la campaña 12 de Brevo, push OK
   y KV `notified` con el slug nuevo. Sugerido: activar en cron-job.org el aviso por mail cuando un job se
   desactiva por fallos.
+
+- **21/11/2026: auditoría completa de la web** (UX, celular, velocidad, SEO, blog,
+  conversión). Informe para Tomás en Claude Docs: https://claude.ai/artifact/HZmjMEa16L19wQQVEHmHMi.
+  No se cambió nada. Hallazgos principales, para quien los arregle:
+  - Conversión: el botón principal del hero es "Leer el blog" y el del menú "Suscribite";
+    no hay CTA de pedido. WhatsApp solo en botón flotante (solo en el inicio, no en el
+    blog ni en las notas), cuarto link de Contacto y pie. `wa.me` sin mensaje armado.
+  - Peso: las portadas del blog se usan sin transformación de Cloudinary (PNG de
+    1792x1024, 1,2 a 2,5 MB cada una, 27 MB las 18). El inicio muestra las 18 notas
+    (9.600 px de 18.300 en el celular). Video del hero: vertical 1072x1920, 14 s, con
+    audio, 5,7 MB. Logo del inicio sin transformación (213 KB; `LOGO_URL` pesa 3 KB).
+  - Errores visibles: en `home.ts` el bloque `@media (max-width: 768px) { .hero {...} }`
+    está antes de la regla base `.hero { height: 100vh }` y queda pisado (el arreglo del
+    29/10 nunca aplicó: el eyebrow queda debajo del menú). Menú roto entre 769 y ~1.320 px.
+    `formatDate` del inicio usa `new Date(dateStr)` sin `T12:00:00` y muestra un día antes.
+    "Volver al blog" de las notas apunta a `/#blog`.
+  - SEO: sin sitemap.xml ni canonical; la lista de notas se arma solo con JavaScript;
+    título y H1 del inicio sin "paltas"/"Buenos Aires"; sin datos estructurados de
+    artículo, negocio local ni FAQ; excerpts de 47 a 73 caracteres; `og:image` de las
+    notas es el PNG original (WhatsApp puede no mostrarlo); fuentes como texto sin link.
+  - Formularios sin anti-bots (Turnstile); el alta manda bienvenida por Brevo y comparte
+    los 300 mails/día con las campañas. El mail de contacto no escapa el HTML.
+  - Notion: la nota del 19/11 quedó en borrador sin slug; las del 29/11 y 27/12 tienen
+    tildes en el slug.
 
 ### Pendiente, en orden
 
