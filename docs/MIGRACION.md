@@ -780,6 +780,9 @@ nadie.
     `NOTION_DB_ID` (por API, como `secret_text`: con `plain_text` la API respondió OK
     pero no lo guardó). Preview usa el mismo KV que producción, pero sin
     `NOTIFY_ENABLED` ni claves de Brevo/OneSignal, así que no manda avisos.
+  - Ubicación (decisión de Tomás, 21/11): la web muestra **solo el barrio**, "Acassuso,
+    zona norte", en Contacto, la FAQ, "Cómo trabajamos", el pie y el JSON-LD (sin calle).
+    Sin mapa. La dirección exacta no va en la web: Tomás la pasa por WhatsApp.
   - Pendiente de Tomás: zonas de entrega y pedido mínimo (para la FAQ), qué frases de
     clientes usar como testimonios en texto, un video horizontal para la compu, alta en
     Google Search Console (mandar el sitemap).

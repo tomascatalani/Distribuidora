@@ -8,7 +8,7 @@ const FAQ: Array<[string, string]> = [
   ['¿Venden a particulares o solo a negocios?', 'A los dos. Trabajamos con restaurantes, cafés, franquicias y verdulerías, y también con particulares que quieren paltas buenas en su casa.'],
   ['¿Cómo hago un pedido?', `Por WhatsApp al ${WHATSAPP_DISPLAY}. Contanos cuántas paltas necesitás, para cuándo y en qué zona estás, y te confirmamos el día de entrega.`],
   ['¿Qué días entregan?', 'De lunes a sábado, feriados incluidos. No entregamos los domingos, el 25 de diciembre ni el 1 de enero.'],
-  ['¿A qué zonas llegan?', 'Estamos en Buenos Aires. Escribinos por WhatsApp con tu dirección y te confirmamos si llegamos y qué día.'],
+  ['¿A qué zonas llegan?', 'Estamos en Acassuso, zona norte de Buenos Aires. Escribinos por WhatsApp con tu dirección y te confirmamos si llegamos y qué día.'],
   ['¿Cómo eligen el punto de maduración?', 'Nos decís para cuándo las necesitás (para usar hoy, en un par de días o para el fin de semana) y preparamos el pedido para que llegue en ese punto.'],
   ['¿De dónde vienen las paltas?', 'En temporada, de producción nacional. Fuera de temporada trabajamos palta chilena, peruana y brasilera, de zonas con el clima justo para una buena palta.'],
 ]
@@ -50,6 +50,8 @@ export function homeHTML(): string {
     email: 'contacto@puestodepalta.com',
     telephone: '+' + WHATSAPP_NUMBER,
     areaServed: { '@type': 'City', name: 'Buenos Aires' },
+    // Solo el barrio, sin calle (decisión de Tomás del 21/11/2026).
+    address: { '@type': 'PostalAddress', addressLocality: 'Acassuso', addressRegion: 'Buenos Aires', addressCountry: 'AR' },
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
@@ -1146,6 +1148,8 @@ export function homeHTML(): string {
       transition: background 0.2s;
     }
     .contact-link-item:hover .contact-link-icon { background: #4a7c59; }
+    .contact-link-item.is-place:hover { color: #333; }
+    .contact-link-item.is-place:hover .contact-link-icon { background: #0a0a0a; }
     .contact-link-icon svg { width: 18px; height: 18px; fill: #faf8f4; }
     .contact-form-wrap h3 {
       font-family: 'Libre Baskerville', serif;
@@ -1622,7 +1626,7 @@ export function homeHTML(): string {
         <div class="dato"><strong>Para quién</strong><span>Gastronomía, verdulerías y particulares</span></div>
         <div class="dato"><strong>Entregas</strong><span>Lunes a sábado. No los domingos, ni el 25/12 ni el 1/1</span></div>
         <div class="dato"><strong>Origen</strong><span>Nacional en temporada; chilena, peruana y brasilera fuera de ella</span></div>
-        <div class="dato"><strong>Zonas</strong><span>Buenos Aires: consultá la tuya por WhatsApp</span></div>
+        <div class="dato"><strong>Zonas</strong><span>Desde Acassuso, zona norte: consultá la tuya por WhatsApp</span></div>
       </div>
       <div class="como-ctas">
         <a href="${waLink(WA_MSG.negocio)}" target="_blank" rel="noopener" class="btn-wpp">${WHATSAPP_ICON}Tengo un negocio</a>
@@ -1887,6 +1891,12 @@ export function homeHTML(): string {
               <div class="contact-link-icon">${FACEBOOK_ICON}</div>
               Puesto de Palta en Facebook
             </a>
+            <div class="contact-link-item is-place">
+              <div class="contact-link-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+              </div>
+              Acassuso, zona norte · Buenos Aires
+            </div>
           </div>
         </div>
         <div class="contact-form-wrap fade-in" style="transition-delay: 0.15s">
@@ -1982,7 +1992,7 @@ export function homeHTML(): string {
           <a href="mailto:contacto@puestodepalta.com">contacto@puestodepalta.com</a><br>
           <a href="${INSTAGRAM_URL}" target="_blank" rel="noopener">@puestodepalta — Instagram</a><br>
           <a href="${FACEBOOK_URL}" target="_blank" rel="noopener">Puesto de Palta — Facebook</a><br>
-          <span>Buenos Aires, Argentina</span>
+          <span>Acassuso, zona norte · Buenos Aires</span>
         </div>
       </div>
       <div class="footer-bottom">
