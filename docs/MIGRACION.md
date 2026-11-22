@@ -784,9 +784,14 @@ nadie.
   - Ubicación (decisión de Tomás, 21/11): la web muestra **solo el barrio**, "Acassuso,
     zona norte", en Contacto, la FAQ, "Cómo trabajamos", el pie y el JSON-LD (sin calle).
     Sin mapa. La dirección exacta no va en la web: Tomás la pasa por WhatsApp.
+  - Google Search Console (22/11/2026): Tomás creó la propiedad tipo **Dominio**
+    `puestodepalta.com`, envió el sitemap y pidió indexar el inicio. En una propiedad de
+    Dominio el sitemap va con la dirección completa: `https://puestodepalta.com/sitemap.xml`
+    (con solo `sitemap.xml` da "Dirección de sitemap no válida"). `CF_API_TOKEN` no tiene
+    permiso de DNS: los registros TXT los tiene que cargar Tomás.
   - Pendiente de Tomás: zonas de entrega y pedido mínimo (para la FAQ), qué frases de
-    clientes usar como testimonios en texto, un video horizontal para la compu, alta en
-    Google Search Console (mandar el sitemap).
+    clientes usar como testimonios en texto, un video horizontal para la compu, Perfil de
+    Empresa de Google (zona de servicio, sin dirección).
 
 ### Pendiente, en orden
 
