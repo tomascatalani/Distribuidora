@@ -144,6 +144,26 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
     cómo congelarla al Tom especialista del 15/2.
   - Cómo se leyó (16/11): lo mismo, más IGEV16 a IGEV20 para las historias y TKEV para
     TikTok. Las horas de IGRE e IGCR vienen en UTC (3 horas adelantadas).
+  - **23/11/2026** (competidores del 24/10 al 22/11 y la semana del 16 al 22/11).
+    Seguidores: @paltasagrada 57.283 (-29), @lapalteria10 55.904 (+40), @labellapalta
+    8.759 (-17), @frutiverdu 6.937 (+7). La Paltería: 8 Reels y 2 posts en 30 días, con 76
+    likes y 3 comentarios de promedio (baja semana a semana: 112, 88, 76). En la semana, 2
+    Reels y 1 post: un chía pudding de palta y banana "para este veranito" (116
+    interacciones, la primera receta que subió en el mes), un video institucional que
+    nombra envíos a CABA, GBA y La Plata y sus locales de Haedo y Castelar (107) y un post
+    con foto para pedir por WhatsApp (8). Las demás no publicaron nada en la semana.
+  - Propios, misma revisión: 12.830 seguidores el 21/11 (+153 desde el 14/11). Alcance de
+    la cuenta: de 1.350 a 2.200 por día del 15 al 21/11. 4 Reels, ningún post y sin
+    anuncios: donas de sushi con palta (21/11, otra cuenta), 668 en su primer día; omelette
+    (18/11, otra cuenta), 593; las notas con "Comentá ESPAÑA" (16/11) y "Comentá
+    ADULTERADO" (20/11), 287 y 237, con 0 y 3 comentarios. 3 de 4 entre las 19 y las 21 h
+    (el otro, 21:17). De la semana anterior: el video de la palta madurando ya va por 867
+    (más que la mediana de un Reel, 783) y el sándwich del 11/11, por 1.464. Historias: 26
+    del 16 al 21/11, unas 46 personas cada una de promedio. TikTok: sigue en cero.
+  - Cambio al plan (23/11): como las historias llegan a unas 50 personas, el link de cada
+    nota no puede depender solo de la historia; en el texto del Reel de cada nota, poner
+    "el link, en la bio", con la bio apuntando al blog. Se le avisó a Tomás para que se lo
+    pase a Pipi. Lo del 11/12 (Apreciación paltera en Reel) queda reforzado por los 867.
 - [x] **Calendario de diciembre 2026 a febrero 2027** (pedido y hecho el 5/11/2026;
   versiones 4 y 5 el 7/11/2026; la 5 está más abajo, en su propio punto).
   - Planilla "Calendario de contenidos PdP — dic 2026 a feb 2027" (desde el 13/11 en REDES >
