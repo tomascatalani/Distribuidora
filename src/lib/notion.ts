@@ -1,3 +1,5 @@
+import { cld, IMG_CARD } from './site'
+
 // Acceso a Notion compartido por la web (listado y nota) y por el cron de avisos.
 // Toda la lógica de "qué se considera publicado" vive acá, en un solo lugar.
 
@@ -9,10 +11,13 @@ export type NotionEnv = {
 export type Article = {
   id: string
   title: string
-  slug: string
+  slug: string          // dirección pública: sin tildes ni símbolos (ver publicSlug)
+  notionSlug: string    // lo que dice el campo Slug en Notion, tal cual
   fecha: string | null
   imageUrl: string
+  thumbUrl: string      // portada achicada para las tarjetas
   excerpt: string
+  lastEdited: string | null
 }
 
 const NOTION_VERSION = '2022-06-28'
@@ -137,10 +142,18 @@ function escapeHtml(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 }
 
+// Las fuentes del final de cada nota vienen como texto ("Título — https://...").
+// Esto convierte esas direcciones en links que se pueden tocar.
+function linkify(escaped: string): string {
+  return escaped.replace(/https?:\/\/[^\s<]+[^\s<.,;:!?)\]'"]/g,
+    (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`)
+}
+
 export function richTextHTML(arr: any[]): string {
   if (!arr || arr.length === 0) return ''
   return arr.map((t: any) => {
     let s = escapeHtml(t.plain_text || '')
+    if (!t.href) s = linkify(s)
     if (t.annotations?.bold) s = `<strong>${s}</strong>`
     if (t.annotations?.italic) s = `<em>${s}</em>`
     if (t.annotations?.underline) s = `<u>${s}</u>`
@@ -165,17 +178,30 @@ function parseImageProp(props: any): string {
   return ''
 }
 
+// Dirección pública de una nota: el Slug de Notion sin tildes ni símbolos. Si la
+// nota no tiene Slug, se arma con el título. Así "el-número-que-nadie-planeó"
+// queda /blog/el-numero-que-nadie-planeo, y las direcciones viejas con tilde
+// redirigen a la nueva (ver getArticlePage).
+export function slugify(s: string): string {
+  return (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+}
+
 export function parseArticle(page: any): Article {
   const props = page.properties
   const title = richText(props?.Title?.title || []) || 'Sin título'
   const slugRaw = richText(props?.Slug?.rich_text || []).trim()
+  const imageUrl = parseImageProp(props)
   return {
     id: page.id,
     title,
-    slug: slugRaw || page.id,
+    slug: slugify(slugRaw) || slugify(title) || page.id,
+    notionSlug: slugRaw,
     fecha: props?.Fecha?.date?.start || null,
-    imageUrl: parseImageProp(props),
+    imageUrl,
+    thumbUrl: cld(imageUrl, IMG_CARD),
     excerpt: richText(props?.Excerpt?.rich_text || []).trim(),
+    lastEdited: page.last_edited_time || null,
   }
 }
 
@@ -192,6 +218,19 @@ export function extractExcerpt(blocks: any[]): string {
 export function shortExcerpt(text: string, max = 150): string {
   if (!text) return ''
   return text.length > max ? text.slice(0, max) + '…' : text
+}
+
+// Descripción para Google y WhatsApp: entre 110 y 160 caracteres. Si el Excerpt
+// de Notion es muy corto, se completa con el primer párrafo de la nota.
+export function metaDescription(excerpt: string, firstParagraph: string, max = 160): string {
+  let d = (excerpt || '').replace(/\s+/g, ' ').trim()
+  const p = (firstParagraph || '').replace(/\s+/g, ' ').trim()
+  if (!d) d = p
+  else if (d.length < 110 && p && p !== d) d = p.startsWith(d) ? p : `${d} ${p}`
+  if (d.length <= max) return d
+  const cut = d.slice(0, max - 1)
+  const lastSpace = cut.lastIndexOf(' ')
+  return (lastSpace > 80 ? cut.slice(0, lastSpace) : cut).replace(/[\s,;:.\-—]+$/, '') + '…'
 }
 
 // ── Bloques → HTML ──────────────────────────────────────────────────────────
@@ -303,13 +342,34 @@ export function blocksToHTML(blocks: any[]): string {
 
 // ── Artículo completo (para la página de la nota) ───────────────────────────
 
-export async function getArticleBySlug(env: NotionEnv, slug: string): Promise<(Article & { htmlContent: string }) | null> {
-  const page = await findPublishedBySlug(env, slug)
-  if (!page) return null
-  const article = parseArticle(page)
-  const blocks = await fetchBlocks(env, page.id)
-  if (!article.excerpt) article.excerpt = extractExcerpt(blocks)
-  return { ...article, htmlContent: blocksToHTML(blocks) }
+export type ArticlePage = Article & { htmlContent: string; description: string; related: Article[] }
+
+// Busca la nota por su dirección. Acepta la dirección nueva sin tildes, la vieja
+// con tildes (el Slug tal cual está en Notion) y el ID de página que usaban las
+// notas sin Slug. Quien llama compara article.slug con lo pedido para redirigir.
+export async function getArticlePage(env: NotionEnv, requested: string): Promise<ArticlePage | null> {
+  let req = requested || ''
+  try { if (req.includes('%')) req = decodeURIComponent(req) } catch (_) {}
+  const pages = await listPublished(env)
+  const all = pages.map(parseArticle)
+  const wanted = slugify(req)
+  const idx = all.findIndex(a => a.slug === wanted || a.id === req || (a.notionSlug && a.notionSlug === req))
+  if (idx < 0) return null
+  const article = all[idx]
+  const blocks = await fetchBlocks(env, article.id)
+  const firstParagraph = extractExcerpt(blocks)
+  if (!article.excerpt) article.excerpt = firstParagraph
+  const related = all.filter((_, i) => i !== idx).slice(0, 3)
+  return {
+    ...article,
+    htmlContent: blocksToHTML(blocks),
+    description: metaDescription(article.excerpt, firstParagraph),
+    related,
+  }
+}
+
+export async function getArticleBySlug(env: NotionEnv, slug: string): Promise<ArticlePage | null> {
+  return getArticlePage(env, slug)
 }
 
 export async function getPublishedArticles(env: NotionEnv): Promise<Article[]> {

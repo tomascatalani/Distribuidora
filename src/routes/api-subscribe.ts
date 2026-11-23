@@ -1,4 +1,5 @@
 import { Hono } from 'hono'
+import { formGuard, EMAIL_RE } from '../lib/edge'
 
 type Bindings = {
   BREVO_API_KEY: string
@@ -44,10 +45,17 @@ async function sendWelcomeEmail(email: string, apiKey: string) {
 
 apiSubscribe.post('/', async (c) => {
   try {
-    const { email } = await c.req.json()
-    if (!email || !email.includes('@')) {
+    const body = await c.req.json()
+    const email = String(body?.email || '').trim().toLowerCase()
+    if (!email || email.length > 254 || !EMAIL_RE.test(email)) {
       return c.json({ error: 'Email inválido.' }, 400)
     }
+
+    // Anti-bots: a un bot se le contesta "ok" sin hacer nada, para que no insista.
+    const guard = await formGuard(c, body, 'subscribe')
+    if (guard === 'bot') return c.json({ success: true })
+    if (guard === 'forbidden') return c.json({ error: 'No permitido.' }, 403)
+    if (guard === 'too-many') return c.json({ error: 'Demasiados intentos. Probá de nuevo en unos minutos.' }, 429)
 
     const apiKey = c.env?.BREVO_API_KEY || ''
 
