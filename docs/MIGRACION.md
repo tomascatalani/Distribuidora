@@ -789,6 +789,13 @@ nadie.
     Dominio el sitemap va con la dirección completa: `https://puestodepalta.com/sitemap.xml`
     (con solo `sitemap.xml` da "Dirección de sitemap no válida"). `CF_API_TOKEN` no tiene
     permiso de DNS: los registros TXT los tiene que cargar Tomás.
+  - Estado al 23/11/2026: hechos los 12 arreglos de Prioridad 1 y casi toda la
+    Prioridad 2. Quedan (dependen de Tomás): testimonios en texto, zonas y pedido mínimo,
+    reemplazar la FAQ por las 15 del Gran Manual Interno si quiere, video horizontal,
+    revisar la portada de "La hipocresía…". Opcional: página para gastronomía, borrar el
+    proyecto viejo `puesto-de-palta` (con OK de Tomás). **No activar Bot Fight Mode**:
+    en el plan gratis no se puede exceptuar `/api/cron` y podría bloquear a cron-job.org
+    (los avisos de notas nuevas).
   - Pendiente de Tomás: zonas de entrega y pedido mínimo (para la FAQ), qué frases de
     clientes usar como testimonios en texto, un video horizontal para la compu, Perfil de
     Empresa de Google (zona de servicio, sin dirección).
