@@ -2,13 +2,13 @@ import { FACEBOOK_ICON, FACEBOOK_URL, INSTAGRAM_ICON, INSTAGRAM_URL, LOGO_URL, O
 
 // Preguntas frecuentes del inicio. Se muestran en la sección "Cómo trabajamos" y
 // también se le pasan a Google como datos estructurados (FAQPage).
-// Las respuestas salen de lo que ya dice la web y de lo que contó Tomás; zonas y
-// pedido mínimo no están definidos, por eso se responden con "escribinos".
+// Las respuestas salen de lo que ya dice la web y de lo que contó Tomás. Zonas
+// confirmadas el 23/11/2026; el pedido mínimo todavía no está definido.
 const FAQ: Array<[string, string]> = [
   ['¿Venden a particulares o solo a negocios?', 'A los dos. Trabajamos con restaurantes, cafés, franquicias y verdulerías, y también con particulares que quieren paltas buenas en su casa.'],
   ['¿Cómo hago un pedido?', `Por WhatsApp al ${WHATSAPP_DISPLAY}. Contanos cuántas paltas necesitás, para cuándo y en qué zona estás, y te confirmamos el día de entrega.`],
   ['¿Qué días entregan?', 'De lunes a sábado, feriados incluidos. No entregamos los domingos, el 25 de diciembre ni el 1 de enero.'],
-  ['¿A qué zonas llegan?', 'Estamos en Acassuso, zona norte de Buenos Aires. Escribinos por WhatsApp con tu dirección y te confirmamos si llegamos y qué día.'],
+  ['¿A qué zonas llegan?', 'Entregamos en zona norte, Capital Federal, zona sur y parte de zona oeste, siempre dentro de Buenos Aires. Estamos en Acassuso. Si tenés dudas con tu dirección, escribinos por WhatsApp y te confirmamos qué día llegamos.'],
   ['¿Cómo eligen el punto de maduración?', 'Nos decís para cuándo las necesitás (para usar hoy, en un par de días o para el fin de semana) y preparamos el pedido para que llegue en ese punto.'],
   ['¿De dónde vienen las paltas?', 'En temporada, de producción nacional. Fuera de temporada trabajamos palta chilena, peruana y brasilera, de zonas con el clima justo para una buena palta.'],
 ]
@@ -49,7 +49,13 @@ export function homeHTML(): string {
     logo: 'https://res.cloudinary.com/dxlunrd1f/image/upload/v1773665883/puesto-de-palta/isologotipo.png',
     email: 'contacto@puestodepalta.com',
     telephone: '+' + WHATSAPP_NUMBER,
-    areaServed: { '@type': 'City', name: 'Buenos Aires' },
+    // Zonas de entrega que confirmó Tomás el 23/11/2026.
+    areaServed: [
+      { '@type': 'City', name: 'Ciudad Autónoma de Buenos Aires' },
+      { '@type': 'AdministrativeArea', name: 'Zona Norte, Gran Buenos Aires' },
+      { '@type': 'AdministrativeArea', name: 'Zona Sur, Gran Buenos Aires' },
+      { '@type': 'AdministrativeArea', name: 'Zona Oeste, Gran Buenos Aires' },
+    ],
     // Solo el barrio, sin calle (decisión de Tomás del 21/11/2026).
     address: { '@type': 'PostalAddress', addressLocality: 'Acassuso', addressRegion: 'Buenos Aires', addressCountry: 'AR' },
     contactPoint: {
@@ -1626,7 +1632,7 @@ export function homeHTML(): string {
         <div class="dato"><strong>Para quién</strong><span>Gastronomía, verdulerías y particulares</span></div>
         <div class="dato"><strong>Entregas</strong><span>Lunes a sábado. No los domingos, ni el 25/12 ni el 1/1</span></div>
         <div class="dato"><strong>Origen</strong><span>Nacional en temporada; chilena, peruana y brasilera fuera de ella</span></div>
-        <div class="dato"><strong>Zonas</strong><span>Desde Acassuso, zona norte: consultá la tuya por WhatsApp</span></div>
+        <div class="dato"><strong>Zonas</strong><span>Zona norte, Capital, zona sur y parte de zona oeste</span></div>
       </div>
       <div class="como-ctas">
         <a href="${waLink(WA_MSG.negocio)}" target="_blank" rel="noopener" class="btn-wpp">${WHATSAPP_ICON}Tengo un negocio</a>
