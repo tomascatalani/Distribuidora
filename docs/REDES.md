@@ -77,6 +77,34 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   que está en sus subcarpetas (pedido de Tomás). Lo suelto es lo que está disponible; lo
   que ya salió lo pasan a las subcarpetas YA USADAS (fotos) y YA USADOS (videos). Desde
   el 10/11/2026, la carpeta "Material para usar" junta lo disponible (ver sección 4).
+- **Lo hecho no se rehace (25/11/2026, por una pregunta de Pipi).** Pipi trabaja con una
+  semana de adelanto. Los cambios que salen de la revisión de los lunes valen solo para lo
+  que todavía falta: antes de proponer uno, mirar la planilla; si la fila está en Grabado,
+  Listo para subir o Publicado, o tiene Archivo final, queda como está. Las piezas de
+  Claude ya cargadas no se cambian si salen en las dos semanas siguientes (Pipi puede
+  tenerlas listas); más adelante sí, avisando. Solo se avisa aparte si algo no puede salir
+  así (un dato equivocado, un día sin entregas). Cada cambio se anota con su fecha en "Qué
+  cambia en el plan" (pestaña B) y se le dice a Tomás qué cambiar en la planilla: Claude no
+  escribe en ella.
+- **Pipi trabaja desde las carpetas del Drive, no desde Metricool (25/11/2026).** La
+  carpeta de cada pieza de Claude tiene lo mismo que su borrador de Metricool (imágenes y
+  "texto y notas"). Si Claude cambia una pieza ya cargada, la cambia también en la carpeta
+  (el script no pisa un archivo que ya existe: hay que subir el nuevo) y le avisa a Pipi
+  por Tomás. Los borradores de Metricool no hace falta borrarlos: nunca salen solos.
+- **Textos de Claude con la forma de los de Pipi (desde el 25/11/2026).** Modelo: su
+  registro "Copies de Pipi" (en CALENDARIO Y PLANILLAS), con la firma "La calidad no se
+  explica. Se nota." y 5 hashtags. Pipi puede retocarlos al publicar; la última palabra
+  es suya.
+- **Lo que tolera la planilla (25/11/2026).** El script ubica las filas por el ID (columna
+  oculta) y las columnas por el título: no hay que tocar los títulos ID, Estado, Carpeta y
+  Archivo final; los demás ("Qué cambió (7/11)", por ejemplo) se pueden renombrar. Filas
+  nuevas sin ID: no tienen carpeta ni se les detecta el FINAL (el estado se cambia a mano);
+  copiar y pegar una fila entera duplica el ID y ata la copia a la carpeta de la original.
+  Una carpeta creada a mano en Redes por día, con nombre propio, no se borra. Cambiar de
+  día una fila no rompe nada. Renombrar crudos ("A usar", "USADO") tampoco: el script no
+  lee esos nombres, y las carpetas donde Pipi los marca así (Reels informativos tom, las
+  reacciones crudas, las de cada grabación) no las recorre. Publicado lo pone siempre una
+  persona.
 
 ## 4. Estado actual
 
@@ -98,7 +126,8 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   (primera: 9/11/2026). Mira Metricool (competidores y números propios), actualiza la
   tabla "La competencia en números" de la pestaña "B · Información semanal" (hasta el
   7/11 se llamaba Análisis) con fecha y 2 o 3 observaciones, deja el resumen en esta
-  sección y le avisa a Tomás en pocas líneas.
+  sección y le avisa a Tomás en pocas líneas. Desde el 25/11/2026, los cambios al plan
+  respetan "Lo hecho no se rehace" (sección 3).
   - **9/11/2026** (la primera; competidores del 10/10 al 8/11 y la semana del 2 al
     8/11). Seguidores: @paltasagrada 57.346 (-17 desde el 5/11), @lapalteria10 55.679
     (+128), @labellapalta 8.790 (-14), @frutiverdu 6.924 (-2). La Paltería: 10 Reels y
@@ -623,6 +652,14 @@ Creado el 5/11/2026. Actualizar la sección 4 en cada sesión de redes.
   diciembre (4/1/2027, 10:17: carruseles contra 450, recetas propias contra las de otras
   cuentas, prueba de letras); escribir la nota del 7/2 y sus piezas (19/1/2027, 10:17);
   escribir la nota del 21/2 y sus piezas (2/2/2027, 10:17). Horas de Buenos Aires.
+- [x] **Preguntas de Pipi** (25/11/2026, por Tomás): nueve dudas sobre los textos, los
+  cambios de los lunes, las carpetas, Metricool, el FINAL, la columna "Qué cambió (7/11)",
+  los crudos renombrados y las publicaciones sobre la marcha. Respondidas en un mensaje
+  para reenviar y en la Guía del plan (sección "Preguntas frecuentes"); las reglas nuevas
+  están en la sección 3. En la pestaña B se corrigió "Lo que no conviene repetir" (ahora
+  "Los Reels de prueba"): los 11 Reels de unas 110 personas eran Reels de prueba, no
+  repetidos. Al mensaje se le sumaron los dos cambios pendientes de las revisiones (11/12
+  en video, si no estaba hecho, y "el link, en la bio" en los Reels de las notas).
 
 ## 5. Contexto que dio Tomás (5/11/2026)
 
